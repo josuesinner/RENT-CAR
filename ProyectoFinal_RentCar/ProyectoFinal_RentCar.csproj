@@ -140,6 +140,9 @@
     <EmbeddedResource Include="Forms\Combustibles.resx">
       <DependentUpon>Combustibles.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Empleados.resx">
+      <DependentUpon>Empleados.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Marcas.resx">
       <DependentUpon>Marcas.cs</DependentUpon>
     </EmbeddedResource>
