@@ -89,6 +89,7 @@
             this.dataGridViewModelo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewModelo.Size = new System.Drawing.Size(848, 240);
             this.dataGridViewModelo.TabIndex = 10;
+            this.dataGridViewModelo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewModelo_CellContentClick);
             // 
             // btnCrear
             // 
@@ -226,6 +227,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Modelos";
             this.Text = "Modelos";
+            this.Load += new System.EventHandler(this.Modelos_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewModelo)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);

@@ -30,7 +30,7 @@
         {
             this.ChckEstado = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.dataGridViewCliente = new System.Windows.Forms.DataGridView();
+            this.dataGridViewEmpleado = new System.Windows.Forms.DataGridView();
             this.btnCrear = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -50,7 +50,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCliente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmpleado)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -75,7 +75,7 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 854F));
-            this.tableLayoutPanel2.Controls.Add(this.dataGridViewCliente, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.dataGridViewEmpleado, 1, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 146);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
@@ -83,20 +83,20 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(862, 246);
             this.tableLayoutPanel2.TabIndex = 15;
             // 
-            // dataGridViewCliente
+            // dataGridViewEmpleado
             // 
-            this.dataGridViewCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridViewEmpleado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewCliente.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridViewCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCliente.Location = new System.Drawing.Point(11, 3);
-            this.dataGridViewCliente.MultiSelect = false;
-            this.dataGridViewCliente.Name = "dataGridViewCliente";
-            this.dataGridViewCliente.ReadOnly = true;
-            this.dataGridViewCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCliente.Size = new System.Drawing.Size(848, 240);
-            this.dataGridViewCliente.TabIndex = 10;
+            this.dataGridViewEmpleado.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridViewEmpleado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEmpleado.Location = new System.Drawing.Point(11, 3);
+            this.dataGridViewEmpleado.MultiSelect = false;
+            this.dataGridViewEmpleado.Name = "dataGridViewEmpleado";
+            this.dataGridViewEmpleado.ReadOnly = true;
+            this.dataGridViewEmpleado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewEmpleado.Size = new System.Drawing.Size(848, 240);
+            this.dataGridViewEmpleado.TabIndex = 10;
             // 
             // btnCrear
             // 
@@ -328,7 +328,7 @@
             this.Name = "Empleados";
             this.Text = "Empleados";
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCliente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmpleado)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -342,7 +342,7 @@
 
         private System.Windows.Forms.CheckBox ChckEstado;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.DataGridView dataGridViewCliente;
+        private System.Windows.Forms.DataGridView dataGridViewEmpleado;
         private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnEliminar;
