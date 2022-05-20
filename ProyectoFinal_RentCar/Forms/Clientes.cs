@@ -96,7 +96,7 @@ namespace ProyectoFinal_RentCar.Forms
                     
                     
 
-                    if (MessageBox.Show("Esta seguro que quiere borrar este registro?","Borrar Registro",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+                    if (MessageBox.Show("Esta seguro que quiere borrar este registro?","RENT-CAR",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
                     {
                         db.SaveChanges();
                     }

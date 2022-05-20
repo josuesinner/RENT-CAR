@@ -89,6 +89,7 @@
             this.dataGridViewMarcas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewMarcas.Size = new System.Drawing.Size(848, 240);
             this.dataGridViewMarcas.TabIndex = 10;
+            this.dataGridViewMarcas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMarcas_CellContentClick);
             // 
             // btnCrear
             // 
@@ -98,6 +99,7 @@
             this.btnCrear.TabIndex = 0;
             this.btnCrear.Text = "C";
             this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // btnEditar
             // 
@@ -107,6 +109,7 @@
             this.btnEditar.TabIndex = 1;
             this.btnEditar.Text = "E";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnEliminar
             // 
@@ -116,6 +119,7 @@
             this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "D";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -226,6 +230,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Marcas";
             this.Text = "Marcas";
+            this.Load += new System.EventHandler(this.Marcas_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMarcas)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
