@@ -50,5 +50,105 @@ namespace ProyectoFinal_RentCar.Forms
                 ChckEstado.Checked = false;
             }
         }
+
+        private void btnCrear_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (BD_Context db = new BD_Context())
+                {
+                    Class.Modelos modelos = new Class.Modelos();
+
+                    modelos.Descripcion = txtModelo.Text.ToString();
+
+                    if (ChckEstado.Checked)
+                    {
+                        modelos.Estado = "INACTIVO";
+                    }
+                    else
+                    {
+                        modelos.Estado = "ACTIVO";
+                    }
+
+                    db.Modelos.Add(modelos);
+
+                    db.SaveChanges();
+                }
+
+                MessageBox.Show("Modelo creado satisfactoriamente!", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Refresh();
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (BD_Context db = new BD_Context())
+                {
+                    int id = int.Parse(dataGridViewModelo.CurrentRow.Cells[0].Value.ToString());
+
+                    Class.Modelos modelos = db.Modelos.FirstOrDefault(x => x.Id_Modelo == id);
+
+                    modelos.Descripcion = txtModelo.Text.ToString();
+
+                    if (ChckEstado.Checked)
+                    {
+                        modelos.Estado = "INACTIVO";
+                    }
+                    else
+                    {
+                        modelos.Estado = "ACTIVO";
+                    }
+
+                    db.SaveChanges();
+
+                }
+                MessageBox.Show("Modelo editado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Refresh();
+                LimpiarCampos();
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (BD_Context db = new BD_Context())
+                {
+                    int id = int.Parse(dataGridViewModelo.CurrentRow.Cells[0].Value.ToString());
+
+                    Class.Modelos modelos = db.Modelos.FirstOrDefault(x => x.Id_Modelo == id);
+
+                    db.Modelos.Remove(modelos);
+
+                    if (MessageBox.Show("Esta seguro que quiere borrar este registro?", "RENT-CAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        db.SaveChanges();
+                    }
+                }
+
+                Refresh();
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }
