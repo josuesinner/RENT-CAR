@@ -61,6 +61,7 @@
     <Compile Include="Class\Combustible.cs" />
     <Compile Include="Class\Empleado.cs" />
     <Compile Include="Class\Inspeccion.cs" />
+    <Compile Include="Class\LLenarCombo.cs" />
     <Compile Include="Class\Marcas.cs" />
     <Compile Include="Class\Modelos.cs" />
     <Compile Include="Class\Renta_Devolucion.cs" />
