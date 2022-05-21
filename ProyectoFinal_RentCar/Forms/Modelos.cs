@@ -39,7 +39,8 @@ namespace ProyectoFinal_RentCar.Forms
 
         private void dataGridViewModelo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtModelo.Text = dataGridViewModelo.CurrentRow.Cells[1].Value.ToString();
+            comboMarca.Text = dataGridViewModelo.CurrentRow.Cells[2].Value.ToString();
+            txtModelo.Text = dataGridViewModelo.CurrentRow.Cells[3].Value.ToString();
             
             if (dataGridViewModelo.CurrentRow.Cells[4].Value.ToString() == "INACTIVO")
             {
@@ -59,6 +60,7 @@ namespace ProyectoFinal_RentCar.Forms
                 {
                     Class.Modelos modelos = new Class.Modelos();
 
+                    modelos.Marca.Descripcion = comboMarca.Text.ToString();
                     modelos.Descripcion = txtModelo.Text.ToString();
 
                     if (ChckEstado.Checked)
@@ -75,7 +77,7 @@ namespace ProyectoFinal_RentCar.Forms
                     db.SaveChanges();
                 }
 
-                MessageBox.Show("Modelo creado satisfactoriamente!", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Modelo "+ txtModelo.Text.ToString().ToUpper()+" creado satisfactoriamente!", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 Refresh();
                 LimpiarCampos();

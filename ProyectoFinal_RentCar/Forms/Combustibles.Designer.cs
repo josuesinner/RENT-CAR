@@ -89,6 +89,7 @@
             this.dataGridViewCombustible.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewCombustible.Size = new System.Drawing.Size(848, 240);
             this.dataGridViewCombustible.TabIndex = 10;
+            this.dataGridViewCombustible.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCombustible_CellContentClick);
             // 
             // btnCrear
             // 
@@ -226,6 +227,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Combustibles";
             this.Text = "Combustibles";
+            this.Load += new System.EventHandler(this.Combustibles_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCombustible)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);

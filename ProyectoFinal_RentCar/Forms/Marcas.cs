@@ -61,7 +61,7 @@ namespace ProyectoFinal_RentCar.Forms
                 {
                     Class.Marcas marcas = new Class.Marcas();
 
-                    marcas.Descripcion = txtMarca.Text.ToString();
+                    marcas.Descripcion = txtMarca.Text.ToString().ToUpper();
 
                     if (ChckEstado.Checked)
                     {
@@ -77,7 +77,7 @@ namespace ProyectoFinal_RentCar.Forms
                     db.SaveChanges();
                 }
 
-                MessageBox.Show("Marca creada satisfactoriamente!", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Marca "+ txtMarca.Text.ToString().ToUpper() + " creada satisfactoriamente!", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 Refresh();
                 LimpiarCampos();
