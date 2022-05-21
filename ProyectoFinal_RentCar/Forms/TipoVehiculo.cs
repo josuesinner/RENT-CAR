@@ -86,5 +86,69 @@ namespace ProyectoFinal_RentCar.Forms
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (BD_Context db = new BD_Context())
+                {
+                    int id = int.Parse(dataGridViewTipoVehiculo.CurrentRow.Cells[0].Value.ToString());
+
+                    Class.Tipo_Vehiculo tipo_Vehiculo = db.Tipo_Vehiculos.FirstOrDefault(x => x.Id_Tipo_Vehiculo == id);
+
+                    tipo_Vehiculo.Descripcion = txtTipoVehiculo.Text.ToString();
+
+                    if (ChckEstado.Checked)
+                    {
+                        tipo_Vehiculo.Estado = "INACTIVO";
+                    }
+                    else
+                    {
+                        tipo_Vehiculo.Estado = "ACTIVO";
+                    }
+
+                    db.SaveChanges();
+
+                }
+                MessageBox.Show("Tipo de Vehiculo editado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Refresh();
+                LimpiarCampos();
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (BD_Context db = new BD_Context())
+                {
+                    int id = int.Parse(dataGridViewTipoVehiculo.CurrentRow.Cells[0].Value.ToString());
+
+                    Class.Tipo_Vehiculo tipo_Vehiculo = db.Tipo_Vehiculos.FirstOrDefault(x => x.Id_Tipo_Vehiculo == id);
+
+                    db.Tipo_Vehiculos.Remove(tipo_Vehiculo);
+
+                    if (MessageBox.Show("Esta seguro que quiere borrar este registro?", "RENT-CAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        db.SaveChanges();
+                    }
+                }
+
+                Refresh();
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }

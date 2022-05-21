@@ -95,10 +95,8 @@ namespace ProyectoFinal_RentCar.Forms
                 using (BD_Context db = new BD_Context())
                 {
                     Class.Modelos modelos = new Class.Modelos();
-                    //Class.Marcas marcas = new Class.Marcas();
 
                     modelos.MarcaId = (int)comboMarca.SelectedValue;
-                    //modelos.Marca.Descripcion = comboMarca.Text.ToString();
                     modelos.Descripcion = txtModelo.Text.ToString().ToUpper();
 
                     if (ChckEstado.Checked)
