@@ -63,6 +63,7 @@
     <Compile Include="Class\Inspeccion.cs" />
     <Compile Include="Class\LLenarCombo.cs" />
     <Compile Include="Class\Marcas.cs" />
+    <Compile Include="Class\ModeloVieModel.cs" />
     <Compile Include="Class\Modelos.cs" />
     <Compile Include="Class\Renta_Devolucion.cs" />
     <Compile Include="Class\Tipo_Vehiculo.cs" />

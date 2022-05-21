@@ -89,6 +89,7 @@
             this.dataGridViewTipoVehiculo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTipoVehiculo.Size = new System.Drawing.Size(848, 240);
             this.dataGridViewTipoVehiculo.TabIndex = 10;
+            this.dataGridViewTipoVehiculo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTipoVehiculo_CellContentClick);
             // 
             // btnCrear
             // 
@@ -98,6 +99,7 @@
             this.btnCrear.TabIndex = 0;
             this.btnCrear.Text = "C";
             this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // btnEditar
             // 
@@ -226,6 +228,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "TipoVehiculo";
             this.Text = "TipoVehiculo";
+            this.Load += new System.EventHandler(this.TipoVehiculo_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTipoVehiculo)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);

@@ -35,8 +35,30 @@ namespace ProyectoFinal_RentCar.Forms
         {
             using (BD_Context db = new BD_Context())
             {
-                dataGridViewModelo.DataSource = db.Modelos.ToList();
+                dataGridViewModelo.DataSource = ModelMapper();
             }
+        }
+
+        private List<ModeloVieModel> ModelMapper()
+        {
+            var list = new List<ModeloVieModel>();
+
+            using (BD_Context db = new BD_Context())
+            {
+
+                foreach (var item in db.Modelos.ToList())
+                {
+                    list.Add(new ModeloVieModel
+                    {
+                        Id_Modelo = item.Id_Modelo,
+                        Marca = db.Marcas.FirstOrDefault(x => x.Id_Marca == item.MarcaId).Descripcion,
+                        Descripcion = item.Descripcion,
+                        Estado = item.Estado
+                    });
+                }
+            }
+            
+            return list;
         }
 
         private void LimpiarCampos()
@@ -73,10 +95,10 @@ namespace ProyectoFinal_RentCar.Forms
                 using (BD_Context db = new BD_Context())
                 {
                     Class.Modelos modelos = new Class.Modelos();
-                    Class.Marcas marcas = new Class.Marcas();
+                    //Class.Marcas marcas = new Class.Marcas();
 
-
-                    modelos.Marca.Descripcion = comboMarca.Text.ToString();
+                    modelos.MarcaId = (int)comboMarca.SelectedValue;
+                    //modelos.Marca.Descripcion = comboMarca.Text.ToString();
                     modelos.Descripcion = txtModelo.Text.ToString().ToUpper();
 
                     if (ChckEstado.Checked)
