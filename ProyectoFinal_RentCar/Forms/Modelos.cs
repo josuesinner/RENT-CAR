@@ -18,6 +18,19 @@ namespace ProyectoFinal_RentCar.Forms
             InitializeComponent();
         }
 
+        private void ComboMarca()
+        {
+            LLenarCombo datos = new LLenarCombo();
+
+            var Lst = datos.ComboMarca();
+            if (Lst.Count>0)
+            {
+                comboMarca.DisplayMember = "Descripcion";
+                comboMarca.ValueMember = "Id_Marca";
+                comboMarca.DataSource = Lst;
+            }
+        }
+
         private void Refresh()
         {
             using (BD_Context db = new BD_Context())
@@ -35,6 +48,7 @@ namespace ProyectoFinal_RentCar.Forms
         private void Modelos_Load(object sender, EventArgs e)
         {
             Refresh();
+            ComboMarca();
         }
 
         private void dataGridViewModelo_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -59,9 +73,11 @@ namespace ProyectoFinal_RentCar.Forms
                 using (BD_Context db = new BD_Context())
                 {
                     Class.Modelos modelos = new Class.Modelos();
+                    Class.Marcas marcas = new Class.Marcas();
+
 
                     modelos.Marca.Descripcion = comboMarca.Text.ToString();
-                    modelos.Descripcion = txtModelo.Text.ToString();
+                    modelos.Descripcion = txtModelo.Text.ToString().ToUpper();
 
                     if (ChckEstado.Checked)
                     {
