@@ -30,7 +30,7 @@
         {
             this.ChckEstado = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.dataGridViewTipoVehiculo = new System.Windows.Forms.DataGridView();
+            this.dataGridViewInspeccion = new System.Windows.Forms.DataGridView();
             this.btnCrear = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -38,26 +38,26 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.ComboVehiculo = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboCliente = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboEmpleado = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboVehiculo = new System.Windows.Forms.ComboBox();
+            this.comboCliente = new System.Windows.Forms.ComboBox();
+            this.comboEmpleado = new System.Windows.Forms.ComboBox();
+            this.comboCombustible = new System.Windows.Forms.ComboBox();
             this.checkRalladuras = new System.Windows.Forms.CheckBox();
             this.checkRepuesta = new System.Windows.Forms.CheckBox();
             this.checkGato = new System.Windows.Forms.CheckBox();
             this.checkCristal = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.checkIzFrontal = new System.Windows.Forms.CheckBox();
+            this.checkIzTrasera = new System.Windows.Forms.CheckBox();
+            this.checkDereFrontal = new System.Windows.Forms.CheckBox();
+            this.checkDerTrasera = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTipoVehiculo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInspeccion)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -83,7 +83,7 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 854F));
-            this.tableLayoutPanel2.Controls.Add(this.dataGridViewTipoVehiculo, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.dataGridViewInspeccion, 1, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 175);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
@@ -91,20 +91,21 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(862, 234);
             this.tableLayoutPanel2.TabIndex = 27;
             // 
-            // dataGridViewTipoVehiculo
+            // dataGridViewInspeccion
             // 
-            this.dataGridViewTipoVehiculo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridViewInspeccion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewTipoVehiculo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridViewTipoVehiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTipoVehiculo.Location = new System.Drawing.Point(11, 3);
-            this.dataGridViewTipoVehiculo.MultiSelect = false;
-            this.dataGridViewTipoVehiculo.Name = "dataGridViewTipoVehiculo";
-            this.dataGridViewTipoVehiculo.ReadOnly = true;
-            this.dataGridViewTipoVehiculo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTipoVehiculo.Size = new System.Drawing.Size(848, 228);
-            this.dataGridViewTipoVehiculo.TabIndex = 10;
+            this.dataGridViewInspeccion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridViewInspeccion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewInspeccion.Location = new System.Drawing.Point(11, 3);
+            this.dataGridViewInspeccion.MultiSelect = false;
+            this.dataGridViewInspeccion.Name = "dataGridViewInspeccion";
+            this.dataGridViewInspeccion.ReadOnly = true;
+            this.dataGridViewInspeccion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewInspeccion.Size = new System.Drawing.Size(848, 228);
+            this.dataGridViewInspeccion.TabIndex = 10;
+            this.dataGridViewInspeccion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewInspeccion_CellContentClick);
             // 
             // btnCrear
             // 
@@ -114,6 +115,7 @@
             this.btnCrear.TabIndex = 0;
             this.btnCrear.Text = "C";
             this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // btnEditar
             // 
@@ -173,7 +175,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(144, 47);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
@@ -191,11 +193,11 @@
             this.tableLayoutPanel1.Controls.Add(this.label4, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.ComboVehiculo, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.comboVehiculo, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.comboCliente, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.comboEmpleado, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox1, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.comboCombustible, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.checkRalladuras, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.checkRepuesta, 1, 3);
@@ -213,37 +215,17 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(606, 169);
             this.tableLayoutPanel1.TabIndex = 26;
             // 
-            // ComboVehiculo
+            // label4
             // 
-            this.ComboVehiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboVehiculo.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.ComboVehiculo.FormattingEnabled = true;
-            this.ComboVehiculo.Location = new System.Drawing.Point(3, 56);
-            this.ComboVehiculo.Name = "ComboVehiculo";
-            this.ComboVehiculo.Size = new System.Drawing.Size(144, 28);
-            this.ComboVehiculo.TabIndex = 19;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(153, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 45);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "Cliente";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // comboCliente
-            // 
-            this.comboCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboCliente.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.comboCliente.FormattingEnabled = true;
-            this.comboCliente.Location = new System.Drawing.Point(153, 56);
-            this.comboCliente.Name = "comboCliente";
-            this.comboCliente.Size = new System.Drawing.Size(144, 28);
-            this.comboCliente.TabIndex = 21;
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(453, 8);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(144, 45);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Combustible";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
@@ -257,6 +239,38 @@
             this.label3.Text = "Empleado";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(153, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(144, 45);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Cliente";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboVehiculo
+            // 
+            this.comboVehiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboVehiculo.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.comboVehiculo.FormattingEnabled = true;
+            this.comboVehiculo.Location = new System.Drawing.Point(3, 56);
+            this.comboVehiculo.Name = "comboVehiculo";
+            this.comboVehiculo.Size = new System.Drawing.Size(144, 28);
+            this.comboVehiculo.TabIndex = 19;
+            // 
+            // comboCliente
+            // 
+            this.comboCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboCliente.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.comboCliente.FormattingEnabled = true;
+            this.comboCliente.Location = new System.Drawing.Point(153, 56);
+            this.comboCliente.Name = "comboCliente";
+            this.comboCliente.Size = new System.Drawing.Size(144, 28);
+            this.comboCliente.TabIndex = 21;
+            // 
             // comboEmpleado
             // 
             this.comboEmpleado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -267,27 +281,15 @@
             this.comboEmpleado.Size = new System.Drawing.Size(144, 28);
             this.comboEmpleado.TabIndex = 23;
             // 
-            // label4
+            // comboCombustible
             // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(453, 8);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(144, 45);
-            this.label4.TabIndex = 24;
-            this.label4.Text = "Combustible";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(453, 56);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(144, 28);
-            this.comboBox1.TabIndex = 25;
+            this.comboCombustible.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboCombustible.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.comboCombustible.FormattingEnabled = true;
+            this.comboCombustible.Location = new System.Drawing.Point(453, 56);
+            this.comboCombustible.Name = "comboCombustible";
+            this.comboCombustible.Size = new System.Drawing.Size(144, 28);
+            this.comboCombustible.TabIndex = 25;
             // 
             // checkRalladuras
             // 
@@ -333,49 +335,59 @@
             this.checkCristal.Text = "Cristal Roto";
             this.checkCristal.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // dateTimePicker1
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.checkBox1.Location = new System.Drawing.Point(3, 57);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(100, 24);
-            this.checkBox1.TabIndex = 30;
-            this.checkBox1.Text = "Izq. Frontal";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.dateTimePicker1.CustomFormat = "";
+            this.dateTimePicker1.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(153, 119);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(144, 26);
+            this.dateTimePicker1.TabIndex = 29;
             // 
-            // checkBox2
+            // checkIzFrontal
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.checkBox2.Location = new System.Drawing.Point(3, 111);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(106, 24);
-            this.checkBox2.TabIndex = 31;
-            this.checkBox2.Text = "Izq. Trasera";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkIzFrontal.AutoSize = true;
+            this.checkIzFrontal.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.checkIzFrontal.Location = new System.Drawing.Point(3, 57);
+            this.checkIzFrontal.Name = "checkIzFrontal";
+            this.checkIzFrontal.Size = new System.Drawing.Size(100, 24);
+            this.checkIzFrontal.TabIndex = 30;
+            this.checkIzFrontal.Text = "Izq. Frontal";
+            this.checkIzFrontal.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // checkIzTrasera
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.checkBox3.Location = new System.Drawing.Point(117, 57);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(105, 24);
-            this.checkBox3.TabIndex = 32;
-            this.checkBox3.Text = "Der. Frontal";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkIzTrasera.AutoSize = true;
+            this.checkIzTrasera.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.checkIzTrasera.Location = new System.Drawing.Point(3, 111);
+            this.checkIzTrasera.Name = "checkIzTrasera";
+            this.checkIzTrasera.Size = new System.Drawing.Size(106, 24);
+            this.checkIzTrasera.TabIndex = 31;
+            this.checkIzTrasera.Text = "Izq. Trasera";
+            this.checkIzTrasera.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // checkDereFrontal
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.checkBox4.Location = new System.Drawing.Point(117, 111);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(111, 24);
-            this.checkBox4.TabIndex = 33;
-            this.checkBox4.Text = "Der. Trasera";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkDereFrontal.AutoSize = true;
+            this.checkDereFrontal.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.checkDereFrontal.Location = new System.Drawing.Point(117, 57);
+            this.checkDereFrontal.Name = "checkDereFrontal";
+            this.checkDereFrontal.Size = new System.Drawing.Size(105, 24);
+            this.checkDereFrontal.TabIndex = 32;
+            this.checkDereFrontal.Text = "Der. Frontal";
+            this.checkDereFrontal.UseVisualStyleBackColor = true;
+            // 
+            // checkDerTrasera
+            // 
+            this.checkDerTrasera.AutoSize = true;
+            this.checkDerTrasera.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.checkDerTrasera.Location = new System.Drawing.Point(117, 111);
+            this.checkDerTrasera.Name = "checkDerTrasera";
+            this.checkDerTrasera.Size = new System.Drawing.Size(111, 24);
+            this.checkDerTrasera.TabIndex = 33;
+            this.checkDerTrasera.Text = "Der. Trasera";
+            this.checkDerTrasera.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel5
             // 
@@ -384,12 +396,12 @@
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 12F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel5.Controls.Add(this.label5, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.checkBox2, 0, 2);
-            this.tableLayoutPanel5.Controls.Add(this.checkBox1, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.checkBox3, 1, 1);
-            this.tableLayoutPanel5.Controls.Add(this.checkBox4, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.checkIzTrasera, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.checkIzFrontal, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.checkDereFrontal, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.checkDerTrasera, 1, 2);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(603, 0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 3;
@@ -411,16 +423,6 @@
             this.label5.Text = "Estado Gomas";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CustomFormat = "";
-            this.dateTimePicker1.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(153, 119);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(144, 26);
-            this.dateTimePicker1.TabIndex = 29;
-            // 
             // Inspeccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -432,8 +434,9 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Inspeccion";
             this.Text = "Inspeccion";
+            this.Load += new System.EventHandler(this.Inspeccion_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTipoVehiculo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInspeccion)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -449,7 +452,7 @@
 
         private System.Windows.Forms.CheckBox ChckEstado;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.DataGridView dataGridViewTipoVehiculo;
+        private System.Windows.Forms.DataGridView dataGridViewInspeccion;
         private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnEliminar;
@@ -457,21 +460,21 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.ComboBox ComboVehiculo;
+        private System.Windows.Forms.ComboBox comboVehiculo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboCliente;
         private System.Windows.Forms.ComboBox comboEmpleado;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboCombustible;
         private System.Windows.Forms.CheckBox checkRalladuras;
         private System.Windows.Forms.CheckBox checkRepuesta;
         private System.Windows.Forms.CheckBox checkGato;
         private System.Windows.Forms.CheckBox checkCristal;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkIzTrasera;
+        private System.Windows.Forms.CheckBox checkIzFrontal;
+        private System.Windows.Forms.CheckBox checkDereFrontal;
+        private System.Windows.Forms.CheckBox checkDerTrasera;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;

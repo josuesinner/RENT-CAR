@@ -23,5 +23,37 @@ namespace ProyectoFinal_RentCar.Class
                 return db.Modelos.Where(m=>m.MarcaId==pId).ToList();
             }
         }
+
+        public List<Vehiculo> ComboVehiculo()
+        {
+            using (BD_Context db = new BD_Context())
+            {
+                return db.Vehiculos.ToList();
+            }
+        }
+
+        public List<Cliente> ComboCliente()
+        {
+            using (BD_Context db = new BD_Context())
+            {
+                return db.Clientes.ToList();
+            }
+        }
+
+        public List<Empleado> ComboEmpleado()
+        {
+            using (BD_Context db = new BD_Context())
+            {
+                return db.Empleados.ToList();
+            }
+        }
+
+        public List<Combustible> ComboCombustible()
+        {
+            using (BD_Context db = new BD_Context())
+            {
+                return db.Combustibles.ToList();
+            }
+        }
     }
 }
