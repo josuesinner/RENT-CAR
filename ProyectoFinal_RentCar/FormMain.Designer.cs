@@ -36,6 +36,10 @@
             this.btnEmpleado = new System.Windows.Forms.Button();
             this.btnInspeccion = new System.Windows.Forms.Button();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnTipoVehiculo = new System.Windows.Forms.Button();
+            this.btnCombustibles = new System.Windows.Forms.Button();
+            this.btnModelos = new System.Windows.Forms.Button();
+            this.btnMarcas = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnCerrarChild = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
@@ -43,10 +47,6 @@
             this.btnMini = new System.Windows.Forms.Button();
             this.panelTitulo = new System.Windows.Forms.Panel();
             this.panelDesktop = new System.Windows.Forms.Panel();
-            this.btnMarcas = new System.Windows.Forms.Button();
-            this.btnModelos = new System.Windows.Forms.Button();
-            this.btnCombustibles = new System.Windows.Forms.Button();
-            this.btnTipoVehiculo = new System.Windows.Forms.Button();
             this.panelLogo.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelTitulo.SuspendLayout();
@@ -176,8 +176,76 @@
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(180, 644);
+            this.panelMenu.Size = new System.Drawing.Size(180, 636);
             this.panelMenu.TabIndex = 0;
+            // 
+            // btnTipoVehiculo
+            // 
+            this.btnTipoVehiculo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTipoVehiculo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTipoVehiculo.FlatAppearance.BorderSize = 0;
+            this.btnTipoVehiculo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTipoVehiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTipoVehiculo.ForeColor = System.Drawing.Color.White;
+            this.btnTipoVehiculo.Location = new System.Drawing.Point(0, 580);
+            this.btnTipoVehiculo.Name = "btnTipoVehiculo";
+            this.btnTipoVehiculo.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnTipoVehiculo.Size = new System.Drawing.Size(180, 65);
+            this.btnTipoVehiculo.TabIndex = 9;
+            this.btnTipoVehiculo.Text = "&Tipo Vehiculos";
+            this.btnTipoVehiculo.UseVisualStyleBackColor = true;
+            this.btnTipoVehiculo.Click += new System.EventHandler(this.btnTipoVehiculo_Click);
+            // 
+            // btnCombustibles
+            // 
+            this.btnCombustibles.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCombustibles.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCombustibles.FlatAppearance.BorderSize = 0;
+            this.btnCombustibles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCombustibles.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCombustibles.ForeColor = System.Drawing.Color.White;
+            this.btnCombustibles.Location = new System.Drawing.Point(0, 515);
+            this.btnCombustibles.Name = "btnCombustibles";
+            this.btnCombustibles.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnCombustibles.Size = new System.Drawing.Size(180, 65);
+            this.btnCombustibles.TabIndex = 8;
+            this.btnCombustibles.Text = "&Combustibles";
+            this.btnCombustibles.UseVisualStyleBackColor = true;
+            this.btnCombustibles.Click += new System.EventHandler(this.btnCombustibles_Click);
+            // 
+            // btnModelos
+            // 
+            this.btnModelos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnModelos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnModelos.FlatAppearance.BorderSize = 0;
+            this.btnModelos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModelos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModelos.ForeColor = System.Drawing.Color.White;
+            this.btnModelos.Location = new System.Drawing.Point(0, 450);
+            this.btnModelos.Name = "btnModelos";
+            this.btnModelos.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnModelos.Size = new System.Drawing.Size(180, 65);
+            this.btnModelos.TabIndex = 7;
+            this.btnModelos.Text = "&Modelos";
+            this.btnModelos.UseVisualStyleBackColor = true;
+            this.btnModelos.Click += new System.EventHandler(this.btnModelos_Click);
+            // 
+            // btnMarcas
+            // 
+            this.btnMarcas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMarcas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMarcas.FlatAppearance.BorderSize = 0;
+            this.btnMarcas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarcas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcas.ForeColor = System.Drawing.Color.White;
+            this.btnMarcas.Location = new System.Drawing.Point(0, 385);
+            this.btnMarcas.Name = "btnMarcas";
+            this.btnMarcas.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnMarcas.Size = new System.Drawing.Size(180, 65);
+            this.btnMarcas.TabIndex = 6;
+            this.btnMarcas.Text = "&Marcas";
+            this.btnMarcas.UseVisualStyleBackColor = true;
+            this.btnMarcas.Click += new System.EventHandler(this.btnMarcas_Click);
             // 
             // lblTitulo
             // 
@@ -274,86 +342,18 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelDesktop.Location = new System.Drawing.Point(180, 60);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(904, 584);
+            this.panelDesktop.Size = new System.Drawing.Size(904, 576);
             this.panelDesktop.TabIndex = 2;
-            // 
-            // btnMarcas
-            // 
-            this.btnMarcas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMarcas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMarcas.FlatAppearance.BorderSize = 0;
-            this.btnMarcas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMarcas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMarcas.ForeColor = System.Drawing.Color.White;
-            this.btnMarcas.Location = new System.Drawing.Point(0, 385);
-            this.btnMarcas.Name = "btnMarcas";
-            this.btnMarcas.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnMarcas.Size = new System.Drawing.Size(180, 65);
-            this.btnMarcas.TabIndex = 6;
-            this.btnMarcas.Text = "&Marcas";
-            this.btnMarcas.UseVisualStyleBackColor = true;
-            this.btnMarcas.Click += new System.EventHandler(this.btnMarcas_Click);
-            // 
-            // btnModelos
-            // 
-            this.btnModelos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnModelos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnModelos.FlatAppearance.BorderSize = 0;
-            this.btnModelos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModelos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModelos.ForeColor = System.Drawing.Color.White;
-            this.btnModelos.Location = new System.Drawing.Point(0, 450);
-            this.btnModelos.Name = "btnModelos";
-            this.btnModelos.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnModelos.Size = new System.Drawing.Size(180, 65);
-            this.btnModelos.TabIndex = 7;
-            this.btnModelos.Text = "&Modelos";
-            this.btnModelos.UseVisualStyleBackColor = true;
-            this.btnModelos.Click += new System.EventHandler(this.btnModelos_Click);
-            // 
-            // btnCombustibles
-            // 
-            this.btnCombustibles.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCombustibles.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCombustibles.FlatAppearance.BorderSize = 0;
-            this.btnCombustibles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCombustibles.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCombustibles.ForeColor = System.Drawing.Color.White;
-            this.btnCombustibles.Location = new System.Drawing.Point(0, 515);
-            this.btnCombustibles.Name = "btnCombustibles";
-            this.btnCombustibles.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnCombustibles.Size = new System.Drawing.Size(180, 65);
-            this.btnCombustibles.TabIndex = 8;
-            this.btnCombustibles.Text = "&Combustibles";
-            this.btnCombustibles.UseVisualStyleBackColor = true;
-            this.btnCombustibles.Click += new System.EventHandler(this.btnCombustibles_Click);
-            // 
-            // btnTipoVehiculo
-            // 
-            this.btnTipoVehiculo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTipoVehiculo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTipoVehiculo.FlatAppearance.BorderSize = 0;
-            this.btnTipoVehiculo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTipoVehiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTipoVehiculo.ForeColor = System.Drawing.Color.White;
-            this.btnTipoVehiculo.Location = new System.Drawing.Point(0, 580);
-            this.btnTipoVehiculo.Name = "btnTipoVehiculo";
-            this.btnTipoVehiculo.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnTipoVehiculo.Size = new System.Drawing.Size(180, 65);
-            this.btnTipoVehiculo.TabIndex = 9;
-            this.btnTipoVehiculo.Text = "&Tipo Vehiculos";
-            this.btnTipoVehiculo.UseVisualStyleBackColor = true;
-            this.btnTipoVehiculo.Click += new System.EventHandler(this.btnTipoVehiculo_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 644);
+            this.ClientSize = new System.Drawing.Size(1084, 636);
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panelTitulo);
             this.Controls.Add(this.panelMenu);
-            this.MinimumSize = new System.Drawing.Size(1100, 500);
+            this.MinimumSize = new System.Drawing.Size(1100, 665);
             this.Name = "FormMain";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
