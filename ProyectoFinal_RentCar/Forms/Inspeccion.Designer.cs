@@ -210,7 +210,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(627, 169);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(606, 169);
             this.tableLayoutPanel1.TabIndex = 26;
             // 
             // ComboVehiculo
@@ -339,9 +339,9 @@
             this.checkBox1.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
             this.checkBox1.Location = new System.Drawing.Point(3, 57);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(107, 24);
+            this.checkBox1.Size = new System.Drawing.Size(100, 24);
             this.checkBox1.TabIndex = 30;
-            this.checkBox1.Text = "Izquierda Frontal";
+            this.checkBox1.Text = "Izq. Frontal";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // checkBox2
@@ -350,68 +350,75 @@
             this.checkBox2.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
             this.checkBox2.Location = new System.Drawing.Point(3, 111);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(105, 24);
+            this.checkBox2.Size = new System.Drawing.Size(106, 24);
             this.checkBox2.TabIndex = 31;
-            this.checkBox2.Text = "Cristal Roto";
+            this.checkBox2.Text = "Izq. Trasera";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
             this.checkBox3.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.checkBox3.Location = new System.Drawing.Point(116, 57);
+            this.checkBox3.Location = new System.Drawing.Point(117, 57);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(105, 24);
             this.checkBox3.TabIndex = 32;
-            this.checkBox3.Text = "Cristal Roto";
+            this.checkBox3.Text = "Der. Frontal";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
             this.checkBox4.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.checkBox4.Location = new System.Drawing.Point(116, 111);
+            this.checkBox4.Location = new System.Drawing.Point(117, 111);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(105, 24);
+            this.checkBox4.Size = new System.Drawing.Size(111, 24);
             this.checkBox4.TabIndex = 33;
-            this.checkBox4.Text = "Cristal Roto";
+            this.checkBox4.Text = "Der. Trasera";
             this.checkBox4.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnCount = 3;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 12F));
             this.tableLayoutPanel5.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.checkBox2, 0, 2);
             this.tableLayoutPanel5.Controls.Add(this.checkBox1, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.checkBox3, 1, 1);
             this.tableLayoutPanel5.Controls.Add(this.checkBox4, 1, 2);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(633, 0);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(603, 0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 3;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(226, 169);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(256, 169);
             this.tableLayoutPanel5.TabIndex = 29;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
             this.label5.Location = new System.Drawing.Point(3, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 13);
+            this.label5.Size = new System.Drawing.Size(108, 54);
             this.label5.TabIndex = 0;
             this.label5.Text = "Estado Gomas";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.CustomFormat = "";
+            this.dateTimePicker1.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(153, 119);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(144, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(144, 26);
             this.dateTimePicker1.TabIndex = 29;
             // 
             // Inspeccion

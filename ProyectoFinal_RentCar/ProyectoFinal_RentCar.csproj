@@ -110,6 +110,12 @@
     <Compile Include="Forms\Modelos.Designer.cs">
       <DependentUpon>Modelos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Renta_Devolucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Renta_Devolucion.Designer.cs">
+      <DependentUpon>Renta_Devolucion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TipoVehiculo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Modelos.resx">
       <DependentUpon>Modelos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Renta_Devolucion.resx">
+      <DependentUpon>Renta_Devolucion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TipoVehiculo.resx">
       <DependentUpon>TipoVehiculo.cs</DependentUpon>

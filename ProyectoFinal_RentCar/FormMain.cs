@@ -66,6 +66,7 @@ namespace ProyectoFinal_RentCar
 
         private void btnRentaDevo_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new Forms.Renta_Devolucion(), sender);
 
         }
 
