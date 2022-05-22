@@ -64,9 +64,9 @@ namespace ProyectoFinal_RentCar.Forms
             var LstComb = datos.ComboCombustible();
             if (LstComb.Count > 0)
             {
-                comboEmpleado.DisplayMember = "Descripcion";
-                comboEmpleado.ValueMember = "Id_Combustible";
-                comboEmpleado.DataSource = LstComb;
+                comboCombustible.DisplayMember = "Descripcion";
+                comboCombustible.ValueMember = "Id_Combustible";
+                comboCombustible.DataSource = LstComb;
             }
         }
 
@@ -115,6 +115,10 @@ namespace ProyectoFinal_RentCar.Forms
 
                     //modelos.MarcaId = (int)comboMarca.SelectedValue;
                     //modelos.Descripcion = txtModelo.Text.ToString().ToUpper();
+
+                    //inspeccion.Vehículo = comboVehiculo.Text.ToString();
+
+                    inspeccion.Fecha = DateTime.Parse(dateTimePicker1.Text.ToString());
 
                     if (checkRalladuras.Checked)
                     {

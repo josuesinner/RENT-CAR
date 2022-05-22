@@ -38,7 +38,6 @@
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtComision = new System.Windows.Forms.TextBox();
-            this.txtHorario = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCedula = new System.Windows.Forms.TextBox();
@@ -49,6 +48,7 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.comboHorario = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmpleado)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
@@ -97,6 +97,7 @@
             this.dataGridViewEmpleado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewEmpleado.Size = new System.Drawing.Size(848, 240);
             this.dataGridViewEmpleado.TabIndex = 10;
+            this.dataGridViewEmpleado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmpleado_CellContentClick);
             // 
             // btnCrear
             // 
@@ -106,6 +107,7 @@
             this.btnCrear.TabIndex = 0;
             this.btnCrear.Text = "C";
             this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // btnEditar
             // 
@@ -115,6 +117,7 @@
             this.btnEditar.TabIndex = 1;
             this.btnEditar.Text = "E";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnEliminar
             // 
@@ -124,6 +127,7 @@
             this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "D";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -169,15 +173,6 @@
             this.txtComision.Name = "txtComision";
             this.txtComision.Size = new System.Drawing.Size(143, 30);
             this.txtComision.TabIndex = 7;
-            // 
-            // txtHorario
-            // 
-            this.txtHorario.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.txtHorario.Location = new System.Drawing.Point(411, 10);
-            this.txtHorario.Multiline = true;
-            this.txtHorario.Name = "txtHorario";
-            this.txtHorario.Size = new System.Drawing.Size(143, 30);
-            this.txtHorario.TabIndex = 6;
             // 
             // label4
             // 
@@ -287,7 +282,6 @@
             this.tableLayoutPanel1.Controls.Add(this.txtBuscar, 6, 1);
             this.tableLayoutPanel1.Controls.Add(this.label5, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.txtComision, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.txtHorario, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.label4, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.label3, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtCedula, 1, 2);
@@ -297,6 +291,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnBuscar, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.dateTimePicker1, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.comboHorario, 3, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
@@ -317,6 +312,16 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(152, 26);
             this.dateTimePicker1.TabIndex = 14;
             // 
+            // comboHorario
+            // 
+            this.comboHorario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboHorario.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.comboHorario.FormattingEnabled = true;
+            this.comboHorario.Location = new System.Drawing.Point(411, 10);
+            this.comboHorario.Name = "comboHorario";
+            this.comboHorario.Size = new System.Drawing.Size(144, 28);
+            this.comboHorario.TabIndex = 24;
+            // 
             // Empleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -327,6 +332,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Empleados";
             this.Text = "Empleados";
+            this.Load += new System.EventHandler(this.Empleados_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmpleado)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -350,7 +356,6 @@
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtComision;
-        private System.Windows.Forms.TextBox txtHorario;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtCedula;
@@ -361,5 +366,6 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox comboHorario;
     }
 }
