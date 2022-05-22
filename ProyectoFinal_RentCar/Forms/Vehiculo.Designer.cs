@@ -41,20 +41,20 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.comboModelo = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.comboCombustible = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtChasis = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDescrip = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.ComboTipoVehiculo = new System.Windows.Forms.ComboBox();
+            this.comboMarca = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewVehiculo = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.comboCombustible = new System.Windows.Forms.ComboBox();
-            this.ComboVehiculo = new System.Windows.Forms.ComboBox();
-            this.comboMarca = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -219,7 +219,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btnBuscar, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtModelo, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.txtPlaca, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.ComboVehiculo, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.ComboTipoVehiculo, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.comboMarca, 3, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -232,6 +232,52 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(874, 203);
             this.tableLayoutPanel1.TabIndex = 11;
+            // 
+            // comboCombustible
+            // 
+            this.comboCombustible.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboCombustible.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.comboCombustible.FormattingEnabled = true;
+            this.comboCombustible.Location = new System.Drawing.Point(411, 113);
+            this.comboCombustible.Name = "comboCombustible";
+            this.comboCombustible.Size = new System.Drawing.Size(144, 28);
+            this.comboCombustible.TabIndex = 17;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.label8.Location = new System.Drawing.Point(303, 110);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(102, 34);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Combustible";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.label7.Location = new System.Drawing.Point(3, 110);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(144, 34);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "No. Placa";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.label6.Location = new System.Drawing.Point(3, 76);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(144, 34);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "No. Motor";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtChasis
             // 
@@ -284,6 +330,26 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             // 
+            // ComboTipoVehiculo
+            // 
+            this.ComboTipoVehiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboTipoVehiculo.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.ComboTipoVehiculo.FormattingEnabled = true;
+            this.ComboTipoVehiculo.Location = new System.Drawing.Point(411, 11);
+            this.ComboTipoVehiculo.Name = "ComboTipoVehiculo";
+            this.ComboTipoVehiculo.Size = new System.Drawing.Size(144, 28);
+            this.ComboTipoVehiculo.TabIndex = 18;
+            // 
+            // comboMarca
+            // 
+            this.comboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboMarca.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.comboMarca.FormattingEnabled = true;
+            this.comboMarca.Location = new System.Drawing.Point(411, 45);
+            this.comboMarca.Name = "comboMarca";
+            this.comboMarca.Size = new System.Drawing.Size(144, 28);
+            this.comboMarca.TabIndex = 19;
+            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 2;
@@ -327,72 +393,6 @@
             this.dataGridViewVehiculo.Size = new System.Drawing.Size(848, 195);
             this.dataGridViewVehiculo.TabIndex = 0;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.label6.Location = new System.Drawing.Point(3, 76);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(144, 34);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "No. Motor";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.label7.Location = new System.Drawing.Point(3, 110);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(144, 34);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "No. Placa";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.label8.Location = new System.Drawing.Point(303, 110);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(102, 34);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Combustible";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // comboCombustible
-            // 
-            this.comboCombustible.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboCombustible.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.comboCombustible.FormattingEnabled = true;
-            this.comboCombustible.Location = new System.Drawing.Point(411, 113);
-            this.comboCombustible.Name = "comboCombustible";
-            this.comboCombustible.Size = new System.Drawing.Size(144, 28);
-            this.comboCombustible.TabIndex = 17;
-            // 
-            // ComboVehiculo
-            // 
-            this.ComboVehiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboVehiculo.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.ComboVehiculo.FormattingEnabled = true;
-            this.ComboVehiculo.Location = new System.Drawing.Point(411, 11);
-            this.ComboVehiculo.Name = "ComboVehiculo";
-            this.ComboVehiculo.Size = new System.Drawing.Size(144, 28);
-            this.ComboVehiculo.TabIndex = 18;
-            // 
-            // comboMarca
-            // 
-            this.comboMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboMarca.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.comboMarca.FormattingEnabled = true;
-            this.comboMarca.Location = new System.Drawing.Point(411, 45);
-            this.comboMarca.Name = "comboMarca";
-            this.comboMarca.Size = new System.Drawing.Size(144, 28);
-            this.comboMarca.TabIndex = 19;
-            // 
             // Vehiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -403,6 +403,7 @@
             this.Controls.Add(this.tableLayoutPanel4);
             this.Name = "Vehiculo";
             this.Text = "Vehiculo";
+            this.Load += new System.EventHandler(this.Vehiculo_Load);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -441,7 +442,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboCombustible;
-        private System.Windows.Forms.ComboBox ComboVehiculo;
+        private System.Windows.Forms.ComboBox ComboTipoVehiculo;
         private System.Windows.Forms.ComboBox comboMarca;
     }
 }
