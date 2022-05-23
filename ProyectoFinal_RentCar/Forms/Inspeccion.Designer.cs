@@ -224,7 +224,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(144, 45);
             this.label4.TabIndex = 24;
-            this.label4.Text = "Combustible";
+            this.label4.Text = "Cant. Combustible";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3

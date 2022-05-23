@@ -16,6 +16,42 @@ namespace ProyectoFinal_RentCar.Forms
         public Inspeccion()
         {
             InitializeComponent();
+            comboCombustible.Items.Add("1/4");
+            comboCombustible.Items.Add("1/2");
+            comboCombustible.Items.Add("3/4");
+            comboCombustible.Items.Add("FULL");
+
+        }
+
+        private List<InspeccionViewModel> ModelMapperInspeccion()
+        {
+            var list = new List<InspeccionViewModel>();
+
+            using (BD_Context db = new BD_Context())
+            {
+
+                foreach (var item in db.Inspeccions.ToList())
+                {
+                    list.Add(new InspeccionViewModel
+                    {
+                        Vehículo = db.Vehiculos.FirstOrDefault(x => x.Id_Vehiculo == item.VehículoId).Descripción,
+                        Cedula = db.Clientes.FirstOrDefault(x => x.Id_Cliente == item.ClienteId).Cedula,
+                        Cliente = db.Clientes.FirstOrDefault(x => x.Id_Cliente == item.ClienteId).Nombre,
+                        Tiene_Ralladuras = item.Tiene_Ralladuras,
+                        Cantidad_Combustible = item.Cantidad_Combustible,
+                        Goma_respuesta = item.Goma_respuesta,
+                        Tiene_Gato = item.Tiene_Gato,
+                        roturas_cristal = item.roturas_cristal,
+                        Estado_gomas = item.Estado_gomas,
+                        Etc = item.Etc,
+                        Fecha = item.Fecha,
+                        Empleado = db.Empleados.FirstOrDefault(x => x.Id_Empleado == item.EmpleadoId).Nombre,
+                        Estado = item.Estado
+                    });
+                }
+            }
+
+            return list;
         }
 
         private void ComboVehiculo()
@@ -74,7 +110,7 @@ namespace ProyectoFinal_RentCar.Forms
         {
             using (BD_Context db = new BD_Context())
             {
-                dataGridViewInspeccion.DataSource = db.Inspeccions.ToList();
+                dataGridViewInspeccion.DataSource = ModelMapperInspeccion();
             }
         }
 
@@ -97,7 +133,7 @@ namespace ProyectoFinal_RentCar.Forms
             ComboVehiculo();
             ComboCliente();
             ComboEmpleado();
-            ComboCombustible();
+            //ComboCombustible();
         }
 
         private void dataGridViewInspeccion_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -113,12 +149,21 @@ namespace ProyectoFinal_RentCar.Forms
                 {
                     Class.Inspeccion inspeccion = new Class.Inspeccion();
 
-                    //modelos.MarcaId = (int)comboMarca.SelectedValue;
-                    //modelos.Descripcion = txtModelo.Text.ToString().ToUpper();
-
-                    //inspeccion.Vehículo = comboVehiculo.Text.ToString();
+                    inspeccion.VehículoId = (int)comboVehiculo.SelectedValue;
+                    inspeccion.ClienteId = (int)comboCliente.SelectedValue;
+                    inspeccion.EmpleadoId = (int)comboEmpleado.SelectedValue;
+                    inspeccion.Cantidad_Combustible = comboCombustible.Text.ToString();
 
                     inspeccion.Fecha = DateTime.Parse(dateTimePicker1.Text.ToString());
+
+                    if (ChckEstado.Checked)
+                    {
+                        inspeccion.Estado = "INACTIVO";
+                    }
+                    else
+                    {
+                        inspeccion.Estado = "ACTIVO";
+                    }
 
                     if (checkRalladuras.Checked)
                     {
@@ -160,31 +205,36 @@ namespace ProyectoFinal_RentCar.Forms
                     {
                         inspeccion.Estado_gomas = "Las 4 gomas estan bien";
                     }
-                    else if(checkIzFrontal.Checked = false && checkDereFrontal.Checked && checkIzTrasera.Checked && checkDerTrasera.Checked)
+                    else
                     {
-                        inspeccion.Estado_gomas = "Goma Frontal Izquierda con desgaste";
-                    }
-                    else if (checkDereFrontal.Checked = false && checkIzFrontal.Checked && checkIzTrasera.Checked && checkDerTrasera.Checked)
-                    {
-                        inspeccion.Estado_gomas = "Goma Frontal Derecha con desgaste";
-                    }
-                    else if (checkIzTrasera.Checked = false && checkIzFrontal.Checked && checkDereFrontal.Checked && checkDerTrasera.Checked)
-                    {
-                        inspeccion.Estado_gomas = "Goma Trasera Izquierda con desgaste";
-                    }
-                    else if (checkDerTrasera.Checked = false && checkIzFrontal.Checked && checkDereFrontal.Checked && checkIzTrasera.Checked)
-                    {
-                        inspeccion.Estado_gomas = "Goma Trasera Derecha con desgaste";
-                    }
+                        inspeccion.Estado_gomas = "Una o varias gomas presentan fallas";
 
-                    if (checkIzFrontal.Checked && checkDereFrontal.Checked == false)
-                    {
-                        inspeccion.Estado_gomas = "Gomas Frontales con desgaste";
                     }
-                    else if (checkDerTrasera.Checked && checkIzTrasera.Checked == false)
-                    {
-                        inspeccion.Estado_gomas = "Gomas Traseras con desgaste";
-                    }
+                    //else if(checkIzFrontal.Checked = false && checkDereFrontal.Checked && checkIzTrasera.Checked && checkDerTrasera.Checked)
+                    //{
+                    //    inspeccion.Estado_gomas = "Goma Frontal Izquierda con desgaste";
+                    //}
+                    //else if (checkDereFrontal.Checked = false && checkIzFrontal.Checked && checkIzTrasera.Checked && checkDerTrasera.Checked)
+                    //{
+                    //    inspeccion.Estado_gomas = "Goma Frontal Derecha con desgaste";
+                    //}
+                    //else if (checkIzTrasera.Checked = false && checkIzFrontal.Checked && checkDereFrontal.Checked && checkDerTrasera.Checked)
+                    //{
+                    //    inspeccion.Estado_gomas = "Goma Trasera Izquierda con desgaste";
+                    //}
+                    //else if (checkDerTrasera.Checked = false && checkIzFrontal.Checked && checkDereFrontal.Checked && checkIzTrasera.Checked)
+                    //{
+                    //    inspeccion.Estado_gomas = "Goma Trasera Derecha con desgaste";
+                    //}
+
+                    //if (checkIzFrontal.Checked && checkDereFrontal.Checked == false)
+                    //{
+                    //    inspeccion.Estado_gomas = "Gomas Frontales con desgaste";
+                    //}
+                    //else if (checkDerTrasera.Checked && checkIzTrasera.Checked == false)
+                    //{
+                    //    inspeccion.Estado_gomas = "Gomas Traseras con desgaste";
+                    //}
 
                     db.Inspeccions.Add(inspeccion);
 

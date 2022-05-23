@@ -156,8 +156,8 @@ namespace ProyectoFinal_RentCar.Forms
                     db.SaveChanges();
                 }
 
-                MessageBox.Show("Vehiculo " + (int)comboMarca.SelectedValue + " " +
-                    ""+ (int)comboModelo.SelectedValue + " creado satisfactoriamente!", 
+                MessageBox.Show("Vehiculo " + comboMarca.Text + " " +
+                    ""+ comboModelo.Text + " creado satisfactoriamente!", 
                     "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 Refresh();
