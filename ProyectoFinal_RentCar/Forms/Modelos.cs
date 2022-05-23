@@ -75,14 +75,14 @@ namespace ProyectoFinal_RentCar.Forms
 
         private void dataGridViewModelo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            comboMarca.Text = dataGridViewModelo.CurrentRow.Cells[2].Value.ToString();
-            txtModelo.Text = dataGridViewModelo.CurrentRow.Cells[3].Value.ToString();
+            comboMarca.Text = dataGridViewModelo.CurrentRow.Cells[1].Value.ToString();
+            txtModelo.Text = dataGridViewModelo.CurrentRow.Cells[2].Value.ToString();
             
-            if (dataGridViewModelo.CurrentRow.Cells[4].Value.ToString() == "INACTIVO")
+            if (dataGridViewModelo.CurrentRow.Cells[3].Value.ToString() == "INACTIVO")
             {
                 ChckEstado.Checked = true;
             }
-            else if (dataGridViewModelo.CurrentRow.Cells[4].Value.ToString() == "ACTIVO")
+            else if (dataGridViewModelo.CurrentRow.Cells[3].Value.ToString() == "ACTIVO")
             {
                 ChckEstado.Checked = false;
             }

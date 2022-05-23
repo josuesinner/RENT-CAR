@@ -393,8 +393,10 @@
             this.dataGridViewVehiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewVehiculo.Location = new System.Drawing.Point(11, 3);
             this.dataGridViewVehiculo.Name = "dataGridViewVehiculo";
+            this.dataGridViewVehiculo.ReadOnly = true;
             this.dataGridViewVehiculo.Size = new System.Drawing.Size(848, 195);
             this.dataGridViewVehiculo.TabIndex = 0;
+            this.dataGridViewVehiculo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVehiculo_CellContentClick);
             // 
             // Vehiculo
             // 

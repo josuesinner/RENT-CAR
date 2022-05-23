@@ -240,5 +240,26 @@ namespace ProyectoFinal_RentCar.Forms
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void dataGridViewVehiculo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtDescrip.Text = dataGridViewVehiculo.CurrentRow.Cells[1].Value.ToString();
+            txtChasis.Text = dataGridViewVehiculo.CurrentRow.Cells[2].Value.ToString();
+            txtNoMotor.Text = dataGridViewVehiculo.CurrentRow.Cells[3].Value.ToString();
+            txtPlaca.Text = dataGridViewVehiculo.CurrentRow.Cells[4].Value.ToString();
+            ComboTipoVehiculo.Text = dataGridViewVehiculo.CurrentRow.Cells[5].Value.ToString();
+            comboMarca.Text = dataGridViewVehiculo.CurrentRow.Cells[6].Value.ToString();
+            comboModelo.Text = dataGridViewVehiculo.CurrentRow.Cells[7].Value.ToString();
+            comboCombustible.Text = dataGridViewVehiculo.CurrentRow.Cells[8].Value.ToString();
+
+            if (dataGridViewVehiculo.CurrentRow.Cells[9].Value.ToString() == "INACTIVO")
+            {
+                ChckEstado.Checked = true;
+            }
+            else if (dataGridViewVehiculo.CurrentRow.Cells[9].Value.ToString() == "ACTIVO")
+            {
+                ChckEstado.Checked = false;
+            }
+        }
     }
 }
