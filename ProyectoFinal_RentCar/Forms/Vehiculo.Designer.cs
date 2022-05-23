@@ -34,7 +34,7 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtModelo = new System.Windows.Forms.TextBox();
+            this.txtNoMotor = new System.Windows.Forms.TextBox();
             this.txtPlaca = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -90,6 +90,7 @@
             this.btnCrear.TabIndex = 0;
             this.btnCrear.Text = "C";
             this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // btnEditar
             // 
@@ -99,6 +100,7 @@
             this.btnEditar.TabIndex = 1;
             this.btnEditar.Text = "E";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnEliminar
             // 
@@ -108,6 +110,7 @@
             this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "D";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // label5
             // 
@@ -121,14 +124,14 @@
             this.label5.Text = "Modelo";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // txtModelo
+            // txtNoMotor
             // 
-            this.txtModelo.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.txtModelo.Location = new System.Drawing.Point(153, 79);
-            this.txtModelo.Multiline = true;
-            this.txtModelo.Name = "txtModelo";
-            this.txtModelo.Size = new System.Drawing.Size(143, 28);
-            this.txtModelo.TabIndex = 7;
+            this.txtNoMotor.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.txtNoMotor.Location = new System.Drawing.Point(153, 79);
+            this.txtNoMotor.Multiline = true;
+            this.txtNoMotor.Name = "txtNoMotor";
+            this.txtNoMotor.Size = new System.Drawing.Size(143, 28);
+            this.txtNoMotor.TabIndex = 7;
             // 
             // txtPlaca
             // 
@@ -217,7 +220,7 @@
             this.tableLayoutPanel1.Controls.Add(this.txtDescrip, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.comboModelo, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnBuscar, 5, 1);
-            this.tableLayoutPanel1.Controls.Add(this.txtModelo, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtNoMotor, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.txtPlaca, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.ComboTipoVehiculo, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.comboMarca, 3, 2);
@@ -423,7 +426,7 @@
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtModelo;
+        private System.Windows.Forms.TextBox txtNoMotor;
         private System.Windows.Forms.TextBox txtPlaca;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
