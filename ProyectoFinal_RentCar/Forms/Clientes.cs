@@ -93,8 +93,6 @@ namespace ProyectoFinal_RentCar.Forms
                     Cliente cliente = db.Clientes.FirstOrDefault(x => x.Id_Cliente == id);
 
                     db.Clientes.Remove(cliente);
-                    
-                    
 
                     if (MessageBox.Show("Esta seguro que quiere borrar este registro?","RENT-CAR",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
                     {

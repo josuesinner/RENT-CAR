@@ -34,6 +34,7 @@ namespace ProyectoFinal_RentCar.Forms
                 {
                     list.Add(new InspeccionViewModel
                     {
+                        Id_Transacción = item.Id_Transacción,
                         Vehículo = db.Vehiculos.FirstOrDefault(x => x.Id_Vehiculo == item.VehículoId).Descripción,
                         Cedula = db.Clientes.FirstOrDefault(x => x.Id_Cliente == item.ClienteId).Cedula,
                         Cliente = db.Clientes.FirstOrDefault(x => x.Id_Cliente == item.ClienteId).Nombre,
@@ -74,7 +75,6 @@ namespace ProyectoFinal_RentCar.Forms
             var LstCli = datos.ComboCliente();
             if (LstCli.Count > 0)
             {
-                comboCliente.DisplayMember = "Cedula";
                 comboCliente.DisplayMember = "Nombre";
                 comboCliente.ValueMember = "Id_Cliente";
                 comboCliente.DataSource = LstCli;
@@ -139,20 +139,65 @@ namespace ProyectoFinal_RentCar.Forms
 
         private void dataGridViewInspeccion_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //txtDescrip.Text = dataGridViewInspeccion.CurrentRow.Cells[1].Value.ToString();
-            //txtChasis.Text = dataGridViewInspeccion.CurrentRow.Cells[2].Value.ToString();
-            //txtNoMotor.Text = dataGridViewInspeccion.CurrentRow.Cells[3].Value.ToString();
-            //txtPlaca.Text = dataGridViewInspeccion.CurrentRow.Cells[4].Value.ToString();
-            //ComboTipoVehiculo.Text = dataGridViewInspeccion.CurrentRow.Cells[5].Value.ToString();
-            //comboMarca.Text = dataGridViewInspeccion.CurrentRow.Cells[6].Value.ToString();
-            //comboModelo.Text = dataGridViewInspeccion.CurrentRow.Cells[7].Value.ToString();
-            //comboCombustible.Text = dataGridViewInspeccion.CurrentRow.Cells[8].Value.ToString();
+            dataGridViewInspeccion.CurrentRow.Cells[0].Value.ToString();
+            comboVehiculo.Text = dataGridViewInspeccion.CurrentRow.Cells[1].Value.ToString();
+            comboCliente.Text = dataGridViewInspeccion.CurrentRow.Cells[3].Value.ToString();
+            comboEmpleado.Text = dataGridViewInspeccion.CurrentRow.Cells[12].Value.ToString();
+            comboCombustible.Text = dataGridViewInspeccion.CurrentRow.Cells[5].Value.ToString();
 
-            if (dataGridViewInspeccion.CurrentRow.Cells[9].Value.ToString() == "INACTIVO")
+            if (dataGridViewInspeccion.CurrentRow.Cells[4].Value.ToString() == "SI")
+            {
+                checkRalladuras.Checked = true;
+            }
+            else if (dataGridViewInspeccion.CurrentRow.Cells[4].Value.ToString() == "NO")
+            {
+                checkRalladuras.Checked = false;
+            }
+
+            if (dataGridViewInspeccion.CurrentRow.Cells[6].Value.ToString() == "SI")
+            {
+                checkRepuesta.Checked = true;
+            }
+            else if (dataGridViewInspeccion.CurrentRow.Cells[6].Value.ToString() == "NO")
+            {
+                checkRepuesta.Checked = false;
+            }
+
+            if (dataGridViewInspeccion.CurrentRow.Cells[7].Value.ToString() == "SI")
+            {
+                checkGato.Checked = true;
+            }
+            else if (dataGridViewInspeccion.CurrentRow.Cells[7].Value.ToString() == "NO")
+            {
+                checkGato.Checked = false;
+            }
+
+            if (dataGridViewInspeccion.CurrentRow.Cells[8].Value.ToString() == "SI")
+            {
+                checkCristal.Checked = true;
+            }
+            else if (dataGridViewInspeccion.CurrentRow.Cells[8].Value.ToString() == "NO")
+            {
+                checkCristal.Checked = false;
+            }
+
+            if (dataGridViewInspeccion.CurrentRow.Cells[9].Value.ToString() == "Las 4 gomas estan bien")
+            {
+                checkDereFrontal.Checked = true;
+                checkDerTrasera.Checked = true;
+                checkIzFrontal.Checked = true;
+                checkIzTrasera.Checked = true;
+            }
+
+            dateTimePicker1.Text = DateTime.Parse( dataGridViewInspeccion.CurrentRow.Cells[11].Value.ToString()).ToString();
+
+
+
+            if (dataGridViewInspeccion.CurrentRow.Cells[13].Value.ToString() == "INACTIVO")
             {
                 ChckEstado.Checked = true;
             }
-            else if (dataGridViewInspeccion.CurrentRow.Cells[9].Value.ToString() == "ACTIVO")
+            else if (dataGridViewInspeccion.CurrentRow.Cells[13].Value.ToString() == "ACTIVO")
             {
                 ChckEstado.Checked = false;
             }
@@ -222,11 +267,6 @@ namespace ProyectoFinal_RentCar.Forms
                     if (checkIzFrontal.Checked && checkDereFrontal.Checked && checkIzTrasera.Checked && checkDerTrasera.Checked)
                     {
                         inspeccion.Estado_gomas = "Las 4 gomas estan bien";
-                    }
-                    else
-                    {
-                        inspeccion.Estado_gomas = "Una o varias gomas presentan fallas";
-
                     }
 
                     db.Inspeccions.Add(inspeccion);
@@ -327,6 +367,34 @@ namespace ProyectoFinal_RentCar.Forms
                 MessageBox.Show("Inspeccion al vehiculo "+ comboVehiculo.Text.ToString() + " editado Satisfactoriamente", "RENT-CAR",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+
+                Refresh();
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (BD_Context db = new BD_Context())
+                {
+                    int id = int.Parse(dataGridViewInspeccion.CurrentRow.Cells[0].Value.ToString());
+
+                    Class.Inspeccion inspeccion = db.Inspeccions.FirstOrDefault(x => x.Id_Transacción == id);
+
+                    db.Inspeccions.Remove(inspeccion);
+
+                    if (MessageBox.Show("Esta seguro que quiere borrar este registro?", "RENT-CAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        db.SaveChanges();
+                    }
+                }
 
                 Refresh();
                 LimpiarCampos();
