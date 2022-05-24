@@ -74,6 +74,7 @@ namespace ProyectoFinal_RentCar.Forms
             var LstCli = datos.ComboCliente();
             if (LstCli.Count > 0)
             {
+                comboCliente.DisplayMember = "Cedula";
                 comboCliente.DisplayMember = "Nombre";
                 comboCliente.ValueMember = "Id_Cliente";
                 comboCliente.DataSource = LstCli;
@@ -138,7 +139,23 @@ namespace ProyectoFinal_RentCar.Forms
 
         private void dataGridViewInspeccion_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //txtDescrip.Text = dataGridViewInspeccion.CurrentRow.Cells[1].Value.ToString();
+            //txtChasis.Text = dataGridViewInspeccion.CurrentRow.Cells[2].Value.ToString();
+            //txtNoMotor.Text = dataGridViewInspeccion.CurrentRow.Cells[3].Value.ToString();
+            //txtPlaca.Text = dataGridViewInspeccion.CurrentRow.Cells[4].Value.ToString();
+            //ComboTipoVehiculo.Text = dataGridViewInspeccion.CurrentRow.Cells[5].Value.ToString();
+            //comboMarca.Text = dataGridViewInspeccion.CurrentRow.Cells[6].Value.ToString();
+            //comboModelo.Text = dataGridViewInspeccion.CurrentRow.Cells[7].Value.ToString();
+            //comboCombustible.Text = dataGridViewInspeccion.CurrentRow.Cells[8].Value.ToString();
 
+            if (dataGridViewInspeccion.CurrentRow.Cells[9].Value.ToString() == "INACTIVO")
+            {
+                ChckEstado.Checked = true;
+            }
+            else if (dataGridViewInspeccion.CurrentRow.Cells[9].Value.ToString() == "ACTIVO")
+            {
+                ChckEstado.Checked = false;
+            }
         }
 
         private void btnCrear_Click(object sender, EventArgs e)
@@ -153,7 +170,8 @@ namespace ProyectoFinal_RentCar.Forms
                     inspeccion.ClienteId = (int)comboCliente.SelectedValue;
                     inspeccion.EmpleadoId = (int)comboEmpleado.SelectedValue;
                     inspeccion.Cantidad_Combustible = comboCombustible.Text.ToString();
-
+                    inspeccion.Cedula = db.Clientes.FirstOrDefault(x => x.Id_Cliente == inspeccion.ClienteId).Cedula;
+                    inspeccion.Etc = "N/A";
                     inspeccion.Fecha = DateTime.Parse(dateTimePicker1.Text.ToString());
 
                     if (ChckEstado.Checked)
@@ -210,38 +228,105 @@ namespace ProyectoFinal_RentCar.Forms
                         inspeccion.Estado_gomas = "Una o varias gomas presentan fallas";
 
                     }
-                    //else if(checkIzFrontal.Checked = false && checkDereFrontal.Checked && checkIzTrasera.Checked && checkDerTrasera.Checked)
-                    //{
-                    //    inspeccion.Estado_gomas = "Goma Frontal Izquierda con desgaste";
-                    //}
-                    //else if (checkDereFrontal.Checked = false && checkIzFrontal.Checked && checkIzTrasera.Checked && checkDerTrasera.Checked)
-                    //{
-                    //    inspeccion.Estado_gomas = "Goma Frontal Derecha con desgaste";
-                    //}
-                    //else if (checkIzTrasera.Checked = false && checkIzFrontal.Checked && checkDereFrontal.Checked && checkDerTrasera.Checked)
-                    //{
-                    //    inspeccion.Estado_gomas = "Goma Trasera Izquierda con desgaste";
-                    //}
-                    //else if (checkDerTrasera.Checked = false && checkIzFrontal.Checked && checkDereFrontal.Checked && checkIzTrasera.Checked)
-                    //{
-                    //    inspeccion.Estado_gomas = "Goma Trasera Derecha con desgaste";
-                    //}
-
-                    //if (checkIzFrontal.Checked && checkDereFrontal.Checked == false)
-                    //{
-                    //    inspeccion.Estado_gomas = "Gomas Frontales con desgaste";
-                    //}
-                    //else if (checkDerTrasera.Checked && checkIzTrasera.Checked == false)
-                    //{
-                    //    inspeccion.Estado_gomas = "Gomas Traseras con desgaste";
-                    //}
 
                     db.Inspeccions.Add(inspeccion);
 
                     db.SaveChanges();
                 }
 
-                MessageBox.Show("Inspeccion del " + comboVehiculo.Text.ToString() + " para el Cliente " + comboCliente.Text.ToString() + " creado satisfactoriamente!", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Inspeccion del " + comboVehiculo.Text.ToString() + " para el Cliente " 
+                    + comboCliente.Text.ToString() + " creado satisfactoriamente!", "RENT-CAR",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Refresh();
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (BD_Context db = new BD_Context())
+                {
+                    int id = int.Parse(dataGridViewInspeccion.CurrentRow.Cells[0].Value.ToString());
+
+                    Class.Inspeccion inspeccion = db.Inspeccions.FirstOrDefault(x => x.Id_Transacción == id);
+
+                    inspeccion.VehículoId = (int)comboVehiculo.SelectedValue;
+                    inspeccion.ClienteId = (int)comboCliente.SelectedValue;
+                    inspeccion.EmpleadoId = (int)comboEmpleado.SelectedValue;
+                    inspeccion.Cantidad_Combustible = comboCombustible.Text.ToString();
+                    inspeccion.Cedula = db.Clientes.FirstOrDefault(x => x.Id_Cliente == inspeccion.ClienteId).Cedula;
+                    inspeccion.Etc = "N/A";
+                    inspeccion.Fecha = DateTime.Parse(dateTimePicker1.Text.ToString());
+
+                    if (ChckEstado.Checked)
+                    {
+                        inspeccion.Estado = "INACTIVO";
+                    }
+                    else
+                    {
+                        inspeccion.Estado = "ACTIVO";
+                    }
+
+                    if (checkRalladuras.Checked)
+                    {
+                        inspeccion.Tiene_Ralladuras = "SI";
+                    }
+                    else
+                    {
+                        inspeccion.Tiene_Ralladuras = "NO";
+                    }
+
+                    if (checkRepuesta.Checked)
+                    {
+                        inspeccion.Goma_respuesta = "SI";
+                    }
+                    else
+                    {
+                        inspeccion.Goma_respuesta = "NO";
+                    }
+
+                    if (checkGato.Checked)
+                    {
+                        inspeccion.Tiene_Gato = "SI";
+                    }
+                    else
+                    {
+                        inspeccion.Tiene_Gato = "NO";
+                    }
+
+                    if (checkCristal.Checked)
+                    {
+                        inspeccion.roturas_cristal = "SI";
+                    }
+                    else
+                    {
+                        inspeccion.roturas_cristal = "NO";
+                    }
+
+                    if (checkIzFrontal.Checked && checkDereFrontal.Checked && checkIzTrasera.Checked && checkDerTrasera.Checked)
+                    {
+                        inspeccion.Estado_gomas = "Las 4 gomas estan bien";
+                    }
+                    else
+                    {
+                        inspeccion.Estado_gomas = "Una o varias gomas presentan fallas";
+
+                    }
+
+                    db.SaveChanges();
+                }
+
+                MessageBox.Show("Inspeccion al vehiculo "+ comboVehiculo.Text.ToString() + " editado Satisfactoriamente", "RENT-CAR",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
                 Refresh();
                 LimpiarCampos();
