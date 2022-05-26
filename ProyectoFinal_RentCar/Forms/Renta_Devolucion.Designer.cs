@@ -31,11 +31,11 @@
             this.checkBoxDevuelto = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.ComboVehiculo = new System.Windows.Forms.ComboBox();
+            this.comboVehiculo = new System.Windows.Forms.ComboBox();
             this.ChckEstado = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.dataGridViewTipoVehiculo = new System.Windows.Forms.DataGridView();
+            this.dataGridViewRentaDevo = new System.Windows.Forms.DataGridView();
             this.comboCliente = new System.Windows.Forms.ComboBox();
             this.comboEmpleado = new System.Windows.Forms.ComboBox();
             this.btnCrear = new System.Windows.Forms.Button();
@@ -44,19 +44,19 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.dateTimePickerDevo = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.dateTimePickerRenta = new System.Windows.Forms.DateTimePicker();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtComentario = new System.Windows.Forms.TextBox();
-            this.txtMonto = new System.Windows.Forms.TextBox();
-            this.txtCantidadDias = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtCantidadDias = new System.Windows.Forms.TextBox();
+            this.txtMonto = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtComentario = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTipoVehiculo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRentaDevo)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -100,15 +100,15 @@
             this.label2.Text = "Vehiculo";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ComboVehiculo
+            // comboVehiculo
             // 
-            this.ComboVehiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboVehiculo.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.ComboVehiculo.FormattingEnabled = true;
-            this.ComboVehiculo.Location = new System.Drawing.Point(153, 56);
-            this.ComboVehiculo.Name = "ComboVehiculo";
-            this.ComboVehiculo.Size = new System.Drawing.Size(144, 28);
-            this.ComboVehiculo.TabIndex = 19;
+            this.comboVehiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboVehiculo.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.comboVehiculo.FormattingEnabled = true;
+            this.comboVehiculo.Location = new System.Drawing.Point(153, 56);
+            this.comboVehiculo.Name = "comboVehiculo";
+            this.comboVehiculo.Size = new System.Drawing.Size(144, 28);
+            this.comboVehiculo.TabIndex = 19;
             // 
             // ChckEstado
             // 
@@ -141,7 +141,7 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 854F));
-            this.tableLayoutPanel2.Controls.Add(this.dataGridViewTipoVehiculo, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.dataGridViewRentaDevo, 1, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 175);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
@@ -149,20 +149,21 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(862, 234);
             this.tableLayoutPanel2.TabIndex = 31;
             // 
-            // dataGridViewTipoVehiculo
+            // dataGridViewRentaDevo
             // 
-            this.dataGridViewTipoVehiculo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridViewRentaDevo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewTipoVehiculo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridViewTipoVehiculo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTipoVehiculo.Location = new System.Drawing.Point(11, 3);
-            this.dataGridViewTipoVehiculo.MultiSelect = false;
-            this.dataGridViewTipoVehiculo.Name = "dataGridViewTipoVehiculo";
-            this.dataGridViewTipoVehiculo.ReadOnly = true;
-            this.dataGridViewTipoVehiculo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTipoVehiculo.Size = new System.Drawing.Size(848, 228);
-            this.dataGridViewTipoVehiculo.TabIndex = 10;
+            this.dataGridViewRentaDevo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridViewRentaDevo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewRentaDevo.Location = new System.Drawing.Point(11, 3);
+            this.dataGridViewRentaDevo.MultiSelect = false;
+            this.dataGridViewRentaDevo.Name = "dataGridViewRentaDevo";
+            this.dataGridViewRentaDevo.ReadOnly = true;
+            this.dataGridViewRentaDevo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewRentaDevo.Size = new System.Drawing.Size(848, 228);
+            this.dataGridViewRentaDevo.TabIndex = 10;
+            this.dataGridViewRentaDevo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRentaDevo_CellContentClick);
             // 
             // comboCliente
             // 
@@ -192,6 +193,7 @@
             this.btnCrear.TabIndex = 0;
             this.btnCrear.Text = "C";
             this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // btnEditar
             // 
@@ -201,6 +203,7 @@
             this.btnEditar.TabIndex = 1;
             this.btnEditar.Text = "E";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -227,6 +230,7 @@
             this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "D";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // dateTimePickerDevo
             // 
@@ -253,7 +257,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.comboEmpleado, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.comboCliente, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.ComboVehiculo, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.comboVehiculo, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label4, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label6, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.dateTimePickerDevo, 2, 4);
@@ -269,21 +273,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(487, 169);
             this.tableLayoutPanel1.TabIndex = 30;
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 866F));
-            this.tableLayoutPanel4.Controls.Add(this.ChckEstado, 1, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 412);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65.30612F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34.69388F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(874, 49);
-            this.tableLayoutPanel4.TabIndex = 32;
             // 
             // label4
             // 
@@ -319,6 +308,21 @@
             this.dateTimePickerRenta.Size = new System.Drawing.Size(144, 26);
             this.dateTimePickerRenta.TabIndex = 32;
             // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 866F));
+            this.tableLayoutPanel4.Controls.Add(this.ChckEstado, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 412);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65.30612F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34.69388F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(874, 49);
+            this.tableLayoutPanel4.TabIndex = 32;
+            // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -344,6 +348,36 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(369, 169);
             this.tableLayoutPanel5.TabIndex = 33;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(239, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(124, 50);
+            this.label5.TabIndex = 39;
+            this.label5.Text = "Comentario";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtCantidadDias
+            // 
+            this.txtCantidadDias.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.txtCantidadDias.Location = new System.Drawing.Point(3, 53);
+            this.txtCantidadDias.Multiline = true;
+            this.txtCantidadDias.Name = "txtCantidadDias";
+            this.txtCantidadDias.Size = new System.Drawing.Size(123, 33);
+            this.txtCantidadDias.TabIndex = 38;
+            // 
+            // txtMonto
+            // 
+            this.txtMonto.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.txtMonto.Location = new System.Drawing.Point(132, 53);
+            this.txtMonto.Multiline = true;
+            this.txtMonto.Name = "txtMonto";
+            this.txtMonto.Size = new System.Drawing.Size(101, 33);
+            this.txtMonto.TabIndex = 37;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -355,6 +389,15 @@
             this.label7.TabIndex = 34;
             this.label7.Text = "Monto por Dia";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtComentario
+            // 
+            this.txtComentario.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.txtComentario.Location = new System.Drawing.Point(239, 53);
+            this.txtComentario.Multiline = true;
+            this.txtComentario.Name = "txtComentario";
+            this.txtComentario.Size = new System.Drawing.Size(124, 33);
+            this.txtComentario.TabIndex = 36;
             // 
             // label8
             // 
@@ -368,45 +411,6 @@
             this.label8.Text = "Cantidad de Dias";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtComentario
-            // 
-            this.txtComentario.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.txtComentario.Location = new System.Drawing.Point(239, 53);
-            this.txtComentario.Multiline = true;
-            this.txtComentario.Name = "txtComentario";
-            this.txtComentario.Size = new System.Drawing.Size(124, 33);
-            this.txtComentario.TabIndex = 36;
-            // 
-            // txtMonto
-            // 
-            this.txtMonto.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.txtMonto.Location = new System.Drawing.Point(132, 53);
-            this.txtMonto.Multiline = true;
-            this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Size = new System.Drawing.Size(101, 33);
-            this.txtMonto.TabIndex = 37;
-            // 
-            // txtCantidadDias
-            // 
-            this.txtCantidadDias.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.txtCantidadDias.Location = new System.Drawing.Point(3, 53);
-            this.txtCantidadDias.Multiline = true;
-            this.txtCantidadDias.Name = "txtCantidadDias";
-            this.txtCantidadDias.Size = new System.Drawing.Size(123, 33);
-            this.txtCantidadDias.TabIndex = 38;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(239, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(124, 50);
-            this.label5.TabIndex = 39;
-            this.label5.Text = "Comentario";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Renta_Devolucion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -418,8 +422,9 @@
             this.Controls.Add(this.tableLayoutPanel4);
             this.Name = "Renta_Devolucion";
             this.Text = "Renta_Devolucion";
+            this.Load += new System.EventHandler(this.Renta_Devolucion_Load);
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTipoVehiculo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRentaDevo)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -435,11 +440,11 @@
         private System.Windows.Forms.CheckBox checkBoxDevuelto;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox ComboVehiculo;
+        private System.Windows.Forms.ComboBox comboVehiculo;
         private System.Windows.Forms.CheckBox ChckEstado;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.DataGridView dataGridViewTipoVehiculo;
+        private System.Windows.Forms.DataGridView dataGridViewRentaDevo;
         private System.Windows.Forms.ComboBox comboCliente;
         private System.Windows.Forms.ComboBox comboEmpleado;
         private System.Windows.Forms.Button btnCrear;

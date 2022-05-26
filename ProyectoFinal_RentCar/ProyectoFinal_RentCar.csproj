@@ -67,6 +67,7 @@
     <Compile Include="Class\ModeloVieModel.cs" />
     <Compile Include="Class\Modelos.cs" />
     <Compile Include="Class\Renta_Devolucion.cs" />
+    <Compile Include="Class\Renta_DevolucionViewModel.cs" />
     <Compile Include="Class\Tipo_Vehiculo.cs" />
     <Compile Include="Class\Vehiculo.cs" />
     <Compile Include="Class\VehiculoViewModel.cs" />
