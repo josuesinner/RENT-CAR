@@ -194,7 +194,7 @@ namespace ProyectoFinal_RentCar.Forms
 
                     if (query!=0)
                     {
-                        MessageBox.Show("este vehiculo esta rentado "
+                        MessageBox.Show("El vehiculo " + comboVehiculo.Text.ToString() + " esta rentado "
                      , "RENT-CAR",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }

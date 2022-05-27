@@ -49,12 +49,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDescrip = new System.Windows.Forms.TextBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.ComboTipoVehiculo = new System.Windows.Forms.ComboBox();
             this.comboMarca = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewVehiculo = new System.Windows.Forms.DataGridView();
+            this.label9 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -219,11 +219,11 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtDescrip, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.comboModelo, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.btnBuscar, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtNoMotor, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.txtPlaca, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.ComboTipoVehiculo, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.comboMarca, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label9, 5, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
@@ -324,15 +324,6 @@
             this.txtDescrip.Size = new System.Drawing.Size(143, 28);
             this.txtDescrip.TabIndex = 1;
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Location = new System.Drawing.Point(593, 11);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 28);
-            this.btnBuscar.TabIndex = 13;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            // 
             // ComboTipoVehiculo
             // 
             this.ComboTipoVehiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -398,6 +389,18 @@
             this.dataGridViewVehiculo.TabIndex = 0;
             this.dataGridViewVehiculo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVehiculo_CellContentClick);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.label9.Location = new System.Drawing.Point(593, 8);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(77, 34);
+            this.label9.TabIndex = 26;
+            this.label9.Text = "Buscar";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Vehiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -439,7 +442,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtDescrip;
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.DataGridView dataGridViewVehiculo;
@@ -449,5 +451,6 @@
         private System.Windows.Forms.ComboBox comboCombustible;
         private System.Windows.Forms.ComboBox ComboTipoVehiculo;
         private System.Windows.Forms.ComboBox comboMarca;
+        private System.Windows.Forms.Label label9;
     }
 }

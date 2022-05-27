@@ -45,10 +45,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.comboHorario = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmpleado)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
@@ -257,15 +257,6 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(144, 54);
             this.tableLayoutPanel3.TabIndex = 10;
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Location = new System.Drawing.Point(593, 10);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 30);
-            this.btnBuscar.TabIndex = 13;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -289,9 +280,9 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtNombre, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.btnBuscar, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.dateTimePicker1, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.comboHorario, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label6, 5, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
@@ -321,6 +312,18 @@
             this.comboHorario.Name = "comboHorario";
             this.comboHorario.Size = new System.Drawing.Size(144, 28);
             this.comboHorario.TabIndex = 24;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.label6.Location = new System.Drawing.Point(593, 7);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 39);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "Buscar";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Empleados
             // 
@@ -363,9 +366,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.ComboBox comboHorario;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -92,31 +92,50 @@ namespace ProyectoFinal_RentCar.Forms
         {
             try
             {
-                using (BD_Context db = new BD_Context())
+                if (txtModelo.Text == "")
                 {
-                    Class.Modelos modelos = new Class.Modelos();
-
-                    modelos.MarcaId = (int)comboMarca.SelectedValue;
-                    modelos.Descripcion = txtModelo.Text.ToString().ToUpper();
-
-                    if (ChckEstado.Checked)
-                    {
-                        modelos.Estado = "INACTIVO";
-                    }
-                    else
-                    {
-                        modelos.Estado = "ACTIVO";
-                    }
-
-                    db.Modelos.Add(modelos);
-
-                    db.SaveChanges();
+                    MessageBox.Show("No puede haber campos vacios",
+                            "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                else if (txtModelo.Text != "")
+                {
 
-                MessageBox.Show("Modelo "+ txtModelo.Text.ToString().ToUpper()+" creado satisfactoriamente!", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    using (BD_Context db = new BD_Context())
+                    {
+                        Class.Modelos modelos = new Class.Modelos();
 
-                Refresh();
-                LimpiarCampos();
+                        if (comboMarca.Text == "")
+                        {
+                            MessageBox.Show("Debe seleccionar una Marca ", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        }
+                        else if (comboMarca.Text != "")
+                        {
+                            modelos.MarcaId = (int)comboMarca.SelectedValue;
+                            modelos.Descripcion = txtModelo.Text.ToString().ToUpper();
+
+                            if (ChckEstado.Checked)
+                            {
+                                modelos.Estado = "INACTIVO";
+                            }
+                            else
+                            {
+                                modelos.Estado = "ACTIVO";
+                            }
+
+                            db.Modelos.Add(modelos);
+
+                            db.SaveChanges();
+
+                            MessageBox.Show("Modelo " + txtModelo.Text.ToString().ToUpper() + " creado satisfactoriamente!", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            Refresh();
+                            LimpiarCampos();
+                        }
+
+                    }
+                }
+                
             }
             catch (Exception ex)
             {
@@ -129,29 +148,38 @@ namespace ProyectoFinal_RentCar.Forms
         {
             try
             {
-                using (BD_Context db = new BD_Context())
+                if (txtModelo.Text == "")
                 {
-                    int id = int.Parse(dataGridViewModelo.CurrentRow.Cells[0].Value.ToString());
-
-                    Class.Modelos modelos = db.Modelos.FirstOrDefault(x => x.Id_Modelo == id);
-
-                    modelos.Descripcion = txtModelo.Text.ToString();
-
-                    if (ChckEstado.Checked)
-                    {
-                        modelos.Estado = "INACTIVO";
-                    }
-                    else
-                    {
-                        modelos.Estado = "ACTIVO";
-                    }
-
-                    db.SaveChanges();
-
+                    MessageBox.Show("No puede haber campos vacios",
+                            "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                MessageBox.Show("Modelo editado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Refresh();
-                LimpiarCampos();
+                else if (txtModelo.Text != "")
+                {
+
+                    using (BD_Context db = new BD_Context())
+                    {
+                        int id = int.Parse(dataGridViewModelo.CurrentRow.Cells[0].Value.ToString());
+
+                        Class.Modelos modelos = db.Modelos.FirstOrDefault(x => x.Id_Modelo == id);
+
+                        modelos.Descripcion = txtModelo.Text.ToString();
+
+                        if (ChckEstado.Checked)
+                        {
+                            modelos.Estado = "INACTIVO";
+                        }
+                        else
+                        {
+                            modelos.Estado = "ACTIVO";
+                        }
+
+                        db.SaveChanges();
+
+                    }
+                    MessageBox.Show("Modelo editado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Refresh();
+                    LimpiarCampos();
+                }
 
             }
             catch (Exception ex)
@@ -187,6 +215,39 @@ namespace ProyectoFinal_RentCar.Forms
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            BD_Context db = new BD_Context();
+
+            db.Modelos.ToList();
+
+
+            //if (txtBuscar.Text != "")
+            //{
+            //    dataGridViewModelo.CurrentCell = null;
+
+            //    foreach (DataGridViewRow r in dataGridViewModelo.Rows)
+            //    {
+            //        r.Visible = false;
+            //    }
+            //    foreach (DataGridViewRow r in dataGridViewModelo.Rows)
+            //    {
+            //        foreach (DataGridViewCell c in r.Cells)
+            //        {
+            //            if ((c.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper()) == 0)
+            //            {
+            //                r.Visible = true;
+            //                break;
+            //            }
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    dataGridViewModelo.DataSource = db.Modelos.ToList();
+            //}
         }
     }
 }

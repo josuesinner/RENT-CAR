@@ -120,29 +120,37 @@ namespace ProyectoFinal_RentCar.Forms
         {
             try
             {
-                using (BD_Context db = new BD_Context())
+                if (txtCombustible.Text == "")
                 {
-                    int id = int.Parse(dataGridViewCombustible.CurrentRow.Cells[0].Value.ToString());
-
-                    Class.Combustible combustible = db.Combustibles.FirstOrDefault(x => x.Id_Combustible == id);
-
-                    combustible.Descripcion = txtCombustible.Text.ToString().ToUpper();
-
-                    if (ChckEstado.Checked)
-                    {
-                        combustible.Estado = "INACTIVO";
-                    }
-                    else
-                    {
-                        combustible.Estado = "ACTIVO";
-                    }
-
-                    db.SaveChanges();
-
+                    MessageBox.Show("No puede haber campos vacios",
+                            "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                MessageBox.Show("Combustible editado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Refresh();
-                LimpiarCampos();
+                else if (txtCombustible.Text != "")
+                {
+                    using (BD_Context db = new BD_Context())
+                    {
+                        int id = int.Parse(dataGridViewCombustible.CurrentRow.Cells[0].Value.ToString());
+
+                        Class.Combustible combustible = db.Combustibles.FirstOrDefault(x => x.Id_Combustible == id);
+
+                        combustible.Descripcion = txtCombustible.Text.ToString().ToUpper();
+
+                        if (ChckEstado.Checked)
+                        {
+                            combustible.Estado = "INACTIVO";
+                        }
+                        else
+                        {
+                            combustible.Estado = "ACTIVO";
+                        }
+
+                        db.SaveChanges();
+
+                    }
+                    MessageBox.Show("Combustible editado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Refresh();
+                    LimpiarCampos();
+                }
 
             }
             catch (Exception ex)
