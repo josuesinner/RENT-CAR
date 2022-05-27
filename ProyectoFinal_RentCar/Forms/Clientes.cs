@@ -21,6 +21,25 @@ namespace ProyectoFinal_RentCar.Forms
             comboPersona.Items.Add("JURIDICA");
         }
 
+        public static bool soloLetras(KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+                return true;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+                return true;
+            }
+            else
+            {
+                e.Handled = true;
+                return false;
+            }
+        }
+
         public static bool soloNumeros(KeyPressEventArgs e)
         {
             if (char.IsNumber(e.KeyChar))
@@ -283,6 +302,15 @@ namespace ProyectoFinal_RentCar.Forms
             {
                 dataGridViewCliente.DataSource = db.Clientes.ToList();
             }
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            bool validar = soloLetras(e);
+            if (!validar)
+                errorP.SetError(txtNombre, "Solo Letras");
+            else
+                errorP.Clear();
         }
     }
 }

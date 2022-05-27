@@ -18,6 +18,25 @@ namespace ProyectoFinal_RentCar.Forms
             InitializeComponent();
         }
 
+        public static bool soloLetras(KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+                return true;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+                return true;
+            }
+            else
+            {
+                e.Handled = true;
+                return false;
+            }
+        }
+
         private void Refresh()
         {
             using (BD_Context db = new BD_Context())
@@ -55,36 +74,46 @@ namespace ProyectoFinal_RentCar.Forms
         {
             try
             {
-                using (BD_Context db = new BD_Context())
+                if (txtCombustible.Text == "" )
                 {
-                    Combustible combustible = new Combustible();
-
-                    combustible.Descripcion = txtCombustible.Text.ToString().ToUpper();
-
-                    if (ChckEstado.Checked)
-                    {
-                        combustible.Estado = "INACTIVO";
-                    }
-                    else
-                    {
-                        combustible.Estado = "ACTIVO";
-                    }
-
-                    db.Combustibles.Add(combustible);
-
-                    db.SaveChanges();
+                    MessageBox.Show("No puede haber campos vacios",
+                            "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                else if (txtCombustible.Text != "" )
+                {
 
-                MessageBox.Show("El Combustible " + txtCombustible.Text.ToString().ToUpper() + " fue creado satisfactoriamente!", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    using (BD_Context db = new BD_Context())
+                    {
+                        Combustible combustible = new Combustible();
 
-                Refresh();
-                LimpiarCampos();
+                        combustible.Descripcion = txtCombustible.Text.ToString().ToUpper();
+
+                        if (ChckEstado.Checked)
+                        {
+                            combustible.Estado = "INACTIVO";
+                        }
+                        else
+                        {
+                            combustible.Estado = "ACTIVO";
+                        }
+
+                        db.Combustibles.Add(combustible);
+
+                        db.SaveChanges();
+                    }
+
+                    MessageBox.Show("El Combustible " + txtCombustible.Text.ToString().ToUpper() + " fue creado satisfactoriamente!", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    Refresh();
+                    LimpiarCampos();
+                }
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.ToString());
             }
+
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -149,6 +178,46 @@ namespace ProyectoFinal_RentCar.Forms
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            BD_Context db = new BD_Context();
+            if (txtBuscar.Text != "")
+            {
+                dataGridViewCombustible.CurrentCell = null;
+
+                foreach (DataGridViewRow r in dataGridViewCombustible.Rows)
+                {
+                    r.Visible = false;
+                }
+                foreach (DataGridViewRow r in dataGridViewCombustible.Rows)
+                {
+                    foreach (DataGridViewCell c in r.Cells)
+                    {
+                        if ((c.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper()) == 0)
+                        {
+                            r.Visible = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                dataGridViewCombustible.DataSource = db.Combustibles.ToList();
+            }
+        }
+
+        ErrorProvider errorP = new ErrorProvider();
+
+        private void txtCombustible_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            bool validar = soloLetras(e);
+            if (!validar)
+                errorP.SetError(txtCombustible, "Solo Letras");
+            else
+                errorP.Clear();
         }
     }
 }
