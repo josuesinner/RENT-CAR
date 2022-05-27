@@ -22,6 +22,26 @@ namespace ProyectoFinal_RentCar.Forms
 
         }
 
+        public static bool soloLetras(KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+                return true;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+                return true;
+            }
+            else
+            {
+                e.Handled = true;
+                return false;
+            }
+        }
+
+
         private void LimpiarCampos()
         {
             txtNombre.Text = "";
@@ -66,34 +86,55 @@ namespace ProyectoFinal_RentCar.Forms
         {
             try
             {
-                using (BD_Context db = new BD_Context())
+                if (txtNombre.Text == "" || txtCedula.Text == "" || txtComision.Text == "")
                 {
-                    Class.Empleado empleado = new Class.Empleado();
-
-                    empleado.Nombre = txtNombre.Text.ToString().ToUpper();
-                    empleado.Cedula = txtCedula.Text.ToString();
-                    empleado.Tanda_Labor = comboHorario.Text.ToString();
-                    empleado.Porciento_Comision = txtComision.Text.ToString();
-                    empleado.Fecha_Ingreso = DateTime.Parse(dateTimePicker1.Text.ToString());
-
-                    if (ChckEstado.Checked)
-                    {
-                        empleado.Estado = "INACTIVO";
-                    }
-                    else
-                    {
-                        empleado.Estado = "ACTIVO";
-                    }
-
-                    db.Empleados.Add(empleado);
-
-                    db.SaveChanges();
+                    MessageBox.Show("No puede haber campos vacios",
+                            "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                else if (txtNombre.Text != "" || txtCedula.Text != "" || txtComision.Text != "")
+                {
 
-                MessageBox.Show("Empleado " + txtNombre.Text.ToString().ToUpper() + " creado satisfactoriamente!", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    using (BD_Context db = new BD_Context())
+                    {
+                        string vacio = comboHorario.Text.ToString();
 
-                Refresh();
-                LimpiarCampos();
+                        Class.Empleado empleado = new Class.Empleado();
+
+                        empleado.Nombre = txtNombre.Text.ToString().ToUpper();
+                        empleado.Cedula = txtCedula.Text.ToString();
+
+                        if (vacio == "")
+                        {
+                            empleado.Tanda_Labor = "DIA";
+
+                        }
+                        else
+                        {
+                            empleado.Tanda_Labor = comboHorario.Text.ToString();
+                        }
+
+                        empleado.Porciento_Comision = txtComision.Text.ToString();
+                        empleado.Fecha_Ingreso = DateTime.Parse(dateTimePicker1.Text.ToString());
+
+                        if (ChckEstado.Checked)
+                        {
+                            empleado.Estado = "INACTIVO";
+                        }
+                        else
+                        {
+                            empleado.Estado = "ACTIVO";
+                        }
+
+                        db.Empleados.Add(empleado);
+
+                        db.SaveChanges();
+                    }
+
+                    MessageBox.Show("Empleado " + txtNombre.Text.ToString().ToUpper() + " creado satisfactoriamente!", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    Refresh();
+                    LimpiarCampos();
+                }
             }
             catch (Exception ex)
             {
@@ -106,33 +147,42 @@ namespace ProyectoFinal_RentCar.Forms
         {
             try
             {
-                using (BD_Context db = new BD_Context())
+                if (txtNombre.Text == "" || txtCedula.Text == "" || txtComision.Text == "")
                 {
-                    int id = int.Parse(dataGridViewEmpleado.CurrentRow.Cells[0].Value.ToString());
-
-                    Class.Empleado empleado = db.Empleados.FirstOrDefault(x => x.Id_Empleado == id);
-
-                    empleado.Nombre = txtNombre.Text.ToString().ToUpper();
-                    empleado.Cedula = txtCedula.Text.ToString();
-                    empleado.Tanda_Labor = comboHorario.Text.ToString();
-                    empleado.Porciento_Comision = txtComision.Text.ToString();
-                    empleado.Fecha_Ingreso = DateTime.Parse(dateTimePicker1.Text.ToString());
-
-                    if (ChckEstado.Checked)
-                    {
-                        empleado.Estado = "INACTIVO";
-                    }
-                    else
-                    {
-                        empleado.Estado = "ACTIVO";
-                    }
-
-                    db.SaveChanges();
-
+                    MessageBox.Show("No puede haber campos vacios",
+                            "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                MessageBox.Show("Empleado editado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Refresh();
-                LimpiarCampos();
+                else if (txtNombre.Text != "" || txtCedula.Text != "" || txtComision.Text != "")
+                {
+
+                    using (BD_Context db = new BD_Context())
+                    {
+                        int id = int.Parse(dataGridViewEmpleado.CurrentRow.Cells[0].Value.ToString());
+
+                        Class.Empleado empleado = db.Empleados.FirstOrDefault(x => x.Id_Empleado == id);
+
+                        empleado.Nombre = txtNombre.Text.ToString().ToUpper();
+                        empleado.Cedula = txtCedula.Text.ToString();
+                        empleado.Tanda_Labor = comboHorario.Text.ToString();
+                        empleado.Porciento_Comision = txtComision.Text.ToString();
+                        empleado.Fecha_Ingreso = DateTime.Parse(dateTimePicker1.Text.ToString());
+
+                        if (ChckEstado.Checked)
+                        {
+                            empleado.Estado = "INACTIVO";
+                        }
+                        else
+                        {
+                            empleado.Estado = "ACTIVO";
+                        }
+
+                        db.SaveChanges();
+
+                    }
+                    MessageBox.Show("Empleado editado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Refresh();
+                    LimpiarCampos();
+                }
 
             }
             catch (Exception ex)
@@ -168,6 +218,46 @@ namespace ProyectoFinal_RentCar.Forms
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            BD_Context db = new BD_Context();
+            if (txtBuscar.Text != "")
+            {
+                dataGridViewEmpleado.CurrentCell = null;
+
+                foreach (DataGridViewRow r in dataGridViewEmpleado.Rows)
+                {
+                    r.Visible = false;
+                }
+                foreach (DataGridViewRow r in dataGridViewEmpleado.Rows)
+                {
+                    foreach (DataGridViewCell c in r.Cells)
+                    {
+                        if ((c.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper()) == 0)
+                        {
+                            r.Visible = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                dataGridViewEmpleado.DataSource = db.Empleados.ToList();
+            }
+        }
+
+        ErrorProvider errorP = new ErrorProvider();
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            bool validar = soloLetras(e);
+            if (!validar)
+                errorP.SetError(txtNombre, "Solo Letras");
+            else
+                errorP.Clear();
         }
     }
 }
