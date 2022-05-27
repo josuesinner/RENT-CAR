@@ -21,6 +21,25 @@ namespace ProyectoFinal_RentCar.Forms
             comboPersona.Items.Add("JURIDICA");
         }
 
+        public static bool soloNumeros(KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar))
+            {
+                e.Handled = false;
+                return true;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+                return true;
+            }
+            else
+            {
+                e.Handled = true;
+                return false;
+            }
+        }
+
         private void Refresh()
         {
             using (BD_Context db = new BD_Context())
@@ -43,7 +62,6 @@ namespace ProyectoFinal_RentCar.Forms
         {
             Refresh();
         }
-        
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
@@ -51,27 +69,51 @@ namespace ProyectoFinal_RentCar.Forms
             {
                 using (BD_Context db = new BD_Context())
                 {
+                    string vacio = comboPersona.Text.ToString();
+                    int limite = int.Parse(txtCredito.Text.ToString());
                     Cliente cliente = new Cliente();
 
-                    cliente.Nombre = txtNombre.Text.ToString();
+                    cliente.Nombre = txtNombre.Text.ToString().ToUpper();
                     cliente.Cedula = txtCedula.Text.ToString();
                     cliente.No_Tarjeta_CR = txtTarjeta.Text.ToString();
-                    cliente.Límite_Credito = txtCredito.Text.ToString();
-                    cliente.Tipo_Persona = comboPersona.Text.ToString();
-                    if (ChckEstado.Checked)
+                    if (vacio =="")
                     {
-                        cliente.Estado = "INACTIVO";
+                        cliente.Tipo_Persona = "COMUN";
+
                     }
                     else
                     {
-                        cliente.Estado = "ACTIVO";
+                        cliente.Tipo_Persona = comboPersona.Text.ToString();
                     }
 
-                    db.Clientes.Add(cliente);
+                    if (limite>25000)
+                    {
+                        MessageBox.Show("No puede ser mayor a 25,000 pesos",
+                            "Limite de Credito alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if((limite < 25000))
+                    {
+                        cliente.Límite_Credito = txtCredito.Text.ToString();
 
-                    db.SaveChanges();
+                        if (ChckEstado.Checked)
+                        {
+                            cliente.Estado = "INACTIVO";
+                        }
+                        else
+                        {
+                            cliente.Estado = "ACTIVO";
+                        }
+
+                        db.Clientes.Add(cliente);
+
+                        db.SaveChanges();
+
+                        MessageBox.Show("Cliente " + txtNombre.Text.ToString().ToUpper() + 
+                            " creado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+
                 }
-
                 Refresh();
                 LimpiarCampos();
             }
@@ -120,7 +162,7 @@ namespace ProyectoFinal_RentCar.Forms
 
                     Cliente cliente = db.Clientes.FirstOrDefault(x=>x.Id_Cliente==id);
 
-                    cliente.Nombre = txtNombre.Text.ToString();
+                    cliente.Nombre = txtNombre.Text.ToString().ToUpper();
                     cliente.Cedula = txtCedula.Text.ToString();
                     cliente.No_Tarjeta_CR = txtTarjeta.Text.ToString();
                     cliente.Límite_Credito = txtCredito.Text.ToString();
@@ -165,6 +207,17 @@ namespace ProyectoFinal_RentCar.Forms
             {
                 ChckEstado.Checked = false;
             }
+        }
+
+        ErrorProvider errorP = new ErrorProvider();
+
+        private void txtCredito_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            bool validar = soloNumeros(e);
+            if (!validar)
+                errorP.SetError(txtCredito, "Solo Numeros");
+            else
+                errorP.Clear();
         }
     }
 }

@@ -75,7 +75,7 @@ namespace ProyectoFinal_RentCar.Forms
                     db.SaveChanges();
                 }
 
-                MessageBox.Show("El registro " + txtTipoVehiculo.Text.ToString().ToUpper() + " fue creado satisfactoriamente!", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El tipo de Vhiculo " + txtTipoVehiculo.Text.ToString().ToUpper() + " fue creado satisfactoriamente!", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 Refresh();
                 LimpiarCampos();
