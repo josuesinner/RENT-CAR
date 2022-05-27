@@ -164,34 +164,62 @@ namespace ProyectoFinal_RentCar.Forms
         {
             try
             {
-                using (BD_Context db = new BD_Context())
+                if (txtNombre.Text == "" || txtCedula.Text == "" || txtCredito.Text == "" || txtTarjeta.Text == "")
                 {
-                    int id = int.Parse(dataGridViewCliente.CurrentRow.Cells[0].Value.ToString());
+                    MessageBox.Show("No puede haber campos vacios",
+                            "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if (txtNombre.Text != "" || txtCedula.Text != "" || txtCredito.Text != "" || txtTarjeta.Text != "") {
 
-                    Cliente cliente = db.Clientes.FirstOrDefault(x=>x.Id_Cliente==id);
-
-                    cliente.Nombre = txtNombre.Text.ToString().ToUpper();
-                    cliente.Cedula = txtCedula.Text.ToString();
-                    cliente.No_Tarjeta_CR = txtTarjeta.Text.ToString();
-                    cliente.Límite_Credito = txtCredito.Text.ToString();
-                    cliente.Tipo_Persona = comboPersona.Text.ToString();
-
-                    if (ChckEstado.Checked)
+                    using (BD_Context db = new BD_Context())
                     {
-                        cliente.Estado = "INACTIVO";
-                    }
-                    else
-                    {
-                        cliente.Estado = "ACTIVO";
-                    }
+                        string vacio = comboPersona.Text.ToString();
+                        int limite = int.Parse(txtCredito.Text.ToString());
 
-                    db.SaveChanges();
+                        int id = int.Parse(dataGridViewCliente.CurrentRow.Cells[0].Value.ToString());
+
+                        Cliente cliente = db.Clientes.FirstOrDefault(x => x.Id_Cliente == id);
+
+                        cliente.Nombre = txtNombre.Text.ToString().ToUpper();
+                        cliente.Cedula = txtCedula.Text.ToString();
+                        cliente.No_Tarjeta_CR = txtTarjeta.Text.ToString();
+                        if (vacio == "")
+                        {
+                            cliente.Tipo_Persona = "COMUN";
+
+                        }
+                        else
+                        {
+                            cliente.Tipo_Persona = comboPersona.Text.ToString();
+                        }
+
+                        if (limite > 25000)
+                        {
+                            MessageBox.Show("No puede ser mayor a 25,000 pesos",
+                                "Limite de Credito alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else if ((limite < 25000))
+                        {
+                            cliente.Límite_Credito = txtCredito.Text.ToString();
+
+                            if (ChckEstado.Checked)
+                            {
+                                cliente.Estado = "INACTIVO";
+                            }
+                            else
+                            {
+                                cliente.Estado = "ACTIVO";
+                            }
+
+                            db.SaveChanges();
+                            MessageBox.Show("Cliente editado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Refresh();
+                            LimpiarCampos();
+                        }
+                    }
                     
                 }
-                MessageBox.Show("Cliente editado Satisfactoriamente", "RENT-CAR",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                Refresh();
-                LimpiarCampos();
-
+                
             }
             catch (Exception ex)
             {
