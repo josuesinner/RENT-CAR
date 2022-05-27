@@ -21,6 +21,33 @@ namespace ProyectoFinal_RentCar.Forms
             comboPersona.Items.Add("JURIDICA");
         }
 
+
+        // validate cedula
+        //public static bool isValidIdNumber(String str)
+        //{
+        //    var regex = RegExp(r'^[0-9]{3}-?[0-9]{7}-?[0-9]{1}$');
+        //    if (!regex.hasMatch(str))
+        //    {
+        //        return false;
+        //    }
+        //    str = str.replaceAll(RegExp('-'), '');
+        //    if (str.split('').every((element) => element == '0')) return false;
+        //    return _checkDigit(str);
+        //}
+
+        public static bool _checkDigit(String str)
+        {
+            var sum = 0;
+            for (var i = 0; i < 10; ++i)
+            {
+                var n = ((i + 1) % 2 != 0 ? 1 : 2) * int.Parse(str[i].ToString());
+                sum += (n <= 9 ? n : n % 10 + 1);
+            }
+            var dig = ((10 - sum % 10) % 10);
+
+            return dig == int.Parse(str[10].ToString());
+        }
+
         public static bool soloLetras(KeyPressEventArgs e)
         {
             if (char.IsLetter(e.KeyChar))

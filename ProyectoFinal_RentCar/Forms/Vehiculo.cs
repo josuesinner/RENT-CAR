@@ -18,6 +18,7 @@ namespace ProyectoFinal_RentCar.Forms
             InitializeComponent();
         }
 
+
         private void LimpiarCampos()
         {
             txtDescrip.Text = "";
@@ -129,39 +130,48 @@ namespace ProyectoFinal_RentCar.Forms
         {
             try
             {
-                using (BD_Context db = new BD_Context())
+                if (txtDescrip.Text == "" || txtChasis.Text == "" || txtNoMotor.Text == "" || txtPlaca.Text == "")
                 {
-                    Class.Vehiculo vehiculo = new Class.Vehiculo();
-
-                    vehiculo.Descripción = txtDescrip.Text.ToString().ToUpper();
-                    vehiculo.No_Chasis = txtChasis.Text.ToString().ToUpper();
-                    vehiculo.No_Motor = txtNoMotor.Text.ToString().ToUpper();
-                    vehiculo.No_Placa = txtPlaca.Text.ToString().ToUpper();
-                    vehiculo.MarcaId = (int)comboMarca.SelectedValue;
-                    vehiculo.Tipo_VehiculoId = (int)ComboTipoVehiculo.SelectedValue;
-                    vehiculo.ModeloId = (int)comboModelo.SelectedValue;
-                    vehiculo.CombustibleId = (int)comboCombustible.SelectedValue;
-
-                    if (ChckEstado.Checked)
-                    {
-                        vehiculo.Estado = "INACTIVO";
-                    }
-                    else
-                    {
-                        vehiculo.Estado = "ACTIVO";
-                    }
-
-                    db.Vehiculos.Add(vehiculo);
-
-                    db.SaveChanges();
+                    MessageBox.Show("No puede haber campos vacios",
+                            "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                else if (txtDescrip.Text != "" || txtChasis.Text != "" || txtNoMotor.Text != "" || txtPlaca.Text != "")
+                {
 
-                MessageBox.Show("Vehiculo " + comboMarca.Text + " " +
-                    ""+ comboModelo.Text + " creado satisfactoriamente!", 
-                    "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    using (BD_Context db = new BD_Context())
+                    {
+                        Class.Vehiculo vehiculo = new Class.Vehiculo();
 
-                Refresh();
-                LimpiarCampos();
+                        vehiculo.Descripción = txtDescrip.Text.ToString().ToUpper();
+                        vehiculo.No_Chasis = txtChasis.Text.ToString().ToUpper();
+                        vehiculo.No_Motor = txtNoMotor.Text.ToString().ToUpper();
+                        vehiculo.No_Placa = txtPlaca.Text.ToString().ToUpper();
+                        vehiculo.MarcaId = (int)comboMarca.SelectedValue;
+                        vehiculo.Tipo_VehiculoId = (int)ComboTipoVehiculo.SelectedValue;
+                        vehiculo.ModeloId = (int)comboModelo.SelectedValue;
+                        vehiculo.CombustibleId = (int)comboCombustible.SelectedValue;
+
+                        if (ChckEstado.Checked)
+                        {
+                            vehiculo.Estado = "INACTIVO";
+                        }
+                        else
+                        {
+                            vehiculo.Estado = "ACTIVO";
+                        }
+
+                        db.Vehiculos.Add(vehiculo);
+
+                        db.SaveChanges();
+                    }
+
+                    MessageBox.Show("Vehiculo " + comboMarca.Text + " " +
+                        "" + comboModelo.Text + " creado satisfactoriamente!",
+                        "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    Refresh();
+                    LimpiarCampos();
+                }
             }
             catch (Exception ex)
             {
@@ -174,36 +184,46 @@ namespace ProyectoFinal_RentCar.Forms
         {
             try
             {
-                using (BD_Context db = new BD_Context())
+                if (txtDescrip.Text == "" || txtChasis.Text == "" || txtNoMotor.Text == "" || txtPlaca.Text == "")
                 {
-                    int id = int.Parse(dataGridViewVehiculo.CurrentRow.Cells[0].Value.ToString());
+                    MessageBox.Show("No puede haber campos vacios",
+                            "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if (txtDescrip.Text != "" || txtChasis.Text != "" || txtNoMotor.Text != "" || txtPlaca.Text != "")
+                {
 
-                    Class.Vehiculo vehiculo = db.Vehiculos.FirstOrDefault(x => x.Id_Vehiculo == id);
-
-                    vehiculo.Descripción = txtDescrip.Text.ToString().ToUpper();
-                    vehiculo.No_Chasis = txtChasis.Text.ToString().ToUpper();
-                    vehiculo.No_Motor = txtNoMotor.Text.ToString().ToUpper();
-                    vehiculo.No_Placa = txtPlaca.Text.ToString().ToUpper();
-                    vehiculo.MarcaId = (int)comboMarca.SelectedValue;
-                    vehiculo.Tipo_VehiculoId = (int)ComboTipoVehiculo.SelectedValue;
-                    vehiculo.ModeloId = (int)comboModelo.SelectedValue;
-                    vehiculo.CombustibleId = (int)comboCombustible.SelectedValue;
-
-                    if (ChckEstado.Checked)
+                    using (BD_Context db = new BD_Context())
                     {
-                        vehiculo.Estado = "INACTIVO";
-                    }
-                    else
-                    {
-                        vehiculo.Estado = "ACTIVO";
-                    }
+                        int id = int.Parse(dataGridViewVehiculo.CurrentRow.Cells[0].Value.ToString());
 
-                    db.SaveChanges();
+                        Class.Vehiculo vehiculo = db.Vehiculos.FirstOrDefault(x => x.Id_Vehiculo == id);
+
+                        vehiculo.Descripción = txtDescrip.Text.ToString().ToUpper();
+                        vehiculo.No_Chasis = txtChasis.Text.ToString().ToUpper();
+                        vehiculo.No_Motor = txtNoMotor.Text.ToString().ToUpper();
+                        vehiculo.No_Placa = txtPlaca.Text.ToString().ToUpper();
+                        vehiculo.MarcaId = (int)comboMarca.SelectedValue;
+                        vehiculo.Tipo_VehiculoId = (int)ComboTipoVehiculo.SelectedValue;
+                        vehiculo.ModeloId = (int)comboModelo.SelectedValue;
+                        vehiculo.CombustibleId = (int)comboCombustible.SelectedValue;
+
+                        if (ChckEstado.Checked)
+                        {
+                            vehiculo.Estado = "INACTIVO";
+                        }
+                        else
+                        {
+                            vehiculo.Estado = "ACTIVO";
+                        }
+
+                        db.SaveChanges();
+
+                    }
+                    MessageBox.Show("Vehiculo editado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Refresh();
+                    LimpiarCampos();
 
                 }
-                MessageBox.Show("Vehiculo editado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Refresh();
-                LimpiarCampos();
 
             }
             catch (Exception ex)
@@ -259,6 +279,35 @@ namespace ProyectoFinal_RentCar.Forms
             else if (dataGridViewVehiculo.CurrentRow.Cells[9].Value.ToString() == "ACTIVO")
             {
                 ChckEstado.Checked = false;
+            }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            BD_Context db = new BD_Context();
+            if (txtBuscar.Text != "")
+            {
+                dataGridViewVehiculo.CurrentCell = null;
+
+                foreach (DataGridViewRow r in dataGridViewVehiculo.Rows)
+                {
+                    r.Visible = false;
+                }
+                foreach (DataGridViewRow r in dataGridViewVehiculo.Rows)
+                {
+                    foreach (DataGridViewCell c in r.Cells)
+                    {
+                        if ((c.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper()) == 0)
+                        {
+                            r.Visible = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                dataGridViewVehiculo.DataSource = ModelMapperVehiculo();
             }
         }
     }

@@ -51,10 +51,10 @@
             this.txtDescrip = new System.Windows.Forms.TextBox();
             this.ComboTipoVehiculo = new System.Windows.Forms.ComboBox();
             this.comboMarca = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewVehiculo = new System.Windows.Forms.DataGridView();
-            this.label9 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -81,9 +81,11 @@
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(186, 28);
             this.txtBuscar.TabIndex = 12;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // btnCrear
             // 
+            this.btnCrear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCrear.Location = new System.Drawing.Point(3, 12);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(39, 38);
@@ -94,6 +96,7 @@
             // 
             // btnEditar
             // 
+            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditar.Location = new System.Drawing.Point(48, 12);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(46, 38);
@@ -104,6 +107,7 @@
             // 
             // btnEliminar
             // 
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEliminar.Location = new System.Drawing.Point(100, 12);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(41, 38);
@@ -344,6 +348,18 @@
             this.comboMarca.Size = new System.Drawing.Size(144, 28);
             this.comboMarca.TabIndex = 19;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.label9.Location = new System.Drawing.Point(593, 8);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(77, 34);
+            this.label9.TabIndex = 26;
+            this.label9.Text = "Buscar";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 2;
@@ -388,18 +404,6 @@
             this.dataGridViewVehiculo.Size = new System.Drawing.Size(848, 195);
             this.dataGridViewVehiculo.TabIndex = 0;
             this.dataGridViewVehiculo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVehiculo_CellContentClick);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.label9.Location = new System.Drawing.Point(593, 8);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 34);
-            this.label9.TabIndex = 26;
-            this.label9.Text = "Buscar";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Vehiculo
             // 

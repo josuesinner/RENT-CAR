@@ -224,30 +224,30 @@ namespace ProyectoFinal_RentCar.Forms
             db.Modelos.ToList();
 
 
-            //if (txtBuscar.Text != "")
-            //{
-            //    dataGridViewModelo.CurrentCell = null;
+            if (txtBuscar.Text != "")
+            {
+                dataGridViewModelo.CurrentCell = null;
 
-            //    foreach (DataGridViewRow r in dataGridViewModelo.Rows)
-            //    {
-            //        r.Visible = false;
-            //    }
-            //    foreach (DataGridViewRow r in dataGridViewModelo.Rows)
-            //    {
-            //        foreach (DataGridViewCell c in r.Cells)
-            //        {
-            //            if ((c.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper()) == 0)
-            //            {
-            //                r.Visible = true;
-            //                break;
-            //            }
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    dataGridViewModelo.DataSource = db.Modelos.ToList();
-            //}
+                foreach (DataGridViewRow r in dataGridViewModelo.Rows)
+                {
+                    r.Visible = false;
+                }
+                foreach (DataGridViewRow r in dataGridViewModelo.Rows)
+                {
+                    foreach (DataGridViewCell c in r.Cells)
+                    {
+                        if ((c.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper()) == 0)
+                        {
+                            r.Visible = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                dataGridViewModelo.DataSource = ModelMapper();
+            }
         }
     }
 }
