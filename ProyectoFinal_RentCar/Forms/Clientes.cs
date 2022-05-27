@@ -67,55 +67,63 @@ namespace ProyectoFinal_RentCar.Forms
         {
             try
             {
-                using (BD_Context db = new BD_Context())
+                if (txtNombre.Text == "" || txtCedula.Text == "" || txtCredito.Text == "" || txtTarjeta.Text == "")
                 {
-                    string vacio = comboPersona.Text.ToString();
-                    int limite = int.Parse(txtCredito.Text.ToString());
-                    Cliente cliente = new Cliente();
-
-                    cliente.Nombre = txtNombre.Text.ToString().ToUpper();
-                    cliente.Cedula = txtCedula.Text.ToString();
-                    cliente.No_Tarjeta_CR = txtTarjeta.Text.ToString();
-                    if (vacio =="")
+                    MessageBox.Show("No puede haber campos vacios",
+                            "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if(txtNombre.Text != "" || txtCedula.Text != "" || txtCredito.Text != "" || txtTarjeta.Text != "")
+                {
+                    using (BD_Context db = new BD_Context())
                     {
-                        cliente.Tipo_Persona = "COMUN";
+                        string vacio = comboPersona.Text.ToString();
+                        int limite = int.Parse(txtCredito.Text.ToString());
+                        Cliente cliente = new Cliente();
 
-                    }
-                    else
-                    {
-                        cliente.Tipo_Persona = comboPersona.Text.ToString();
-                    }
-
-                    if (limite>25000)
-                    {
-                        MessageBox.Show("No puede ser mayor a 25,000 pesos",
-                            "Limite de Credito alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else if((limite < 25000))
-                    {
-                        cliente.Límite_Credito = txtCredito.Text.ToString();
-
-                        if (ChckEstado.Checked)
+                        cliente.Nombre = txtNombre.Text.ToString().ToUpper();
+                        cliente.Cedula = txtCedula.Text.ToString();
+                        cliente.No_Tarjeta_CR = txtTarjeta.Text.ToString();
+                        if (vacio == "")
                         {
-                            cliente.Estado = "INACTIVO";
+                            cliente.Tipo_Persona = "COMUN";
+
                         }
                         else
                         {
-                            cliente.Estado = "ACTIVO";
+                            cliente.Tipo_Persona = comboPersona.Text.ToString();
                         }
 
-                        db.Clientes.Add(cliente);
+                        if (limite > 25000)
+                        {
+                            MessageBox.Show("No puede ser mayor a 25,000 pesos",
+                                "Limite de Credito alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else if ((limite < 25000))
+                        {
+                            cliente.Límite_Credito = txtCredito.Text.ToString();
 
-                        db.SaveChanges();
+                            if (ChckEstado.Checked)
+                            {
+                                cliente.Estado = "INACTIVO";
+                            }
+                            else
+                            {
+                                cliente.Estado = "ACTIVO";
+                            }
 
-                        MessageBox.Show("Cliente " + txtNombre.Text.ToString().ToUpper() + 
-                            " creado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            db.Clientes.Add(cliente);
+
+                            db.SaveChanges();
+
+                            MessageBox.Show("Cliente " + txtNombre.Text.ToString().ToUpper() +
+                                " creado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Refresh();
+                            LimpiarCampos();
+                        }
 
                     }
-
                 }
-                Refresh();
-                LimpiarCampos();
+
             }
             catch (Exception ex)
             {
@@ -218,6 +226,35 @@ namespace ProyectoFinal_RentCar.Forms
                 errorP.SetError(txtCredito, "Solo Numeros");
             else
                 errorP.Clear();
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            BD_Context db = new BD_Context();
+            if (txtBuscar.Text !="")
+            {
+                dataGridViewCliente.CurrentCell = null;
+
+                foreach (DataGridViewRow r in dataGridViewCliente.Rows)
+                {
+                    r.Visible = false;
+                }
+                foreach (DataGridViewRow r in dataGridViewCliente.Rows)
+                {
+                    foreach (DataGridViewCell c in r.Cells)
+                    {
+                        if ((c.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper())==0)
+                        {
+                            r.Visible = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                dataGridViewCliente.DataSource = db.Clientes.ToList();
+            }
         }
     }
 }
