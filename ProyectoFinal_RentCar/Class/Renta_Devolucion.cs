@@ -22,6 +22,7 @@ namespace ProyectoFinal_RentCar.Class
         public string Monto_Día { get; set; }
         public int Cantidad_días { get; set; }
         public string Comentario { get; set; }
+        public string Devolucion { get; set; }
         public string Estado { get; set; }
     }
 }

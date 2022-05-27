@@ -16,13 +16,15 @@ namespace ProyectoFinal_RentCar.Forms
         public Renta_Devolucion()
         {
             InitializeComponent();
+            txtCantidadDias.Text = "0";
         }
-
+        
         private void LimpiarCampos()
         {
             txtCantidadDias.Text = "";
             txtComentario.Text = "";
             txtMonto.Text = "";
+            checkBoxDevuelto.Checked = false;
             ChckEstado.Checked = false;
         }
 
@@ -73,6 +75,18 @@ namespace ProyectoFinal_RentCar.Forms
             }
         }
 
+        private void CalcularDiferencia()
+        {
+            DateTime fechaInicio = dateTimePickerRenta.Value.Date;
+            DateTime fechaFinal = dateTimePickerDevo.Value.Date;
+
+            TimeSpan tSpan = fechaFinal - fechaInicio;
+
+            int Dias = tSpan.Days;
+
+            txtCantidadDias.Text = Dias.ToString();
+        }
+
         private List<Renta_DevolucionViewModel> ModelMapperRentaDevo()
         {
             var list = new List<Renta_DevolucionViewModel>();
@@ -93,6 +107,7 @@ namespace ProyectoFinal_RentCar.Forms
                         Monto_Día = item.Monto_Día,
                         Cantidad_días = item.Cantidad_días,
                         Comentario = item.Comentario,
+                        Devolucion = item.Devolucion,
                         Estado = item.Estado
                     });
                 }
@@ -119,11 +134,21 @@ namespace ProyectoFinal_RentCar.Forms
             txtMonto.Text = dataGridViewRentaDevo.CurrentRow.Cells[6].Value.ToString();
             txtCantidadDias.Text = dataGridViewRentaDevo.CurrentRow.Cells[7].Value.ToString();
             txtComentario.Text = dataGridViewRentaDevo.CurrentRow.Cells[8].Value.ToString();
-            if (dataGridViewRentaDevo.CurrentRow.Cells[9].Value.ToString() == "INACTIVO")
+
+            if (dataGridViewRentaDevo.CurrentRow.Cells[9].Value.ToString() == "DEVOLUCION")
+            {
+                checkBoxDevuelto.Checked = true;
+            }
+            else if (dataGridViewRentaDevo.CurrentRow.Cells[9].Value.ToString() == "RENTA")
+            {
+                checkBoxDevuelto.Checked = false;
+            }
+
+            if (dataGridViewRentaDevo.CurrentRow.Cells[10].Value.ToString() == "INACTIVO")
             {
                 ChckEstado.Checked = true;
             }
-            else if (dataGridViewRentaDevo.CurrentRow.Cells[9].Value.ToString() == "ACTIVO")
+            else if (dataGridViewRentaDevo.CurrentRow.Cells[10].Value.ToString() == "ACTIVO")
             {
                 ChckEstado.Checked = false;
             }
@@ -143,8 +168,18 @@ namespace ProyectoFinal_RentCar.Forms
                     renta_Devolucion.Fecha_Renta = DateTime.Parse(dateTimePickerRenta.Text.ToString());
                     renta_Devolucion.Fecha_Devolucion = DateTime.Parse(dateTimePickerDevo.Text.ToString());
                     renta_Devolucion.Cantidad_días = int.Parse(txtCantidadDias.Text);
-                    renta_Devolucion.Monto_Día = txtCantidadDias.Text.ToString();
+                    renta_Devolucion.Monto_Día = txtMonto.Text.ToString();
                     renta_Devolucion.Comentario = txtComentario.Text.ToString();
+
+                    if (checkBoxDevuelto.Checked)
+                    {
+                        renta_Devolucion.Devolucion = "DEVOLUCION";
+                    }
+                    else
+                    {
+                        renta_Devolucion.Devolucion = "RENTA";
+                    }
+
                     if (ChckEstado.Checked)
                     {
                         renta_Devolucion.Estado = "INACTIVO";
@@ -154,14 +189,26 @@ namespace ProyectoFinal_RentCar.Forms
                         renta_Devolucion.Estado = "ACTIVO";
                     }
 
-                    db.Renta_Devolucions.Add(renta_Devolucion);
+                    var query = db.Renta_Devolucions.Where(x => x.VehiculoId == renta_Devolucion.VehiculoId && x.Devolucion == renta_Devolucion.Devolucion && (renta_Devolucion.Fecha_Renta >= x.Fecha_Renta &&
+            renta_Devolucion.Fecha_Devolucion <= x.Fecha_Devolucion || renta_Devolucion.Fecha_Renta >= x.Fecha_Renta && renta_Devolucion.Fecha_Devolucion <= x.Fecha_Devolucion)).Count();
 
-                    db.SaveChanges();
-                }
+                    if (query!=0)
+                    {
+                        MessageBox.Show("este vehiculo esta rentado "
+                     , "RENT-CAR",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        db.Renta_Devolucions.Add(renta_Devolucion);
+                        db.SaveChanges();
 
-                MessageBox.Show("Renta del Vehiculo " + comboVehiculo.Text.ToString() + " para el Cliente "
+                        MessageBox.Show("Renta del Vehiculo " + comboVehiculo.Text.ToString() + " para el Cliente "
                     + comboCliente.Text.ToString() + " creado satisfactoriamente!", "RENT-CAR",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    
+                }
 
                 Refresh();
                 LimpiarCampos();
@@ -179,7 +226,7 @@ namespace ProyectoFinal_RentCar.Forms
             {
                 using (BD_Context db = new BD_Context())
                 {
-                    int id = int.Parse(dataGridViewRentaDevo.CurrentRow.Cells[1].Value.ToString());
+                    int id = int.Parse(dataGridViewRentaDevo.CurrentRow.Cells[0].Value.ToString());
 
                     Class.Renta_Devolucion renta_Devolucion = db.Renta_Devolucions.FirstOrDefault(x => x.No_Renta == id);
 
@@ -189,8 +236,18 @@ namespace ProyectoFinal_RentCar.Forms
                     renta_Devolucion.Fecha_Renta = DateTime.Parse(dateTimePickerRenta.Text.ToString());
                     renta_Devolucion.Fecha_Devolucion = DateTime.Parse(dateTimePickerDevo.Text.ToString());
                     renta_Devolucion.Cantidad_días = int.Parse(txtCantidadDias.Text);
-                    renta_Devolucion.Monto_Día = txtCantidadDias.Text.ToString();
+                    renta_Devolucion.Monto_Día = txtMonto.Text.ToString();
                     renta_Devolucion.Comentario = txtComentario.Text.ToString();
+
+                    if (checkBoxDevuelto.Checked)
+                    {
+                        renta_Devolucion.Devolucion = "DEVOLUCION";
+                    }
+                    else
+                    {
+                        renta_Devolucion.Devolucion = "RENTA";
+                    }
+
                     if (ChckEstado.Checked)
                     {
                         renta_Devolucion.Estado = "INACTIVO";
@@ -223,7 +280,7 @@ namespace ProyectoFinal_RentCar.Forms
             {
                 using (BD_Context db = new BD_Context())
                 {
-                    int id = int.Parse(dataGridViewRentaDevo.CurrentRow.Cells[1].Value.ToString());
+                    int id = int.Parse(dataGridViewRentaDevo.CurrentRow.Cells[0].Value.ToString());
 
                     Class.Renta_Devolucion renta_Devolucion = db.Renta_Devolucions.FirstOrDefault(x => x.No_Renta == id);
 
@@ -243,6 +300,11 @@ namespace ProyectoFinal_RentCar.Forms
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void dateTimePickerDevo_ValueChanged(object sender, EventArgs e)
+        {
+            CalcularDiferencia();
         }
     }
 }

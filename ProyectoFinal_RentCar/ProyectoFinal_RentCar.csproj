@@ -139,6 +139,10 @@
     <Compile Include="Migrations\202205151552491_Migration2.0.designer.cs">
       <DependentUpon>202205151552491_Migration2.0.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205262144069_Renta_Devolucion-Agrego-Devolucion.cs" />
+    <Compile Include="Migrations\202205262144069_Renta_Devolucion-Agrego-Devolucion.designer.cs">
+      <DependentUpon>202205262144069_Renta_Devolucion-Agrego-Devolucion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -177,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205151552491_Migration2.0.resx">
       <DependentUpon>202205151552491_Migration2.0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205262144069_Renta_Devolucion-Agrego-Devolucion.resx">
+      <DependentUpon>202205262144069_Renta_Devolucion-Agrego-Devolucion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

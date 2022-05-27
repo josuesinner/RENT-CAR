@@ -241,6 +241,7 @@
             this.dateTimePickerDevo.Name = "dateTimePickerDevo";
             this.dateTimePickerDevo.Size = new System.Drawing.Size(144, 26);
             this.dateTimePickerDevo.TabIndex = 29;
+            this.dateTimePickerDevo.ValueChanged += new System.EventHandler(this.dateTimePickerDevo_ValueChanged);
             // 
             // tableLayoutPanel1
             // 
@@ -362,6 +363,7 @@
             // 
             // txtCantidadDias
             // 
+            this.txtCantidadDias.Enabled = false;
             this.txtCantidadDias.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
             this.txtCantidadDias.Location = new System.Drawing.Point(3, 53);
             this.txtCantidadDias.Multiline = true;
