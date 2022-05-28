@@ -210,7 +210,7 @@ namespace ProyectoFinal_RentCar.Forms
 
                         Class.Modelos modelos = db.Modelos.FirstOrDefault(x => x.Id_Modelo == id);
 
-                        modelos.Descripcion = txtModelo.Text.ToString();
+                        modelos.Descripcion = txtModelo.Text.ToString().ToUpper();
 
                         if (ChckEstado.Checked)
                         {

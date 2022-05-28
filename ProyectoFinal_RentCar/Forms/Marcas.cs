@@ -190,7 +190,7 @@ namespace ProyectoFinal_RentCar.Forms
 
                         Class.Marcas marcas = db.Marcas.FirstOrDefault(x => x.Id_Marca == id);
 
-                        marcas.Descripcion = txtMarca.Text.ToString();
+                        marcas.Descripcion = txtMarca.Text.ToString().ToUpper();
 
                         if (ChckEstado.Checked)
                         {

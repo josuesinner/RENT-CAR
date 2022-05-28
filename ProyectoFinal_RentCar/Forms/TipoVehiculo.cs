@@ -188,7 +188,7 @@ namespace ProyectoFinal_RentCar.Forms
 
                         Class.Tipo_Vehiculo tipo_Vehiculo = db.Tipo_Vehiculos.FirstOrDefault(x => x.Id_Tipo_Vehiculo == id);
 
-                        tipo_Vehiculo.Descripcion = txtTipoVehiculo.Text.ToString();
+                        tipo_Vehiculo.Descripcion = txtTipoVehiculo.Text.ToString().ToUpper();
 
                         if (ChckEstado.Checked)
                         {

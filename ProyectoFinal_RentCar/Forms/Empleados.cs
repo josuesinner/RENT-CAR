@@ -182,7 +182,7 @@ namespace ProyectoFinal_RentCar.Forms
                             }
                             else if (limite <= 15)
                             {
-                                empleado.Porciento_Comision = txtComision.Text.ToString() + "%";
+                                empleado.Porciento_Comision = txtComision.Text.ToString();
 
                                 empleado.Fecha_Ingreso = DateTime.Parse(dateTimePicker1.Text.ToString());
 
@@ -263,7 +263,7 @@ namespace ProyectoFinal_RentCar.Forms
                             }
                             else if (limite <= 15)
                             {
-                                empleado.Porciento_Comision = txtComision.Text.ToString() + "%";
+                                empleado.Porciento_Comision = txtComision.Text.ToString();
                                 empleado.Fecha_Ingreso = DateTime.Parse(dateTimePicker1.Text.ToString());
 
                                 if (ChckEstado.Checked)
