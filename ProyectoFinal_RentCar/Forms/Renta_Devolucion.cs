@@ -19,6 +19,40 @@ namespace ProyectoFinal_RentCar.Forms
             txtCantidadDias.Text = "0";
         }
 
+        public void exportarExcel(DataGridView tabla)
+        {
+            try
+            {
+                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+                excel.Application.Workbooks.Add(true);
+                int IndiceColumna = 0;
+
+                foreach (DataGridViewColumn col in tabla.Columns)
+                {
+                    IndiceColumna++;
+                    excel.Cells[1, IndiceColumna] = col.Name;
+                }
+                int IndiceFila = 0;
+
+                foreach (DataGridViewRow row in tabla.Rows)
+                {
+                    IndiceFila++;
+                    IndiceColumna = 0;
+
+                    foreach (DataGridViewColumn col in tabla.Columns)
+                    {
+                        IndiceColumna++;
+                        excel.Cells[IndiceFila + 1, IndiceColumna] = row.Cells[col.Name].Value;
+                    }
+                }
+                excel.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         public static bool soloNumeros(KeyPressEventArgs e)
         {
             if (char.IsNumber(e.KeyChar))
@@ -374,6 +408,12 @@ namespace ProyectoFinal_RentCar.Forms
             {
                 dataGridViewRentaDevo.DataSource = ModelMapperRentaDevo();
             }
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            exportarExcel(dataGridViewRentaDevo);
+
         }
     }
 }
