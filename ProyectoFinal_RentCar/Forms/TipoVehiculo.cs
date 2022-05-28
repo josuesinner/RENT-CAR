@@ -72,6 +72,61 @@ namespace ProyectoFinal_RentCar.Forms
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        ErrorProvider errorP = new ErrorProvider();
+
+        private void txtTipoVehiculo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            bool validar = soloLetras(e);
+            if (!validar)
+                errorP.SetError(txtTipoVehiculo, "Solo Letras");
+            else
+                errorP.Clear();
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            BD_Context db = new BD_Context();
+            if (txtBuscar.Text != "")
+            {
+                dataGridViewTipoVehiculo.CurrentCell = null;
+
+                foreach (DataGridViewRow r in dataGridViewTipoVehiculo.Rows)
+                {
+                    r.Visible = false;
+                }
+                foreach (DataGridViewRow r in dataGridViewTipoVehiculo.Rows)
+                {
+                    foreach (DataGridViewCell c in r.Cells)
+                    {
+                        if ((c.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper()) == 0)
+                        {
+                            r.Visible = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                dataGridViewTipoVehiculo.DataSource = db.Tipo_Vehiculos.ToList();
+            }
+        }
+
+        private void btnCrear_Click_1(object sender, EventArgs e)
+        {
             try
             {
                 if (txtTipoVehiculo.Text == "")
@@ -115,7 +170,7 @@ namespace ProyectoFinal_RentCar.Forms
             }
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
+        private void btnEditar_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -160,7 +215,7 @@ namespace ProyectoFinal_RentCar.Forms
             }
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -185,46 +240,6 @@ namespace ProyectoFinal_RentCar.Forms
             {
 
                 MessageBox.Show(ex.ToString());
-            }
-        }
-
-        ErrorProvider errorP = new ErrorProvider();
-
-        private void txtTipoVehiculo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            bool validar = soloLetras(e);
-            if (!validar)
-                errorP.SetError(txtTipoVehiculo, "Solo Letras");
-            else
-                errorP.Clear();
-        }
-
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-            BD_Context db = new BD_Context();
-            if (txtBuscar.Text != "")
-            {
-                dataGridViewTipoVehiculo.CurrentCell = null;
-
-                foreach (DataGridViewRow r in dataGridViewTipoVehiculo.Rows)
-                {
-                    r.Visible = false;
-                }
-                foreach (DataGridViewRow r in dataGridViewTipoVehiculo.Rows)
-                {
-                    foreach (DataGridViewCell c in r.Cells)
-                    {
-                        if ((c.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper()) == 0)
-                        {
-                            r.Visible = true;
-                            break;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                dataGridViewTipoVehiculo.DataSource = db.Tipo_Vehiculos.ToList();
             }
         }
     }

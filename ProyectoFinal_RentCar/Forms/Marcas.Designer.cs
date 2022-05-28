@@ -36,11 +36,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtMarca = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnCrear = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMarcas)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
@@ -166,18 +166,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(874, 142);
             this.tableLayoutPanel1.TabIndex = 14;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.label6.Location = new System.Drawing.Point(303, 7);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 39);
-            this.label6.TabIndex = 26;
-            this.label6.Text = "Buscar";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 3;
@@ -206,6 +194,7 @@
             this.btnCrear.Size = new System.Drawing.Size(39, 39);
             this.btnCrear.TabIndex = 0;
             this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click_1);
             // 
             // btnEditar
             // 
@@ -218,6 +207,7 @@
             this.btnEditar.Size = new System.Drawing.Size(46, 39);
             this.btnEditar.TabIndex = 1;
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click_1);
             // 
             // btnEliminar
             // 
@@ -230,6 +220,19 @@
             this.btnEliminar.Size = new System.Drawing.Size(41, 39);
             this.btnEliminar.TabIndex = 2;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click_1);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.label6.Location = new System.Drawing.Point(303, 7);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 39);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "Buscar";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Marcas
             // 

@@ -85,6 +85,87 @@ namespace ProyectoFinal_RentCar.Forms
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dataGridViewCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtNombre.Text = dataGridViewCliente.CurrentRow.Cells[1].Value.ToString();
+            txtCedula.Text = dataGridViewCliente.CurrentRow.Cells[2].Value.ToString();
+            txtTarjeta.Text = dataGridViewCliente.CurrentRow.Cells[3].Value.ToString();
+            txtCredito.Text = dataGridViewCliente.CurrentRow.Cells[4].Value.ToString();
+            comboPersona.Text = dataGridViewCliente.CurrentRow.Cells[5].Value.ToString();
+            if (dataGridViewCliente.CurrentRow.Cells[6].Value.ToString() == "INACTIVO")
+            {
+                ChckEstado.Checked = true;
+            }
+            else if (dataGridViewCliente.CurrentRow.Cells[6].Value.ToString() == "ACTIVO")
+            {
+                ChckEstado.Checked = false;
+            }
+        }
+
+        ErrorProvider errorP = new ErrorProvider();
+
+        private void txtCredito_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            bool validar = soloNumeros(e);
+            if (!validar)
+                errorP.SetError(txtCredito, "Solo Numeros");
+            else
+                errorP.Clear();
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            BD_Context db = new BD_Context();
+            if (txtBuscar.Text !="")
+            {
+                dataGridViewCliente.CurrentCell = null;
+
+                foreach (DataGridViewRow r in dataGridViewCliente.Rows)
+                {
+                    r.Visible = false;
+                }
+                foreach (DataGridViewRow r in dataGridViewCliente.Rows)
+                {
+                    foreach (DataGridViewCell c in r.Cells)
+                    {
+                        if ((c.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper())==0)
+                        {
+                            r.Visible = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                dataGridViewCliente.DataSource = db.Clientes.ToList();
+            }
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //bool validar = soloLetras(e);
+            //if (!validar)
+            //    errorP.SetError(txtNombre, "Solo Letras");
+            //else
+            //    errorP.Clear();
+        }
+
+        private void btnCrear_Click_1(object sender, EventArgs e)
+        {
             ValidarCedula validarCedula = new ValidarCedula();
 
             try
@@ -153,7 +234,7 @@ namespace ProyectoFinal_RentCar.Forms
                             MessageBox.Show("Cedula Invalida",
                                 "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                        
+
                     }
                 }
 
@@ -165,35 +246,7 @@ namespace ProyectoFinal_RentCar.Forms
             }
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (BD_Context db = new BD_Context())
-                {
-                    int id = int.Parse(dataGridViewCliente.CurrentRow.Cells[0].Value.ToString());
-
-                    Cliente cliente = db.Clientes.FirstOrDefault(x => x.Id_Cliente == id);
-
-                    db.Clientes.Remove(cliente);
-
-                    if (MessageBox.Show("Esta seguro que quiere borrar este registro?","RENT-CAR",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
-                    {
-                        db.SaveChanges();
-                    }
-                }
-
-                Refresh();
-                LimpiarCampos();
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
-        private void btnEditar_Click(object sender, EventArgs e)
+        private void btnEditar_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -204,7 +257,8 @@ namespace ProyectoFinal_RentCar.Forms
                     MessageBox.Show("No puede haber campos vacios",
                             "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                else if (txtNombre.Text != "" || txtCedula.Text != "" || txtCredito.Text != "" || txtTarjeta.Text != "") {
+                else if (txtNombre.Text != "" || txtCedula.Text != "" || txtCredito.Text != "" || txtTarjeta.Text != "")
+                {
 
                     using (BD_Context db = new BD_Context())
                     {
@@ -216,10 +270,10 @@ namespace ProyectoFinal_RentCar.Forms
                         Cliente cliente = db.Clientes.FirstOrDefault(x => x.Id_Cliente == id);
 
                         cliente.Nombre = txtNombre.Text.ToString().ToUpper();
-                        
-                            if (validarCedula.IsValidIdNumber(txtCedula.Text.ToString()))
-                            {
-                                cliente.Cedula = txtCedula.Text.ToString();
+
+                        if (validarCedula.IsValidIdNumber(txtCedula.Text.ToString()))
+                        {
+                            cliente.Cedula = txtCedula.Text.ToString();
 
                             cliente.No_Tarjeta_CR = txtTarjeta.Text.ToString();
                             if (vacio == "")
@@ -257,17 +311,17 @@ namespace ProyectoFinal_RentCar.Forms
                             }
 
 
-                            }
-                            else
-                            {
-                                MessageBox.Show("Cedula Invalida",
-                                    "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
-                        
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cedula Invalida",
+                                "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
                     }
-                    
+
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -276,70 +330,32 @@ namespace ProyectoFinal_RentCar.Forms
             }
         }
 
-        private void dataGridViewCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnEliminar_Click_1(object sender, EventArgs e)
         {
-            txtNombre.Text = dataGridViewCliente.CurrentRow.Cells[1].Value.ToString();
-            txtCedula.Text = dataGridViewCliente.CurrentRow.Cells[2].Value.ToString();
-            txtTarjeta.Text = dataGridViewCliente.CurrentRow.Cells[3].Value.ToString();
-            txtCredito.Text = dataGridViewCliente.CurrentRow.Cells[4].Value.ToString();
-            comboPersona.Text = dataGridViewCliente.CurrentRow.Cells[5].Value.ToString();
-            if (dataGridViewCliente.CurrentRow.Cells[6].Value.ToString() == "INACTIVO")
+            try
             {
-                ChckEstado.Checked = true;
-            }
-            else if (dataGridViewCliente.CurrentRow.Cells[6].Value.ToString() == "ACTIVO")
-            {
-                ChckEstado.Checked = false;
-            }
-        }
-
-        ErrorProvider errorP = new ErrorProvider();
-
-        private void txtCredito_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            bool validar = soloNumeros(e);
-            if (!validar)
-                errorP.SetError(txtCredito, "Solo Numeros");
-            else
-                errorP.Clear();
-        }
-
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-            BD_Context db = new BD_Context();
-            if (txtBuscar.Text !="")
-            {
-                dataGridViewCliente.CurrentCell = null;
-
-                foreach (DataGridViewRow r in dataGridViewCliente.Rows)
+                using (BD_Context db = new BD_Context())
                 {
-                    r.Visible = false;
-                }
-                foreach (DataGridViewRow r in dataGridViewCliente.Rows)
-                {
-                    foreach (DataGridViewCell c in r.Cells)
+                    int id = int.Parse(dataGridViewCliente.CurrentRow.Cells[0].Value.ToString());
+
+                    Cliente cliente = db.Clientes.FirstOrDefault(x => x.Id_Cliente == id);
+
+                    db.Clientes.Remove(cliente);
+
+                    if (MessageBox.Show("Esta seguro que quiere borrar este registro?", "RENT-CAR", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        if ((c.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper())==0)
-                        {
-                            r.Visible = true;
-                            break;
-                        }
+                        db.SaveChanges();
                     }
                 }
-            }
-            else
-            {
-                dataGridViewCliente.DataSource = db.Clientes.ToList();
-            }
-        }
 
-        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //bool validar = soloLetras(e);
-            //if (!validar)
-            //    errorP.SetError(txtNombre, "Solo Letras");
-            //else
-            //    errorP.Clear();
+                Refresh();
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

@@ -72,14 +72,70 @@ namespace ProyectoFinal_RentCar.Forms
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
+            
+
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            BD_Context db = new BD_Context();
+            if (txtBuscar.Text != "")
+            {
+                dataGridViewCombustible.CurrentCell = null;
+
+                foreach (DataGridViewRow r in dataGridViewCombustible.Rows)
+                {
+                    r.Visible = false;
+                }
+                foreach (DataGridViewRow r in dataGridViewCombustible.Rows)
+                {
+                    foreach (DataGridViewCell c in r.Cells)
+                    {
+                        if ((c.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper()) == 0)
+                        {
+                            r.Visible = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                dataGridViewCombustible.DataSource = db.Combustibles.ToList();
+            }
+        }
+
+        ErrorProvider errorP = new ErrorProvider();
+
+        private void txtCombustible_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            bool validar = soloLetras(e);
+            if (!validar)
+                errorP.SetError(txtCombustible, "Solo Letras");
+            else
+                errorP.Clear();
+        }
+
+        private void btnCrear_Click_1(object sender, EventArgs e)
+        {
             try
             {
-                if (txtCombustible.Text == "" )
+                if (txtCombustible.Text == "")
                 {
                     MessageBox.Show("No puede haber campos vacios",
                             "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                else if (txtCombustible.Text != "" )
+                else if (txtCombustible.Text != "")
                 {
 
                     using (BD_Context db = new BD_Context())
@@ -113,10 +169,9 @@ namespace ProyectoFinal_RentCar.Forms
 
                 MessageBox.Show(ex.ToString());
             }
-
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
+        private void btnEditar_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -160,7 +215,7 @@ namespace ProyectoFinal_RentCar.Forms
             }
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -186,46 +241,6 @@ namespace ProyectoFinal_RentCar.Forms
 
                 MessageBox.Show(ex.ToString());
             }
-        }
-
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-            BD_Context db = new BD_Context();
-            if (txtBuscar.Text != "")
-            {
-                dataGridViewCombustible.CurrentCell = null;
-
-                foreach (DataGridViewRow r in dataGridViewCombustible.Rows)
-                {
-                    r.Visible = false;
-                }
-                foreach (DataGridViewRow r in dataGridViewCombustible.Rows)
-                {
-                    foreach (DataGridViewCell c in r.Cells)
-                    {
-                        if ((c.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper()) == 0)
-                        {
-                            r.Visible = true;
-                            break;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                dataGridViewCombustible.DataSource = db.Combustibles.ToList();
-            }
-        }
-
-        ErrorProvider errorP = new ErrorProvider();
-
-        private void txtCombustible_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            bool validar = soloLetras(e);
-            if (!validar)
-                errorP.SetError(txtCombustible, "Solo Letras");
-            else
-                errorP.Clear();
         }
     }
 }

@@ -205,6 +205,50 @@ namespace ProyectoFinal_RentCar.Forms
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            BD_Context db = new BD_Context();
+            if (txtBuscar.Text != "")
+            {
+                dataGridViewInspeccion.CurrentCell = null;
+
+                foreach (DataGridViewRow r in dataGridViewInspeccion.Rows)
+                {
+                    r.Visible = false;
+                }
+                foreach (DataGridViewRow r in dataGridViewInspeccion.Rows)
+                {
+                    foreach (DataGridViewCell c in r.Cells)
+                    {
+                        if ((c.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper()) == 0)
+                        {
+                            r.Visible = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                dataGridViewInspeccion.DataSource = ModelMapperInspeccion();
+            }
+        }
+
+        private void btnCrear_Click_1(object sender, EventArgs e)
+        {
             try
             {
                 using (BD_Context db = new BD_Context())
@@ -274,7 +318,7 @@ namespace ProyectoFinal_RentCar.Forms
                     db.SaveChanges();
                 }
 
-                MessageBox.Show("Inspeccion del " + comboVehiculo.Text.ToString() + " para el Cliente " 
+                MessageBox.Show("Inspeccion del " + comboVehiculo.Text.ToString() + " para el Cliente "
                     + comboCliente.Text.ToString() + " creado satisfactoriamente!", "RENT-CAR",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -288,7 +332,7 @@ namespace ProyectoFinal_RentCar.Forms
             }
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
+        private void btnEditar_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -364,7 +408,7 @@ namespace ProyectoFinal_RentCar.Forms
                     db.SaveChanges();
                 }
 
-                MessageBox.Show("Inspeccion al vehiculo "+ comboVehiculo.Text.ToString() + " editado Satisfactoriamente", "RENT-CAR",
+                MessageBox.Show("Inspeccion al vehiculo " + comboVehiculo.Text.ToString() + " editado Satisfactoriamente", "RENT-CAR",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
@@ -378,7 +422,7 @@ namespace ProyectoFinal_RentCar.Forms
             }
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -403,35 +447,6 @@ namespace ProyectoFinal_RentCar.Forms
             {
 
                 MessageBox.Show(ex.ToString());
-            }
-        }
-
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-            BD_Context db = new BD_Context();
-            if (txtBuscar.Text != "")
-            {
-                dataGridViewInspeccion.CurrentCell = null;
-
-                foreach (DataGridViewRow r in dataGridViewInspeccion.Rows)
-                {
-                    r.Visible = false;
-                }
-                foreach (DataGridViewRow r in dataGridViewInspeccion.Rows)
-                {
-                    foreach (DataGridViewCell c in r.Cells)
-                    {
-                        if ((c.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper()) == 0)
-                        {
-                            r.Visible = true;
-                            break;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                dataGridViewInspeccion.DataSource = ModelMapperInspeccion();
             }
         }
     }

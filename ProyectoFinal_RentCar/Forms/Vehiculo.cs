@@ -128,6 +128,71 @@ namespace ProyectoFinal_RentCar.Forms
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void dataGridViewVehiculo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtDescrip.Text = dataGridViewVehiculo.CurrentRow.Cells[1].Value.ToString();
+            txtChasis.Text = dataGridViewVehiculo.CurrentRow.Cells[2].Value.ToString();
+            txtNoMotor.Text = dataGridViewVehiculo.CurrentRow.Cells[3].Value.ToString();
+            txtPlaca.Text = dataGridViewVehiculo.CurrentRow.Cells[4].Value.ToString();
+            ComboTipoVehiculo.Text = dataGridViewVehiculo.CurrentRow.Cells[5].Value.ToString();
+            comboMarca.Text = dataGridViewVehiculo.CurrentRow.Cells[6].Value.ToString();
+            comboModelo.Text = dataGridViewVehiculo.CurrentRow.Cells[7].Value.ToString();
+            comboCombustible.Text = dataGridViewVehiculo.CurrentRow.Cells[8].Value.ToString();
+
+            if (dataGridViewVehiculo.CurrentRow.Cells[9].Value.ToString() == "INACTIVO")
+            {
+                ChckEstado.Checked = true;
+            }
+            else if (dataGridViewVehiculo.CurrentRow.Cells[9].Value.ToString() == "ACTIVO")
+            {
+                ChckEstado.Checked = false;
+            }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            BD_Context db = new BD_Context();
+            if (txtBuscar.Text != "")
+            {
+                dataGridViewVehiculo.CurrentCell = null;
+
+                foreach (DataGridViewRow r in dataGridViewVehiculo.Rows)
+                {
+                    r.Visible = false;
+                }
+                foreach (DataGridViewRow r in dataGridViewVehiculo.Rows)
+                {
+                    foreach (DataGridViewCell c in r.Cells)
+                    {
+                        if ((c.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper()) == 0)
+                        {
+                            r.Visible = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                dataGridViewVehiculo.DataSource = ModelMapperVehiculo();
+            }
+        }
+
+        private void btnCrear_Click_1(object sender, EventArgs e)
+        {
             try
             {
                 if (txtDescrip.Text == "" || txtChasis.Text == "" || txtNoMotor.Text == "" || txtPlaca.Text == "")
@@ -180,7 +245,7 @@ namespace ProyectoFinal_RentCar.Forms
             }
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
+        private void btnEditar_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -233,7 +298,7 @@ namespace ProyectoFinal_RentCar.Forms
             }
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnEliminar_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -258,56 +323,6 @@ namespace ProyectoFinal_RentCar.Forms
             {
 
                 MessageBox.Show(ex.ToString());
-            }
-        }
-
-        private void dataGridViewVehiculo_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtDescrip.Text = dataGridViewVehiculo.CurrentRow.Cells[1].Value.ToString();
-            txtChasis.Text = dataGridViewVehiculo.CurrentRow.Cells[2].Value.ToString();
-            txtNoMotor.Text = dataGridViewVehiculo.CurrentRow.Cells[3].Value.ToString();
-            txtPlaca.Text = dataGridViewVehiculo.CurrentRow.Cells[4].Value.ToString();
-            ComboTipoVehiculo.Text = dataGridViewVehiculo.CurrentRow.Cells[5].Value.ToString();
-            comboMarca.Text = dataGridViewVehiculo.CurrentRow.Cells[6].Value.ToString();
-            comboModelo.Text = dataGridViewVehiculo.CurrentRow.Cells[7].Value.ToString();
-            comboCombustible.Text = dataGridViewVehiculo.CurrentRow.Cells[8].Value.ToString();
-
-            if (dataGridViewVehiculo.CurrentRow.Cells[9].Value.ToString() == "INACTIVO")
-            {
-                ChckEstado.Checked = true;
-            }
-            else if (dataGridViewVehiculo.CurrentRow.Cells[9].Value.ToString() == "ACTIVO")
-            {
-                ChckEstado.Checked = false;
-            }
-        }
-
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-            BD_Context db = new BD_Context();
-            if (txtBuscar.Text != "")
-            {
-                dataGridViewVehiculo.CurrentCell = null;
-
-                foreach (DataGridViewRow r in dataGridViewVehiculo.Rows)
-                {
-                    r.Visible = false;
-                }
-                foreach (DataGridViewRow r in dataGridViewVehiculo.Rows)
-                {
-                    foreach (DataGridViewCell c in r.Cells)
-                    {
-                        if ((c.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper()) == 0)
-                        {
-                            r.Visible = true;
-                            break;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                dataGridViewVehiculo.DataSource = ModelMapperVehiculo();
             }
         }
     }
