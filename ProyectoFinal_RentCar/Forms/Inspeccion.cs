@@ -405,5 +405,34 @@ namespace ProyectoFinal_RentCar.Forms
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            BD_Context db = new BD_Context();
+            if (txtBuscar.Text != "")
+            {
+                dataGridViewInspeccion.CurrentCell = null;
+
+                foreach (DataGridViewRow r in dataGridViewInspeccion.Rows)
+                {
+                    r.Visible = false;
+                }
+                foreach (DataGridViewRow r in dataGridViewInspeccion.Rows)
+                {
+                    foreach (DataGridViewCell c in r.Cells)
+                    {
+                        if ((c.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper()) == 0)
+                        {
+                            r.Visible = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                dataGridViewInspeccion.DataSource = ModelMapperInspeccion();
+            }
+        }
     }
 }

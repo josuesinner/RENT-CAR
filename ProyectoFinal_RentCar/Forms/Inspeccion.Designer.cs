@@ -56,6 +56,7 @@
             this.checkDerTrasera = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInspeccion)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
@@ -109,6 +110,7 @@
             // 
             // btnCrear
             // 
+            this.btnCrear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCrear.Location = new System.Drawing.Point(3, 3);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(39, 39);
@@ -119,6 +121,7 @@
             // 
             // btnEditar
             // 
+            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditar.Location = new System.Drawing.Point(48, 3);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(46, 39);
@@ -129,6 +132,7 @@
             // 
             // btnEliminar
             // 
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEliminar.Location = new System.Drawing.Point(100, 3);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(41, 39);
@@ -397,13 +401,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel5.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.checkIzTrasera, 0, 2);
             this.tableLayoutPanel5.Controls.Add(this.checkIzFrontal, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.checkDereFrontal, 1, 1);
             this.tableLayoutPanel5.Controls.Add(this.checkDerTrasera, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.txtBuscar, 1, 0);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(603, 0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 3;
@@ -424,6 +429,17 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Estado Gomas";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txtBuscar.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.txtBuscar.Location = new System.Drawing.Point(117, 21);
+            this.txtBuscar.Multiline = true;
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(128, 30);
+            this.txtBuscar.TabIndex = 34;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // Inspeccion
             // 
@@ -480,5 +496,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox txtBuscar;
     }
 }

@@ -55,6 +55,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtComentario = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRentaDevo)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
@@ -68,9 +70,9 @@
             this.checkBoxDevuelto.AutoSize = true;
             this.checkBoxDevuelto.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.checkBoxDevuelto.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.checkBoxDevuelto.Location = new System.Drawing.Point(239, 142);
+            this.checkBoxDevuelto.Location = new System.Drawing.Point(3, 6);
             this.checkBoxDevuelto.Name = "checkBoxDevuelto";
-            this.checkBoxDevuelto.Size = new System.Drawing.Size(124, 24);
+            this.checkBoxDevuelto.Size = new System.Drawing.Size(763, 24);
             this.checkBoxDevuelto.TabIndex = 30;
             this.checkBoxDevuelto.Text = "Devuelto";
             this.checkBoxDevuelto.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -114,9 +116,9 @@
             // 
             this.ChckEstado.AutoSize = true;
             this.ChckEstado.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.ChckEstado.Location = new System.Drawing.Point(11, 3);
+            this.ChckEstado.Location = new System.Drawing.Point(3, 36);
             this.ChckEstado.Name = "ChckEstado";
-            this.ChckEstado.Size = new System.Drawing.Size(74, 24);
+            this.ChckEstado.Size = new System.Drawing.Size(74, 22);
             this.ChckEstado.TabIndex = 0;
             this.ChckEstado.Text = "Estado";
             this.ChckEstado.UseVisualStyleBackColor = true;
@@ -187,6 +189,7 @@
             // 
             // btnCrear
             // 
+            this.btnCrear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCrear.Location = new System.Drawing.Point(3, 3);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(39, 39);
@@ -197,6 +200,7 @@
             // 
             // btnEditar
             // 
+            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditar.Location = new System.Drawing.Point(48, 3);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(46, 39);
@@ -224,6 +228,7 @@
             // 
             // btnEliminar
             // 
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEliminar.Location = new System.Drawing.Point(100, 3);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(41, 39);
@@ -311,17 +316,19 @@
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 866F));
-            this.tableLayoutPanel4.Controls.Add(this.ChckEstado, 1, 0);
+            this.tableLayoutPanel4.ColumnCount = 3;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 769F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Controls.Add(this.ChckEstado, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.checkBoxDevuelto, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 412);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 400);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65.30612F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34.69388F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(874, 49);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.09836F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.90164F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(874, 61);
             this.tableLayoutPanel4.TabIndex = 32;
             // 
             // tableLayoutPanel5
@@ -333,13 +340,14 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 107F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Controls.Add(this.label5, 2, 0);
-            this.tableLayoutPanel5.Controls.Add(this.txtCantidadDias, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.txtMonto, 1, 1);
-            this.tableLayoutPanel5.Controls.Add(this.label7, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.checkBoxDevuelto, 2, 2);
-            this.tableLayoutPanel5.Controls.Add(this.txtComentario, 2, 1);
-            this.tableLayoutPanel5.Controls.Add(this.label8, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.txtCantidadDias, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.txtMonto, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.label8, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.label7, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.label5, 2, 1);
+            this.tableLayoutPanel5.Controls.Add(this.label9, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.txtComentario, 2, 2);
+            this.tableLayoutPanel5.Controls.Add(this.txtBuscar, 2, 0);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(493, 0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 3;
@@ -352,11 +360,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label5.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(239, 0);
+            this.label5.Location = new System.Drawing.Point(239, 80);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(124, 50);
+            this.label5.Size = new System.Drawing.Size(124, 20);
             this.label5.TabIndex = 39;
             this.label5.Text = "Comentario";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -365,7 +373,7 @@
             // 
             this.txtCantidadDias.Enabled = false;
             this.txtCantidadDias.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.txtCantidadDias.Location = new System.Drawing.Point(3, 53);
+            this.txtCantidadDias.Location = new System.Drawing.Point(3, 103);
             this.txtCantidadDias.Multiline = true;
             this.txtCantidadDias.Name = "txtCantidadDias";
             this.txtCantidadDias.Size = new System.Drawing.Size(123, 33);
@@ -374,20 +382,21 @@
             // txtMonto
             // 
             this.txtMonto.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.txtMonto.Location = new System.Drawing.Point(132, 53);
+            this.txtMonto.Location = new System.Drawing.Point(132, 103);
             this.txtMonto.Multiline = true;
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(101, 33);
             this.txtMonto.TabIndex = 37;
+            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label7.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(132, 0);
+            this.label7.Location = new System.Drawing.Point(132, 80);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(101, 50);
+            this.label7.Size = new System.Drawing.Size(101, 20);
             this.label7.TabIndex = 34;
             this.label7.Text = "Monto por Dia";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -395,7 +404,7 @@
             // txtComentario
             // 
             this.txtComentario.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.txtComentario.Location = new System.Drawing.Point(239, 53);
+            this.txtComentario.Location = new System.Drawing.Point(239, 103);
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
             this.txtComentario.Size = new System.Drawing.Size(124, 33);
@@ -404,14 +413,37 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label8.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(3, 0);
+            this.label8.Location = new System.Drawing.Point(3, 80);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(123, 50);
+            this.label8.Size = new System.Drawing.Size(123, 20);
             this.label8.TabIndex = 35;
             this.label8.Text = "Cantidad de Dias";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(132, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(101, 50);
+            this.label9.TabIndex = 40;
+            this.label9.Text = "Buscar";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txtBuscar.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
+            this.txtBuscar.Location = new System.Drawing.Point(239, 14);
+            this.txtBuscar.Multiline = true;
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(124, 33);
+            this.txtBuscar.TabIndex = 41;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // Renta_Devolucion
             // 
@@ -466,5 +498,7 @@
         private System.Windows.Forms.TextBox txtMonto;
         private System.Windows.Forms.TextBox txtCantidadDias;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtBuscar;
     }
 }

@@ -18,7 +18,27 @@ namespace ProyectoFinal_RentCar.Forms
             InitializeComponent();
             txtCantidadDias.Text = "0";
         }
-        
+
+        public static bool soloNumeros(KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar))
+            {
+                e.Handled = false;
+                return true;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+                return true;
+            }
+            else
+            {
+                e.Handled = true;
+                return false;
+            }
+        }
+
+
         private void LimpiarCampos()
         {
             txtCantidadDias.Text = "";
@@ -158,60 +178,69 @@ namespace ProyectoFinal_RentCar.Forms
         {
             try
             {
-                using (BD_Context db = new BD_Context())
+                if (txtMonto.Text == "" )
                 {
-                    Class.Renta_Devolucion renta_Devolucion = new Class.Renta_Devolucion();
-
-                    renta_Devolucion.VehiculoId = (int)comboVehiculo.SelectedValue;
-                    renta_Devolucion.ClienteId = (int)comboCliente.SelectedValue;
-                    renta_Devolucion.EmpleadoId = (int)comboEmpleado.SelectedValue;
-                    renta_Devolucion.Fecha_Renta = DateTime.Parse(dateTimePickerRenta.Text.ToString());
-                    renta_Devolucion.Fecha_Devolucion = DateTime.Parse(dateTimePickerDevo.Text.ToString());
-                    renta_Devolucion.Cantidad_días = int.Parse(txtCantidadDias.Text);
-                    renta_Devolucion.Monto_Día = txtMonto.Text.ToString();
-                    renta_Devolucion.Comentario = txtComentario.Text.ToString();
-
-                    if (checkBoxDevuelto.Checked)
-                    {
-                        renta_Devolucion.Devolucion = "DEVOLUCION";
-                    }
-                    else
-                    {
-                        renta_Devolucion.Devolucion = "RENTA";
-                    }
-
-                    if (ChckEstado.Checked)
-                    {
-                        renta_Devolucion.Estado = "INACTIVO";
-                    }
-                    else
-                    {
-                        renta_Devolucion.Estado = "ACTIVO";
-                    }
-
-                    var query = db.Renta_Devolucions.Where(x => x.VehiculoId == renta_Devolucion.VehiculoId && x.Devolucion == renta_Devolucion.Devolucion && (renta_Devolucion.Fecha_Renta >= x.Fecha_Renta &&
-            renta_Devolucion.Fecha_Devolucion <= x.Fecha_Devolucion || renta_Devolucion.Fecha_Renta >= x.Fecha_Renta && renta_Devolucion.Fecha_Devolucion <= x.Fecha_Devolucion)).Count();
-
-                    if (query!=0)
-                    {
-                        MessageBox.Show("El vehiculo " + comboVehiculo.Text.ToString() + " esta rentado "
-                     , "RENT-CAR",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else
-                    {
-                        db.Renta_Devolucions.Add(renta_Devolucion);
-                        db.SaveChanges();
-
-                        MessageBox.Show("Renta del Vehiculo " + comboVehiculo.Text.ToString() + " para el Cliente "
-                    + comboCliente.Text.ToString() + " creado satisfactoriamente!", "RENT-CAR",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    
+                    MessageBox.Show("No puede haber campos vacios",
+                            "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                else if (txtMonto.Text != "" )
+                {
 
-                Refresh();
-                LimpiarCampos();
+                    using (BD_Context db = new BD_Context())
+                    {
+                        Class.Renta_Devolucion renta_Devolucion = new Class.Renta_Devolucion();
+
+                        renta_Devolucion.VehiculoId = (int)comboVehiculo.SelectedValue;
+                        renta_Devolucion.ClienteId = (int)comboCliente.SelectedValue;
+                        renta_Devolucion.EmpleadoId = (int)comboEmpleado.SelectedValue;
+                        renta_Devolucion.Fecha_Renta = DateTime.Parse(dateTimePickerRenta.Text.ToString());
+                        renta_Devolucion.Fecha_Devolucion = DateTime.Parse(dateTimePickerDevo.Text.ToString());
+                        renta_Devolucion.Cantidad_días = int.Parse(txtCantidadDias.Text);
+                        renta_Devolucion.Monto_Día = txtMonto.Text.ToString();
+                        renta_Devolucion.Comentario = txtComentario.Text.ToString();
+
+                        if (checkBoxDevuelto.Checked)
+                        {
+                            renta_Devolucion.Devolucion = "DEVOLUCION";
+                        }
+                        else
+                        {
+                            renta_Devolucion.Devolucion = "RENTA";
+                        }
+
+                        if (ChckEstado.Checked)
+                        {
+                            renta_Devolucion.Estado = "INACTIVO";
+                        }
+                        else
+                        {
+                            renta_Devolucion.Estado = "ACTIVO";
+                        }
+
+                        var query = db.Renta_Devolucions.Where(x => x.VehiculoId == renta_Devolucion.VehiculoId && x.Devolucion == renta_Devolucion.Devolucion && (renta_Devolucion.Fecha_Renta >= x.Fecha_Renta &&
+                renta_Devolucion.Fecha_Devolucion <= x.Fecha_Devolucion || renta_Devolucion.Fecha_Renta >= x.Fecha_Renta && renta_Devolucion.Fecha_Devolucion <= x.Fecha_Devolucion)).Count();
+
+                        if (query != 0)
+                        {
+                            MessageBox.Show("El vehiculo " + comboVehiculo.Text.ToString() + " esta rentado "
+                         , "RENT-CAR",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            db.Renta_Devolucions.Add(renta_Devolucion);
+                            db.SaveChanges();
+
+                            MessageBox.Show("Renta del Vehiculo " + comboVehiculo.Text.ToString() + " para el Cliente "
+                        + comboCliente.Text.ToString() + " creado satisfactoriamente!", "RENT-CAR",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
+                    }
+
+                    Refresh();
+                    LimpiarCampos();
+                }
             }
             catch (Exception ex)
             {
@@ -305,6 +334,46 @@ namespace ProyectoFinal_RentCar.Forms
         private void dateTimePickerDevo_ValueChanged(object sender, EventArgs e)
         {
             CalcularDiferencia();
+        }
+
+        ErrorProvider errorP = new ErrorProvider();
+
+        private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            bool validar = soloNumeros(e);
+            if (!validar)
+                errorP.SetError(txtMonto, "Solo Numeros");
+            else
+                errorP.Clear();
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            BD_Context db = new BD_Context();
+            if (txtBuscar.Text != "")
+            {
+                dataGridViewRentaDevo.CurrentCell = null;
+
+                foreach (DataGridViewRow r in dataGridViewRentaDevo.Rows)
+                {
+                    r.Visible = false;
+                }
+                foreach (DataGridViewRow r in dataGridViewRentaDevo.Rows)
+                {
+                    foreach (DataGridViewCell c in r.Cells)
+                    {
+                        if ((c.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper()) == 0)
+                        {
+                            r.Visible = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                dataGridViewRentaDevo.DataSource = ModelMapperRentaDevo();
+            }
         }
     }
 }
