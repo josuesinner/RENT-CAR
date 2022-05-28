@@ -38,10 +38,7 @@
             this.dataGridViewRentaDevo = new System.Windows.Forms.DataGridView();
             this.comboCliente = new System.Windows.Forms.ComboBox();
             this.comboEmpleado = new System.Windows.Forms.ComboBox();
-            this.btnCrear = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.dateTimePickerDevo = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
@@ -49,16 +46,19 @@
             this.dateTimePickerRenta = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtCantidadDias = new System.Windows.Forms.TextBox();
             this.txtMonto = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtComentario = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtComentario = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btnExport = new System.Windows.Forms.Button();
+            this.btnCrear = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRentaDevo)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
@@ -73,7 +73,7 @@
             this.checkBoxDevuelto.AutoSize = true;
             this.checkBoxDevuelto.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.checkBoxDevuelto.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.checkBoxDevuelto.Location = new System.Drawing.Point(3, 6);
+            this.checkBoxDevuelto.Location = new System.Drawing.Point(3, 5);
             this.checkBoxDevuelto.Name = "checkBoxDevuelto";
             this.checkBoxDevuelto.Size = new System.Drawing.Size(763, 24);
             this.checkBoxDevuelto.TabIndex = 30;
@@ -119,9 +119,9 @@
             // 
             this.ChckEstado.AutoSize = true;
             this.ChckEstado.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
-            this.ChckEstado.Location = new System.Drawing.Point(3, 36);
+            this.ChckEstado.Location = new System.Drawing.Point(3, 35);
             this.ChckEstado.Name = "ChckEstado";
-            this.ChckEstado.Size = new System.Drawing.Size(74, 22);
+            this.ChckEstado.Size = new System.Drawing.Size(74, 23);
             this.ChckEstado.TabIndex = 0;
             this.ChckEstado.Text = "Estado";
             this.ChckEstado.UseVisualStyleBackColor = true;
@@ -190,28 +190,6 @@
             this.comboEmpleado.Size = new System.Drawing.Size(144, 28);
             this.comboEmpleado.TabIndex = 23;
             // 
-            // btnCrear
-            // 
-            this.btnCrear.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCrear.Location = new System.Drawing.Point(3, 3);
-            this.btnCrear.Name = "btnCrear";
-            this.btnCrear.Size = new System.Drawing.Size(39, 39);
-            this.btnCrear.TabIndex = 0;
-            this.btnCrear.Text = "C";
-            this.btnCrear.UseVisualStyleBackColor = true;
-            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditar.Location = new System.Drawing.Point(48, 3);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(46, 39);
-            this.btnEditar.TabIndex = 1;
-            this.btnEditar.Text = "E";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 3;
@@ -228,17 +206,6 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(144, 47);
             this.tableLayoutPanel3.TabIndex = 10;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEliminar.Location = new System.Drawing.Point(100, 3);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(41, 39);
-            this.btnEliminar.TabIndex = 2;
-            this.btnEliminar.Text = "D";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // dateTimePickerDevo
             // 
@@ -361,18 +328,6 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(369, 169);
             this.tableLayoutPanel5.TabIndex = 33;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label5.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(226, 80);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(137, 20);
-            this.label5.TabIndex = 39;
-            this.label5.Text = "Comentario";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // txtCantidadDias
             // 
             this.txtCantidadDias.Enabled = false;
@@ -393,6 +348,18 @@
             this.txtMonto.TabIndex = 37;
             this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label8.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(3, 60);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(74, 40);
+            this.label8.TabIndex = 35;
+            this.label8.Text = "Cantidad de Dias";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -405,6 +372,18 @@
             this.label7.Text = "Monto por Dia";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label5.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(226, 80);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(137, 20);
+            this.label5.TabIndex = 39;
+            this.label5.Text = "Comentario";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // txtComentario
             // 
             this.txtComentario.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
@@ -413,18 +392,6 @@
             this.txtComentario.Name = "txtComentario";
             this.txtComentario.Size = new System.Drawing.Size(137, 33);
             this.txtComentario.TabIndex = 36;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label8.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(3, 60);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(74, 40);
-            this.label8.TabIndex = 35;
-            this.label8.Text = "Cantidad de Dias";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label9
             // 
@@ -460,20 +427,61 @@
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(137, 44);
             this.tableLayoutPanel6.TabIndex = 42;
             // 
             // btnExport
             // 
             this.btnExport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExport.FlatAppearance.BorderSize = 0;
+            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExport.Image = global::ProyectoFinal_RentCar.Properties.Resources.disquete;
             this.btnExport.Location = new System.Drawing.Point(94, 3);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(41, 38);
             this.btnExport.TabIndex = 2;
-            this.btnExport.Text = "EXP";
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // btnCrear
+            // 
+            this.btnCrear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCrear.FlatAppearance.BorderSize = 0;
+            this.btnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCrear.Image = global::ProyectoFinal_RentCar.Properties.Resources.mas;
+            this.btnCrear.Location = new System.Drawing.Point(3, 3);
+            this.btnCrear.Name = "btnCrear";
+            this.btnCrear.Size = new System.Drawing.Size(39, 39);
+            this.btnCrear.TabIndex = 0;
+            this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditar.FlatAppearance.BorderSize = 0;
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.Image = global::ProyectoFinal_RentCar.Properties.Resources.lapiz;
+            this.btnEditar.Location = new System.Drawing.Point(48, 3);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(46, 39);
+            this.btnEditar.TabIndex = 1;
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Image = global::ProyectoFinal_RentCar.Properties.Resources.bote_de_basura;
+            this.btnEliminar.Location = new System.Drawing.Point(100, 3);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(41, 39);
+            this.btnEliminar.TabIndex = 2;
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // Renta_Devolucion
             // 
