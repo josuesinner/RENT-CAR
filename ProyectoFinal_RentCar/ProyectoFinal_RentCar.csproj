@@ -102,6 +102,12 @@
     <Compile Include="Forms\Inspeccion.Designer.cs">
       <DependentUpon>Inspeccion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Marcas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Inspeccion.resx">
       <DependentUpon>Inspeccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Marcas.resx">
       <DependentUpon>Marcas.cs</DependentUpon>
