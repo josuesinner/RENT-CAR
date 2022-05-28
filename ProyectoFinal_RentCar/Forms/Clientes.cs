@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProyectoFinal_RentCar.Class;
@@ -19,33 +20,6 @@ namespace ProyectoFinal_RentCar.Forms
             InitializeComponent();
             comboPersona.Items.Add("COMUN");
             comboPersona.Items.Add("JURIDICA");
-        }
-
-
-        // validate cedula
-        //public static bool isValidIdNumber(String str)
-        //{
-        //    var regex = RegExp(r'^[0-9]{3}-?[0-9]{7}-?[0-9]{1}$');
-        //    if (!regex.hasMatch(str))
-        //    {
-        //        return false;
-        //    }
-        //    str = str.replaceAll(RegExp('-'), '');
-        //    if (str.split('').every((element) => element == '0')) return false;
-        //    return _checkDigit(str);
-        //}
-
-        public static bool _checkDigit(String str)
-        {
-            var sum = 0;
-            for (var i = 0; i < 10; ++i)
-            {
-                var n = ((i + 1) % 2 != 0 ? 1 : 2) * int.Parse(str[i].ToString());
-                sum += (n <= 9 ? n : n % 10 + 1);
-            }
-            var dig = ((10 - sum % 10) % 10);
-
-            return dig == int.Parse(str[10].ToString());
         }
 
         public static bool soloLetras(KeyPressEventArgs e)
@@ -111,6 +85,8 @@ namespace ProyectoFinal_RentCar.Forms
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
+            ValidarCedula validarCedula = new ValidarCedula();
+
             try
             {
                 if (txtNombre.Text == "" || txtCedula.Text == "" || txtCredito.Text == "" || txtTarjeta.Text == "")
@@ -118,7 +94,7 @@ namespace ProyectoFinal_RentCar.Forms
                     MessageBox.Show("No puede haber campos vacios",
                             "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                else if(txtNombre.Text != "" || txtCedula.Text != "" || txtCredito.Text != "" || txtTarjeta.Text != "")
+                else if (txtNombre.Text != "" || txtCedula.Text != "" || txtCredito.Text != "" || txtTarjeta.Text != "")
                 {
                     using (BD_Context db = new BD_Context())
                     {
@@ -127,46 +103,57 @@ namespace ProyectoFinal_RentCar.Forms
                         Cliente cliente = new Cliente();
 
                         cliente.Nombre = txtNombre.Text.ToString().ToUpper();
-                        cliente.Cedula = txtCedula.Text.ToString();
-                        cliente.No_Tarjeta_CR = txtTarjeta.Text.ToString();
-                        if (vacio == "")
+
+                        if (validarCedula.IsValidIdNumber(txtCedula.Text.ToString()))
                         {
-                            cliente.Tipo_Persona = "COMUN";
+                            cliente.Cedula = txtCedula.Text.ToString();
+
+                            cliente.No_Tarjeta_CR = txtTarjeta.Text.ToString();
+                            if (vacio == "")
+                            {
+                                cliente.Tipo_Persona = "COMUN";
+
+                            }
+                            else
+                            {
+                                cliente.Tipo_Persona = comboPersona.Text.ToString();
+                            }
+
+                            if (limite > 25000)
+                            {
+                                MessageBox.Show("No puede ser mayor a 25,000 pesos",
+                                    "Limite de Credito alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            else if ((limite < 25000))
+                            {
+                                cliente.Límite_Credito = txtCredito.Text.ToString();
+
+                                if (ChckEstado.Checked)
+                                {
+                                    cliente.Estado = "INACTIVO";
+                                }
+                                else
+                                {
+                                    cliente.Estado = "ACTIVO";
+                                }
+
+                                db.Clientes.Add(cliente);
+
+                                db.SaveChanges();
+
+                                MessageBox.Show("Cliente " + txtNombre.Text.ToString().ToUpper() +
+                                    " creado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Refresh();
+                                LimpiarCampos();
+                            }
 
                         }
                         else
                         {
-                            cliente.Tipo_Persona = comboPersona.Text.ToString();
+                            MessageBox.Show("Cedula Invalida",
+                                "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-
-                        if (limite > 25000)
-                        {
-                            MessageBox.Show("No puede ser mayor a 25,000 pesos",
-                                "Limite de Credito alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else if ((limite < 25000))
-                        {
-                            cliente.Límite_Credito = txtCredito.Text.ToString();
-
-                            if (ChckEstado.Checked)
-                            {
-                                cliente.Estado = "INACTIVO";
-                            }
-                            else
-                            {
-                                cliente.Estado = "ACTIVO";
-                            }
-
-                            db.Clientes.Add(cliente);
-
-                            db.SaveChanges();
-
-                            MessageBox.Show("Cliente " + txtNombre.Text.ToString().ToUpper() +
-                                " creado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Refresh();
-                            LimpiarCampos();
-                        }
-
+                        
                     }
                 }
 
@@ -210,6 +197,8 @@ namespace ProyectoFinal_RentCar.Forms
         {
             try
             {
+                ValidarCedula validarCedula = new ValidarCedula();
+
                 if (txtNombre.Text == "" || txtCedula.Text == "" || txtCredito.Text == "" || txtTarjeta.Text == "")
                 {
                     MessageBox.Show("No puede haber campos vacios",
@@ -227,41 +216,54 @@ namespace ProyectoFinal_RentCar.Forms
                         Cliente cliente = db.Clientes.FirstOrDefault(x => x.Id_Cliente == id);
 
                         cliente.Nombre = txtNombre.Text.ToString().ToUpper();
-                        cliente.Cedula = txtCedula.Text.ToString();
-                        cliente.No_Tarjeta_CR = txtTarjeta.Text.ToString();
-                        if (vacio == "")
-                        {
-                            cliente.Tipo_Persona = "COMUN";
-
-                        }
-                        else
-                        {
-                            cliente.Tipo_Persona = comboPersona.Text.ToString();
-                        }
-
-                        if (limite > 25000)
-                        {
-                            MessageBox.Show("No puede ser mayor a 25,000 pesos",
-                                "Limite de Credito alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                        else if ((limite < 25000))
-                        {
-                            cliente.Límite_Credito = txtCredito.Text.ToString();
-
-                            if (ChckEstado.Checked)
+                        
+                            if (validarCedula.IsValidIdNumber(txtCedula.Text.ToString()))
                             {
-                                cliente.Estado = "INACTIVO";
+                                cliente.Cedula = txtCedula.Text.ToString();
+
+                            cliente.No_Tarjeta_CR = txtTarjeta.Text.ToString();
+                            if (vacio == "")
+                            {
+                                cliente.Tipo_Persona = "COMUN";
+
                             }
                             else
                             {
-                                cliente.Estado = "ACTIVO";
+                                cliente.Tipo_Persona = comboPersona.Text.ToString();
                             }
 
-                            db.SaveChanges();
-                            MessageBox.Show("Cliente editado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Refresh();
-                            LimpiarCampos();
-                        }
+                            if (limite > 25000)
+                            {
+                                MessageBox.Show("No puede ser mayor a 25,000 pesos",
+                                    "Limite de Credito alcanzado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            else if ((limite < 25000))
+                            {
+                                cliente.Límite_Credito = txtCredito.Text.ToString();
+
+                                if (ChckEstado.Checked)
+                                {
+                                    cliente.Estado = "INACTIVO";
+                                }
+                                else
+                                {
+                                    cliente.Estado = "ACTIVO";
+                                }
+
+                                db.SaveChanges();
+                                MessageBox.Show("Cliente editado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Refresh();
+                                LimpiarCampos();
+                            }
+
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Cedula Invalida",
+                                    "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        
                     }
                     
                 }
@@ -333,11 +335,11 @@ namespace ProyectoFinal_RentCar.Forms
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
-            bool validar = soloLetras(e);
-            if (!validar)
-                errorP.SetError(txtNombre, "Solo Letras");
-            else
-                errorP.Clear();
+            //bool validar = soloLetras(e);
+            //if (!validar)
+            //    errorP.SetError(txtNombre, "Solo Letras");
+            //else
+            //    errorP.Clear();
         }
     }
 }

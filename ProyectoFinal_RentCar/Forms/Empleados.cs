@@ -84,6 +84,8 @@ namespace ProyectoFinal_RentCar.Forms
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
+            ValidarCedula validarCedula = new ValidarCedula();
+
             try
             {
                 if (txtNombre.Text == "" || txtCedula.Text == "" || txtComision.Text == "")
@@ -101,39 +103,53 @@ namespace ProyectoFinal_RentCar.Forms
                         Class.Empleado empleado = new Class.Empleado();
 
                         empleado.Nombre = txtNombre.Text.ToString().ToUpper();
-                        empleado.Cedula = txtCedula.Text.ToString();
+                        
 
-                        if (vacio == "")
+                        if (validarCedula.IsValidIdNumber(txtCedula.Text.ToString()))
                         {
-                            empleado.Tanda_Labor = "DIA";
+                            empleado.Cedula = txtCedula.Text.ToString();
 
+                            if (vacio == "")
+                            {
+                                empleado.Tanda_Labor = "DIA";
+
+                            }
+                            else
+                            {
+                                empleado.Tanda_Labor = comboHorario.Text.ToString();
+                            }
+
+                            empleado.Porciento_Comision = txtComision.Text.ToString();
+                            empleado.Fecha_Ingreso = DateTime.Parse(dateTimePicker1.Text.ToString());
+
+                            if (ChckEstado.Checked)
+                            {
+                                empleado.Estado = "INACTIVO";
+                            }
+                            else
+                            {
+                                empleado.Estado = "ACTIVO";
+                            }
+
+                            db.Empleados.Add(empleado);
+
+                            db.SaveChanges();
+
+                            MessageBox.Show("Empleado " + txtNombre.Text.ToString().ToUpper() + " creado satisfactoriamente!", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            Refresh();
+                            LimpiarCampos();
                         }
                         else
                         {
-                            empleado.Tanda_Labor = comboHorario.Text.ToString();
+                            MessageBox.Show("Cedula Invalida",
+                                "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
 
-                        empleado.Porciento_Comision = txtComision.Text.ToString();
-                        empleado.Fecha_Ingreso = DateTime.Parse(dateTimePicker1.Text.ToString());
-
-                        if (ChckEstado.Checked)
-                        {
-                            empleado.Estado = "INACTIVO";
-                        }
-                        else
-                        {
-                            empleado.Estado = "ACTIVO";
-                        }
-
-                        db.Empleados.Add(empleado);
-
-                        db.SaveChanges();
+                        
                     }
 
-                    MessageBox.Show("Empleado " + txtNombre.Text.ToString().ToUpper() + " creado satisfactoriamente!", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    Refresh();
-                    LimpiarCampos();
+                    
                 }
             }
             catch (Exception ex)
@@ -147,6 +163,8 @@ namespace ProyectoFinal_RentCar.Forms
         {
             try
             {
+                ValidarCedula validarCedula = new ValidarCedula();
+
                 if (txtNombre.Text == "" || txtCedula.Text == "" || txtComision.Text == "")
                 {
                     MessageBox.Show("No puede haber campos vacios",
@@ -162,26 +180,39 @@ namespace ProyectoFinal_RentCar.Forms
                         Class.Empleado empleado = db.Empleados.FirstOrDefault(x => x.Id_Empleado == id);
 
                         empleado.Nombre = txtNombre.Text.ToString().ToUpper();
-                        empleado.Cedula = txtCedula.Text.ToString();
-                        empleado.Tanda_Labor = comboHorario.Text.ToString();
-                        empleado.Porciento_Comision = txtComision.Text.ToString();
-                        empleado.Fecha_Ingreso = DateTime.Parse(dateTimePicker1.Text.ToString());
+                        
 
-                        if (ChckEstado.Checked)
+                        if (validarCedula.IsValidIdNumber(txtCedula.Text.ToString()))
                         {
-                            empleado.Estado = "INACTIVO";
+                            empleado.Cedula = txtCedula.Text.ToString();
+                            empleado.Tanda_Labor = comboHorario.Text.ToString();
+                            empleado.Porciento_Comision = txtComision.Text.ToString();
+                            empleado.Fecha_Ingreso = DateTime.Parse(dateTimePicker1.Text.ToString());
+
+                            if (ChckEstado.Checked)
+                            {
+                                empleado.Estado = "INACTIVO";
+                            }
+                            else
+                            {
+                                empleado.Estado = "ACTIVO";
+                            }
+
+                            db.SaveChanges();
+                            MessageBox.Show("Empleado editado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Refresh();
+                            LimpiarCampos();
                         }
                         else
                         {
-                            empleado.Estado = "ACTIVO";
+                            MessageBox.Show("Cedula Invalida",
+                                "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
 
-                        db.SaveChanges();
+                            
 
                     }
-                    MessageBox.Show("Empleado editado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Refresh();
-                    LimpiarCampos();
+                    
                 }
 
             }
@@ -253,11 +284,11 @@ namespace ProyectoFinal_RentCar.Forms
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
-            bool validar = soloLetras(e);
-            if (!validar)
-                errorP.SetError(txtNombre, "Solo Letras");
-            else
-                errorP.Clear();
+            //bool validar = soloLetras(e);
+            //if (!validar)
+            //    errorP.SetError(txtNombre, "Solo Letras");
+            //else
+            //    errorP.Clear();
         }
     }
 }
