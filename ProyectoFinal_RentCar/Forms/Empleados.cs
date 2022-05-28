@@ -98,6 +98,7 @@ namespace ProyectoFinal_RentCar.Forms
 
                     using (BD_Context db = new BD_Context())
                     {
+                        int limite = int.Parse(txtComision.Text.ToString());
                         string vacio = comboHorario.Text.ToString();
 
                         Class.Empleado empleado = new Class.Empleado();
@@ -119,26 +120,36 @@ namespace ProyectoFinal_RentCar.Forms
                                 empleado.Tanda_Labor = comboHorario.Text.ToString();
                             }
 
-                            empleado.Porciento_Comision = txtComision.Text.ToString();
-                            empleado.Fecha_Ingreso = DateTime.Parse(dateTimePicker1.Text.ToString());
-
-                            if (ChckEstado.Checked)
+                            if (limite > 15)
                             {
-                                empleado.Estado = "INACTIVO";
-                            }
-                            else
+                                MessageBox.Show("La comision no puede ser mayor al 15%",
+                                    "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }else if (limite <= 15)
                             {
-                                empleado.Estado = "ACTIVO";
+                                empleado.Porciento_Comision = txtComision.Text.ToString() + "%";
+
+                                empleado.Fecha_Ingreso = DateTime.Parse(dateTimePicker1.Text.ToString());
+
+                                if (ChckEstado.Checked)
+                                {
+                                    empleado.Estado = "INACTIVO";
+                                }
+                                else
+                                {
+                                    empleado.Estado = "ACTIVO";
+                                }
+
+                                db.Empleados.Add(empleado);
+
+                                db.SaveChanges();
+
+                                MessageBox.Show("Empleado " + txtNombre.Text.ToString().ToUpper() + " creado satisfactoriamente!", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                Refresh();
+                                LimpiarCampos();
                             }
 
-                            db.Empleados.Add(empleado);
-
-                            db.SaveChanges();
-
-                            MessageBox.Show("Empleado " + txtNombre.Text.ToString().ToUpper() + " creado satisfactoriamente!", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            Refresh();
-                            LimpiarCampos();
+                            
                         }
                         else
                         {
@@ -175,6 +186,8 @@ namespace ProyectoFinal_RentCar.Forms
 
                     using (BD_Context db = new BD_Context())
                     {
+                        int limite = int.Parse(txtComision.Text.ToString());
+
                         int id = int.Parse(dataGridViewEmpleado.CurrentRow.Cells[0].Value.ToString());
 
                         Class.Empleado empleado = db.Empleados.FirstOrDefault(x => x.Id_Empleado == id);
@@ -186,22 +199,33 @@ namespace ProyectoFinal_RentCar.Forms
                         {
                             empleado.Cedula = txtCedula.Text.ToString();
                             empleado.Tanda_Labor = comboHorario.Text.ToString();
-                            empleado.Porciento_Comision = txtComision.Text.ToString();
-                            empleado.Fecha_Ingreso = DateTime.Parse(dateTimePicker1.Text.ToString());
 
-                            if (ChckEstado.Checked)
+                            if (limite > 15)
                             {
-                                empleado.Estado = "INACTIVO";
+                                MessageBox.Show("La comision no puede ser mayor al 15%",
+                                    "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
-                            else
+                            else if (limite <= 15)
                             {
-                                empleado.Estado = "ACTIVO";
+                                empleado.Porciento_Comision = txtComision.Text.ToString() + "%";
+                                empleado.Fecha_Ingreso = DateTime.Parse(dateTimePicker1.Text.ToString());
+
+                                if (ChckEstado.Checked)
+                                {
+                                    empleado.Estado = "INACTIVO";
+                                }
+                                else
+                                {
+                                    empleado.Estado = "ACTIVO";
+                                }
+
+                                db.SaveChanges();
+                                MessageBox.Show("Empleado editado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Refresh();
+                                LimpiarCampos();
                             }
 
-                            db.SaveChanges();
-                            MessageBox.Show("Empleado editado Satisfactoriamente", "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Refresh();
-                            LimpiarCampos();
+                                
                         }
                         else
                         {
