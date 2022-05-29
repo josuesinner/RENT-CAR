@@ -247,52 +247,63 @@ namespace ProyectoFinal_RentCar.Forms
                             renta_Devolucion.EmpleadoId = (int)comboEmpleado.SelectedValue;
                             renta_Devolucion.Fecha_Renta = DateTime.Parse(dateTimePickerRenta.Text.ToString());
                             renta_Devolucion.Fecha_Devolucion = DateTime.Parse(dateTimePickerDevo.Text.ToString());
-                            renta_Devolucion.Cantidad_días = int.Parse(txtCantidadDias.Text);
-                            renta_Devolucion.Monto_Día = txtMonto.Text.ToString();
-                            renta_Devolucion.Comentario = txtComentario.Text.ToString();
 
-                            if (checkBoxDevuelto.Checked)
+                            var validarFecha = int.Parse(txtCantidadDias.Text);
+                            if (validarFecha < 0)
                             {
-                                renta_Devolucion.Devolucion = "DEVOLUCION";
+                                MessageBox.Show("La Fecha Devolucion no puede ser mayor a la Fecha Renta",
+                            "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                             else
                             {
-                                renta_Devolucion.Devolucion = "RENTA";
-                            }
+                                renta_Devolucion.Cantidad_días = int.Parse(txtCantidadDias.Text);
+                                renta_Devolucion.Monto_Día = txtMonto.Text.ToString();
+                                renta_Devolucion.Comentario = txtComentario.Text.ToString();
 
-                            if (ChckEstado.Checked)
-                            {
-                                renta_Devolucion.Estado = "INACTIVO";
-                            }
-                            else
-                            {
-                                renta_Devolucion.Estado = "ACTIVO";
-                            }
+                                if (checkBoxDevuelto.Checked)
+                                {
+                                    renta_Devolucion.Devolucion = "DEVOLUCION";
+                                }
+                                else
+                                {
+                                    renta_Devolucion.Devolucion = "RENTA";
+                                }
 
-                            var query = db.Renta_Devolucions.Where(x => x.VehiculoId == renta_Devolucion.VehiculoId && x.Devolucion == renta_Devolucion.Devolucion && (renta_Devolucion.Fecha_Renta >= x.Fecha_Renta &&
-                    renta_Devolucion.Fecha_Devolucion <= x.Fecha_Devolucion || renta_Devolucion.Fecha_Renta >= x.Fecha_Renta && renta_Devolucion.Fecha_Devolucion <= x.Fecha_Devolucion)).Count();
+                                if (ChckEstado.Checked)
+                                {
+                                    renta_Devolucion.Estado = "INACTIVO";
+                                }
+                                else
+                                {
+                                    renta_Devolucion.Estado = "ACTIVO";
+                                }
 
-                            if (query != 0)
-                            {
-                                MessageBox.Show("El vehiculo " + comboVehiculo.Text.ToString() + " esta rentado "
-                             , "RENT-CAR",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
-                            else
-                            {
-                                db.Renta_Devolucions.Add(renta_Devolucion);
-                                db.SaveChanges();
+                                var query = db.Renta_Devolucions.Where(x => x.VehiculoId == renta_Devolucion.VehiculoId && x.Devolucion == renta_Devolucion.Devolucion && (renta_Devolucion.Fecha_Renta >= x.Fecha_Renta &&
+                        renta_Devolucion.Fecha_Devolucion <= x.Fecha_Devolucion || renta_Devolucion.Fecha_Renta >= x.Fecha_Renta && renta_Devolucion.Fecha_Devolucion <= x.Fecha_Devolucion)).Count();
 
-                                MessageBox.Show("Renta del Vehiculo " + comboVehiculo.Text.ToString() + " para el Cliente "
-                            + comboCliente.Text.ToString() + " creado satisfactoriamente!", "RENT-CAR",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                if (query != 0)
+                                {
+                                    MessageBox.Show("El vehiculo " + comboVehiculo.Text.ToString() + " esta rentado "
+                                 , "RENT-CAR",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                                else
+                                {
+                                    db.Renta_Devolucions.Add(renta_Devolucion);
+                                    db.SaveChanges();
+
+                                    MessageBox.Show("Renta del Vehiculo " + comboVehiculo.Text.ToString() + " para el Cliente "
+                                + comboCliente.Text.ToString() + " creado satisfactoriamente!", "RENT-CAR",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    Refresh();
+                                    LimpiarCampos();
+                                }
                             }
 
                         }
                     }
 
-                    Refresh();
-                    LimpiarCampos();
+                    
                 }
             }
             catch (Exception ex)
