@@ -24,8 +24,8 @@ namespace ProyectoFinal_RentCar.Forms
             BD_Context bd = new BD_Context();
 
             var exists = bd.Inspeccions
-                            .Where(x => x.VehículoId == idVehicle && x.ClienteId == idClient
-                                            && x.Fecha.Date.ToString() == inspectionDate.ToString());
+                            .FirstOrDefault(x => x.VehículoId == idVehicle && x.ClienteId == idClient
+                                            && x.Fecha == inspectionDate);
             return exists != null;
         }
 
@@ -232,13 +232,12 @@ namespace ProyectoFinal_RentCar.Forms
                     var insp = VehicleIsInspected((int)comboVehiculo.SelectedValue, (int)comboCliente.SelectedValue, DateTime.Parse(dateTimePickerRenta.Text.ToString()));
                     if (insp == false)
                     {
-                        MessageBox.Show("debe inspeccionar");
+                        MessageBox.Show("El vehiculo " + comboVehiculo.Text.ToString() + " necesita ser Inspeccionado "
+                             , "RENT-CAR",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
-
-
-
                         using (BD_Context db = new BD_Context())
                         {
                             Class.Renta_Devolucion renta_Devolucion = new Class.Renta_Devolucion();

@@ -117,6 +117,7 @@
             // 
             // btnEntrar
             // 
+            this.btnEntrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEntrar.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
             this.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEntrar.Font = new System.Drawing.Font("Arial Unicode MS", 11.25F);
@@ -168,6 +169,7 @@
             this.MaximumSize = new System.Drawing.Size(316, 489);
             this.MinimumSize = new System.Drawing.Size(316, 489);
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
             this.panel1.ResumeLayout(false);
