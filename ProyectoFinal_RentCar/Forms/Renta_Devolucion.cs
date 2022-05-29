@@ -249,9 +249,9 @@ namespace ProyectoFinal_RentCar.Forms
                             renta_Devolucion.Fecha_Devolucion = DateTime.Parse(dateTimePickerDevo.Text.ToString());
 
                             var validarFecha = int.Parse(txtCantidadDias.Text);
-                            if (validarFecha < 0)
+                            if (validarFecha < 0 || validarFecha == 0)
                             {
-                                MessageBox.Show("La Fecha Devolucion no puede ser mayor a la Fecha Renta",
+                                MessageBox.Show("La Fecha Devolucion no puede ser mayor o igual a Fecha Renta ",
                             "RENT-CAR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                             else
