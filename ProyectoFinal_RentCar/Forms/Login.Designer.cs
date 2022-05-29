@@ -78,6 +78,7 @@
             this.txtClave.Location = new System.Drawing.Point(38, 307);
             this.txtClave.Multiline = true;
             this.txtClave.Name = "txtClave";
+            this.txtClave.PasswordChar = '*';
             this.txtClave.Size = new System.Drawing.Size(215, 25);
             this.txtClave.TabIndex = 38;
             // 
@@ -130,7 +131,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ProyectoFinal_RentCar.Properties.Resources.carro_deportivo;
-            this.pictureBox1.Location = new System.Drawing.Point(73, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(77, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(149, 130);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -143,7 +144,7 @@
             this.label2.BackColor = System.Drawing.Color.Teal;
             this.label2.Font = new System.Drawing.Font("Arial Unicode MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(86, 105);
+            this.label2.Location = new System.Drawing.Point(90, 105);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(120, 28);
             this.label2.TabIndex = 44;
@@ -164,9 +165,11 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximumSize = new System.Drawing.Size(316, 489);
+            this.MinimumSize = new System.Drawing.Size(316, 489);
             this.Name = "Login";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -19,14 +19,25 @@ namespace ProyectoFinal_RentCar.Forms
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            if (txtUsuario.Text.ToString() != "Admin" && txtClave.Text.ToString() != "1234")
+            
+            if (txtUsuario.Text.ToString() == "Admin" && txtClave.Text.ToString() == "1234")
             {
-                MessageBox.Show("Usuario y Clave incorrectos");
+                this.Hide();
+                FormMain formMain = new FormMain();
+                formMain.Show();
             }
             else
             {
+                MessageBox.Show("Usuario o Clave incorrectos");
 
             }
+            
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.CenterToScreen();
         }
     }
 }

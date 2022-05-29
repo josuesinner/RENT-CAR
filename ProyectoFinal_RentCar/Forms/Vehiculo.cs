@@ -18,6 +18,8 @@ namespace ProyectoFinal_RentCar.Forms
             InitializeComponent();
         }
 
+        
+
 
         private void LimpiarCampos()
         {
@@ -60,8 +62,8 @@ namespace ProyectoFinal_RentCar.Forms
         private void ComboModelo()
         {
             LLenarCombo datos = new LLenarCombo();
-
-            var Lst = datos.ComboModelo();
+            var Id = (int)comboMarca.SelectedValue;
+            var Lst = datos.ComboModelo(Id);
             if (Lst.Count > 0)
             {
                 comboModelo.DisplayMember = "Descripcion";
@@ -73,7 +75,6 @@ namespace ProyectoFinal_RentCar.Forms
         private void ComboMarca()
         {
             LLenarCombo datos = new LLenarCombo();
-
             var Lst = datos.ComboMarca();
             if (Lst.Count > 0)
             {
@@ -324,6 +325,13 @@ namespace ProyectoFinal_RentCar.Forms
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void comboMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboModelo();
+            
+            
         }
     }
 }

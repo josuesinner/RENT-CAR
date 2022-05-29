@@ -353,6 +353,7 @@
             this.comboMarca.Name = "comboMarca";
             this.comboMarca.Size = new System.Drawing.Size(144, 28);
             this.comboMarca.TabIndex = 19;
+            this.comboMarca.SelectedIndexChanged += new System.EventHandler(this.comboMarca_SelectedIndexChanged);
             // 
             // label9
             // 

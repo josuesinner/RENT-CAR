@@ -16,12 +16,12 @@ namespace ProyectoFinal_RentCar.Class
             }
         }
 
-        public List<Modelos> ComboModelo(/*int pId*/)
+        public List<Modelos> ComboModelo(int pId)
         {
             using (BD_Context db = new BD_Context())
             {
-                //return db.Modelos.Where(m=>m.MarcaId==pId).ToList();
-                return db.Modelos.ToList();
+                return db.Modelos.Where(m=>m.MarcaId==pId).ToList();
+                //return db.Modelos.ToList();
 
             }
         }

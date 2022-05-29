@@ -19,6 +19,16 @@ namespace ProyectoFinal_RentCar.Forms
             txtCantidadDias.Text = "0";
         }
 
+        public bool VehicleIsInspected(int idVehicle, int idClient, DateTime inspectionDate)
+        {
+            BD_Context bd = new BD_Context();
+
+            var exists = bd.Inspeccions
+                            .Where(x => x.VehículoId == idVehicle && x.ClienteId == idClient
+                                            && x.Fecha.Date.ToString() == inspectionDate.ToString());
+            return exists != null;
+        }
+
         public void exportarExcel(DataGridView tabla)
         {
             try
@@ -219,57 +229,67 @@ namespace ProyectoFinal_RentCar.Forms
                 }
                 else if (txtMonto.Text != "" )
                 {
-
-                    using (BD_Context db = new BD_Context())
+                    var insp = VehicleIsInspected((int)comboVehiculo.SelectedValue, (int)comboCliente.SelectedValue, DateTime.Parse(dateTimePickerRenta.Text.ToString()));
+                    if (insp == false)
                     {
-                        Class.Renta_Devolucion renta_Devolucion = new Class.Renta_Devolucion();
+                        MessageBox.Show("debe inspeccionar");
+                    }
+                    else
+                    {
 
-                        renta_Devolucion.VehiculoId = (int)comboVehiculo.SelectedValue;
-                        renta_Devolucion.ClienteId = (int)comboCliente.SelectedValue;
-                        renta_Devolucion.EmpleadoId = (int)comboEmpleado.SelectedValue;
-                        renta_Devolucion.Fecha_Renta = DateTime.Parse(dateTimePickerRenta.Text.ToString());
-                        renta_Devolucion.Fecha_Devolucion = DateTime.Parse(dateTimePickerDevo.Text.ToString());
-                        renta_Devolucion.Cantidad_días = int.Parse(txtCantidadDias.Text);
-                        renta_Devolucion.Monto_Día = txtMonto.Text.ToString();
-                        renta_Devolucion.Comentario = txtComentario.Text.ToString();
 
-                        if (checkBoxDevuelto.Checked)
+
+                        using (BD_Context db = new BD_Context())
                         {
-                            renta_Devolucion.Devolucion = "DEVOLUCION";
-                        }
-                        else
-                        {
-                            renta_Devolucion.Devolucion = "RENTA";
-                        }
+                            Class.Renta_Devolucion renta_Devolucion = new Class.Renta_Devolucion();
 
-                        if (ChckEstado.Checked)
-                        {
-                            renta_Devolucion.Estado = "INACTIVO";
-                        }
-                        else
-                        {
-                            renta_Devolucion.Estado = "ACTIVO";
-                        }
+                            renta_Devolucion.VehiculoId = (int)comboVehiculo.SelectedValue;
+                            renta_Devolucion.ClienteId = (int)comboCliente.SelectedValue;
+                            renta_Devolucion.EmpleadoId = (int)comboEmpleado.SelectedValue;
+                            renta_Devolucion.Fecha_Renta = DateTime.Parse(dateTimePickerRenta.Text.ToString());
+                            renta_Devolucion.Fecha_Devolucion = DateTime.Parse(dateTimePickerDevo.Text.ToString());
+                            renta_Devolucion.Cantidad_días = int.Parse(txtCantidadDias.Text);
+                            renta_Devolucion.Monto_Día = txtMonto.Text.ToString();
+                            renta_Devolucion.Comentario = txtComentario.Text.ToString();
 
-                        var query = db.Renta_Devolucions.Where(x => x.VehiculoId == renta_Devolucion.VehiculoId && x.Devolucion == renta_Devolucion.Devolucion && (renta_Devolucion.Fecha_Renta >= x.Fecha_Renta &&
-                renta_Devolucion.Fecha_Devolucion <= x.Fecha_Devolucion || renta_Devolucion.Fecha_Renta >= x.Fecha_Renta && renta_Devolucion.Fecha_Devolucion <= x.Fecha_Devolucion)).Count();
+                            if (checkBoxDevuelto.Checked)
+                            {
+                                renta_Devolucion.Devolucion = "DEVOLUCION";
+                            }
+                            else
+                            {
+                                renta_Devolucion.Devolucion = "RENTA";
+                            }
 
-                        if (query != 0)
-                        {
-                            MessageBox.Show("El vehiculo " + comboVehiculo.Text.ToString() + " esta rentado "
-                         , "RENT-CAR",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            if (ChckEstado.Checked)
+                            {
+                                renta_Devolucion.Estado = "INACTIVO";
+                            }
+                            else
+                            {
+                                renta_Devolucion.Estado = "ACTIVO";
+                            }
+
+                            var query = db.Renta_Devolucions.Where(x => x.VehiculoId == renta_Devolucion.VehiculoId && x.Devolucion == renta_Devolucion.Devolucion && (renta_Devolucion.Fecha_Renta >= x.Fecha_Renta &&
+                    renta_Devolucion.Fecha_Devolucion <= x.Fecha_Devolucion || renta_Devolucion.Fecha_Renta >= x.Fecha_Renta && renta_Devolucion.Fecha_Devolucion <= x.Fecha_Devolucion)).Count();
+
+                            if (query != 0)
+                            {
+                                MessageBox.Show("El vehiculo " + comboVehiculo.Text.ToString() + " esta rentado "
+                             , "RENT-CAR",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            else
+                            {
+                                db.Renta_Devolucions.Add(renta_Devolucion);
+                                db.SaveChanges();
+
+                                MessageBox.Show("Renta del Vehiculo " + comboVehiculo.Text.ToString() + " para el Cliente "
+                            + comboCliente.Text.ToString() + " creado satisfactoriamente!", "RENT-CAR",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+
                         }
-                        else
-                        {
-                            db.Renta_Devolucions.Add(renta_Devolucion);
-                            db.SaveChanges();
-
-                            MessageBox.Show("Renta del Vehiculo " + comboVehiculo.Text.ToString() + " para el Cliente "
-                        + comboCliente.Text.ToString() + " creado satisfactoriamente!", "RENT-CAR",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-
                     }
 
                     Refresh();
